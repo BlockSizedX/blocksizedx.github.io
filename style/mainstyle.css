@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  line-height: 1.6;
+  color: #333;
+}
+header {
+  background-color: #ffc107;
+  text-align: center;
+  padding: 20px 10px;
+}
+header h1 {
+  font-size: 2.5rem;
+}
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #ffe082;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar a {
+  margin: 0 2%;
+  text-decoration: none;
+  color: #5d4037;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+.navbar a:hover {
+  transform: scale(1.1);
+}
+.section {
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 100vh;
+}
+.row {
+  display: flex;
+}
+.downrow {
+  display: list-item;
+  text-align: start;
+}
+#home {
+  background-color: #fff8dc;
+}
+#projects {
+  background-color: #fdf8e1;
+}
+#minecraft {
+  background-color: #fceebf;
+}
+#minecraft h1 {
+  font-size: 200%;
+
+}
+#minecraft h2 {
+  font-size: 100%;
+}
+#minecraft h3 {
+  font-size: 100%;
+  font-weight: lighter;
+}
+#about {
+  background-color: #fff3cd;
+}
+#faq {
+  background-color: #fff9c4;
+}
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+}
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .navbar a {
+    margin: 10px;
+  }
+}
