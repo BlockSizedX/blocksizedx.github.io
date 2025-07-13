@@ -75,6 +75,29 @@ header h1 {
   border-radius: 30px;
   background-color: #ffe082;
 }
+.sec {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.sec img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .sec {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sec li {
+    text-align: left;
+  }
+}
+
 #minecraft {
   background-color: #fceebf;
 }
@@ -126,6 +149,7 @@ header h1 {
   
 }
 #faq h2 {
+  text-align: center;
   font-size: 200%;
   font-weight: bolder;
 }
@@ -136,7 +160,7 @@ header h1 {
 #faq p {
   font-size: 120%;
 }
-#about p {
+#about li {
   text-align: left;
   font-size: 120%;
 }
@@ -144,7 +168,8 @@ header h1 {
   font-size: 200%;
   font-weight: bolder;
 }
-.sec {
-  display: flex;
-  gap: 3%;
+
+#home li {
+  text-align: left;
+  padding: 0 2%;
 }
