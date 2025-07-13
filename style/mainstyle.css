@@ -53,9 +53,27 @@ header h1 {
 }
 #home {
   background-color: #fff8dc;
+  font-size: 120%;
 }
 #projects {
-  background-color: #fdf8e1;
+  background-color: #fef9ba;
+  text-align: left;
+}
+#projects h2 {
+  text-align: center;
+  font-size: 300%;
+  font-weight: bolder;
+}
+#projects p {
+  text-align: left;
+  font-size: 350%;
+  font-weight: bold;
+  color: #0b5000;
+}
+.roundarea {
+  padding: 2%;
+  border-radius: 30px;
+  background-color: #ffe082;
 }
 #minecraft {
   background-color: #fceebf;
@@ -90,4 +108,43 @@ header h1 {
   .navbar a {
     margin: 10px;
   }
+}
+.video-section {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.video-section video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+#faq {
+  text-align: left;
+  
+}
+#faq h2 {
+  font-size: 200%;
+  font-weight: bolder;
+}
+#faq li {
+  font-size: 120%;
+  font-weight: bold;
+}
+#faq p {
+  font-size: 120%;
+}
+#about p {
+  text-align: left;
+  font-size: 120%;
+}
+#about h2 {
+  font-size: 200%;
+  font-weight: bolder;
+}
+.sec {
+  display: flex;
+  gap: 3%;
 }

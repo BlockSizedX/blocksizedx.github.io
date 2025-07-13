@@ -20,36 +20,80 @@
     </nav>
     <main>
         <section class="section" id="home">
-            <h2>Welcome to the Epic Project Vault</h2>
+            <h2>Welcome to the Epic Project Vault of BlockSizedX.</h2>
             <p>Explore my cool creations, experiments, and mini-games 🚀</p>
+            <br>
+            <li>My Minecraft Gameplays <a href="#minecraft">click here</a></li>
+            <br>
+            <li>wanna See my Projects? <a href="#projects">Click Here</a></li>
+            <br>
+            <li>and wanna know About me ?<a href="#about">click here</a></li>
+            <br>
         </section>
         <section class="section" id="projects">
             <h2>Projects</h2>
-            <p>Coming soon... 👷‍♂️</p>
+            <br>
+
+            <div class="roundarea">
+              
+              <p id="clickbox">Click The Box</p>
+
+
+              <div class="sec">
+                <img alt="click_the_box_image" src="images/click box.png" width="300px">
+                <br>
+                <div>
+                  <h3><a href="games/click-the-box.html">Click To Play The Game</a></h3>
+                  <br>
+                  <li>Try to click on the green box.</li>
+                  <li>It will move.</li>
+                  <li>Your Score Increases on click.</li>
+                </div>
+              </div>
+            </div>
+
         </section>
         <section class="section" id="minecraft">
             <h1>Epic Minecraft Clips by BlockSizedX!</h1>
             <h2>Watch Epic Minecraft Gameplay clips by BlockSizedX.</h2>
             <br>
             <br>
-            <video id="minecraft-video" autoplay muted playsinline height="380">
+            <video class="minecraft-video" autoplay muted playsinline height="380">
               <source src="videos/1V1 Bedwars-1.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <h3> 🛜Server: Mineberry 👤Player: BlockSized 🎮Gamemode: BedFight(Duels)</h3>
-     
+            <br>
+            <br>
+            <video class="minecraft-video" autoplay muted playsinline height="380">
+              <source src="videos/Piglin Mace.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h3>#️⃣Version: 1.21.6 👤Player: BlockSized 🎮Gamemode: Hardcore</h3>
         </section>
         <section class="section" id="about">
             <h2>About Me</h2>
-            <p>I'm BlockSized, a dev who codes, crafts, and conquers in both games and real life! 😎</p>
+            <br>
+            <p>BlockSized is my online nickname — not affiliated with other sites or brands named BlockSized.</p>
+            <p>I play minecraft, you can watch gameplays <a href="#minecraft">By clicking here.</a></p>
+            <p>I am living in Kerala, India</p>
+            <p>My real name is Nazal.</p>
         </section>
         <section class="section" id="faq">
             <h2>FAQs</h2>
-            <p>Ask me anything! Not really, but maybe later 😜</p>
+            <li>Is BlockSizedX a group of peoples?</li>
+            <p>NO, everything on BlockSizedX is handled by one person.</p>
+            <li>Who are you?</li>
+            <p>I am a student. age prefer not to say.</p>
         </section>
     </main>
     <footer class="footer">
-        &copy; 2025 BlockSizedX | Built with ❤️ by Nazal
+
+      <p>🧱 Made with blocks, brains, and bugs by <strong>BlockSized</strong></p>
+      <p>📍 Kerala, India | © 2025</p>
+      <p>No cookies. No tracking. Just fun.</p>
+
+
     </footer>
 </body>
 </html>
@@ -58,7 +102,7 @@
 
 
 <script>
-  const vid = document.getElementById("minecraft-video");
+  const vid = document.getElementsByClassName("minecraft-video");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
