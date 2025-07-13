@@ -60,6 +60,7 @@ header h1 {
   text-align: left;
 }
 #projects h2 {
+  text-decoration: underline;
   text-align: center;
   font-size: 300%;
   font-weight: bolder;
@@ -102,6 +103,7 @@ header h1 {
   background-color: #fceebf;
 }
 #minecraft h1 {
+  text-decoration: underline;
   font-size: 200%;
 
 }
@@ -131,7 +133,10 @@ header h1 {
   .navbar a {
     margin: 10px;
   }
+
 }
+
+
 .video-section {
   width: 100%;
   max-width: 100%;
@@ -149,6 +154,7 @@ header h1 {
   
 }
 #faq h2 {
+  text-decoration: underline;
   text-align: center;
   font-size: 200%;
   font-weight: bolder;
@@ -163,8 +169,10 @@ header h1 {
 #about li {
   text-align: left;
   font-size: 120%;
+  padding: 1% 1%;
 }
 #about h2 {
+  text-decoration: underline;
   font-size: 200%;
   font-weight: bolder;
 }
@@ -173,3 +181,20 @@ header h1 {
   text-align: left;
   padding: 0 2%;
 }
+.vid-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+
+.minecraft-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
