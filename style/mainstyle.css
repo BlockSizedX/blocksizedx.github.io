@@ -12,7 +12,7 @@ body {
   color: #333;
 }
 header {
-  background-color: #ffc107;
+  background-color: #ffcb30;
   text-align: center;
   padding: 20px 10px;
 }
@@ -52,11 +52,11 @@ header h1 {
   text-align: start;
 }
 #home {
-  background-color: #fff8dc;
+  background-color: #fef9ba;
   font-size: 120%;
 }
 #projects {
-  background-color: #fef9ba;
+  background-color: #fff8dc;
   text-align: left;
 }
 #projects h2 {
