@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BlockSizedX</title>
-    <link rel="stylesheet" href="style/mainstyle.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlockSizedX</title>
+  
+  <!-- 👇 Force light mode fix -->
+  <meta name="color-scheme" content="light" />
+  <style>
+    html {
+      color-scheme: only light;
+      background-color: white;
+    }
+    body {
+      background-color: #fff !important;
+      color: #000 !important;
+    }
+    img, video {
+      filter: none !important;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style/mainstyle.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
     <header id="header">
-        <h1>BlockSizedX</h1>
+      <img src="BlockSizedX-logo.jpg" alt="Logo" id="logo" />
+      <h1>BlockSizedX</h1>
     </header>
+
     <nav class="navbar">
         <a href="#header">Home</a>
         <a href="#projects">Our Projects</a>
