@@ -2,9 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
 }
 html {
-  scroll-behavior: smooth;
+
   font-family: 'Poppins', sans-serif;
 }
 body {
@@ -13,22 +15,29 @@ body {
 }
 header {
   background-color: #ffcb30;
-  text-align: center;
+  display: flex;
+  justify-content: center; /* Center whole content */
   align-items: center;
   padding: 20px 10px;
-  display: flex;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  gap: 10px;
+  position: relative;
 }
+
+#logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black; /* dark outline */
+}
+
 header h1 {
   font-size: 2.5rem;
+  margin: 0;
+  color: black;
 }
-#logo {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-left: 0;
-}
+
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -37,7 +46,7 @@ header h1 {
   padding: 10px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
 }
 .navbar a {
   margin: 0 2%;
@@ -50,10 +59,62 @@ header h1 {
   transform: scale(1.1);
 }
 .section {
-  padding: 60px 20px;
-  text-align: center;
-  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fff8e1, #ffe082);
+  margin: 40px auto;
+  padding: 20px 25px;  
+  max-width: 1000px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s ease;
 }
+
+.section h1, 
+.section h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.section li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+
+/* Roundarea cards inside project section */
+
+
+.sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Responsive Video */
+.vid-container video {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* Link glow hover */
+.section a {
+  color: #7a6000;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.section a:hover {
+  color: #ff5722;
+  text-shadow: 0 0 10px #ffcc80;
+}
+
 .row {
   display: flex;
 }
@@ -65,8 +126,67 @@ header h1 {
   background-color: #fef9ba;
   font-size: 120%;
 }
+
+.hero {
+  background: linear-gradient(to bottom right, #fff8e1, #ffe082);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 1000px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.hero h2 {
+  font-size: 3rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.hero .subtitle {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.highlight {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #ff5722;
+  font-weight: bold;
+}
+
+.game-img {
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.5);
+  margin-bottom: 30px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 12px 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ff5722;
+  text-shadow: 0 0 5px #ff5722;
+}
+
+
 #projects {
-  background-color: #fff8dc;
+  background-color: #ffeb9c;
   text-align: left;
 }
 #projects h2 {
@@ -76,22 +196,45 @@ header h1 {
   font-weight: bolder;
 }
 #projects p {
-  text-align: left;
+  text-align: center;
   font-size: 350%;
   font-weight: bold;
-  color: #0b5000;
+  color: #574100;
+  
 }
+
 .roundarea {
-  padding: 2%;
-  border-radius: 30px;
   background-color: #ffe082;
+  border-radius: 25px;
+  padding: 20px 2px;
+  justify-content: left;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
+.roundarea p {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+
 .sec {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
+#clickbox {
+  text-align: center;
+  font-size: 1.5rem; /* Optional: make it pop */
+  font-weight: bold; /* Optional */
+  margin-bottom: 10px;
+}
+
 
 .sec img {
   max-width: 100%;
@@ -122,6 +265,7 @@ header h1 {
 }
 #minecraft h3 {
   font-size: 100%;
+  text-align: center;
   font-weight: lighter;
 }
 #about {
@@ -208,3 +352,120 @@ header h1 {
   border-radius: 12px;
 }
 
+#hamburger {
+  font-size: 30px;
+  margin-right: 10px;
+  margin-left: 0;       /* 👈 force to the left */
+  cursor: pointer;
+  user-select: none;
+}
+#hamburger {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+#sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  padding: 10px 20px;
+}
+
+#sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#sidebar a:hover {
+  background: #444;
+}
+
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+button:hover {
+  box-shadow: 0 0 15px #ffcb30;
+  transform: scale(1.05);
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: #5b4d22;
+  text-shadow: 0 0 5px #ffcb30, 0 0 10px #ffcb30;
+}
+
+li a {
+  color: #6b4b00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+li a:hover {
+  color: #ffd000; /* Pick a 🔥 color you love */
+  text-shadow: 0 0 5px #ff5733;
+}
+
+/* Animation base class */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* When in view */
+.scroll-animate.active {
+  opacity: 1;
+  transform: translateY(0);
+}
