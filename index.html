@@ -156,7 +156,25 @@
             <p>Godot, HTML/CSS/JS, Python etc</p>
 
         </section>
+
     </main>
+
+
+    <section class="section" id="feedback">
+    <h2>💬 Feedback</h2>
+    <form id="feedbackForm">
+      <label for="username">Your Name:</label><br>
+      <input type="text" id="username" name="username" required><br><br>
+
+      <label for="message">Your Feedback:</label><br>
+      <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+    <div id="feedbackMessages"></div>
+  </section>
+
+
     <div id="join-bar">
     <a href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" />
@@ -236,5 +254,30 @@
   });
 
   scrollElems.forEach(elem => observers.observe(elem));
+
+
+
+//feed==============================================================
+  const form = document.getElementById('feedbackForm');
+  const messages = document.getElementById('feedbackMessages');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('username').value;
+    const msg = document.getElementById('message').value;
+
+    const entry = document.createElement('div');
+    entry.className = 'feedback-entry';
+    entry.innerHTML = `<strong>${name}</strong>: ${msg}<br><div class="feedback-reply"><em>👑 BlockSizedX:</em> Thanks for your feedback!</div>`;
+
+    messages.prepend(entry); // add new one on top
+
+    form.reset();
+  });
+
+
+
+
 
 </script>
