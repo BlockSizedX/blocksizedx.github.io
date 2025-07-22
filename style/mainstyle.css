@@ -478,7 +478,7 @@ li a:hover {
   transform: translateY(0);
 }
 
-.join-bar {
+#join-bar {
   background-color: #212121;
   color: white;
   padding: 15px 20px;
@@ -490,7 +490,7 @@ li a:hover {
   border-top: 4px solid #ffc107;
 }
 
-.join-bar a {
+#join-bar a {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -500,7 +500,7 @@ li a:hover {
   transition: transform 0.2s ease;
 }
 
-.join-bar a:hover {
+#join-bar a:hover {
   transform: scale(1.05);
   color: #03a9f4;
 }
