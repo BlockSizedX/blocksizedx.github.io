@@ -6,10 +6,16 @@
   scroll-behavior: smooth;
 }
 html {
-
+  color-scheme: only light;
+  background-color: white;
   font-family: 'Poppins', sans-serif;
 }
+img, video {
+  filter: none !important;
+}
 body {
+  background-color: #fff !important;
+  color: #000 !important;
   line-height: 1.6;
   color: #333;
 }
@@ -42,7 +48,7 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: #ffe082;
+  background-color: #fddd7d;
   padding: 10px;
   position: sticky;
   top: 0;
@@ -60,9 +66,9 @@ header h1 {
 }
 .section {
   background: linear-gradient(to bottom right, #fff8e1, #ffe082);
-  margin: 40px auto;
-  padding: 20px 25px;  
-  max-width: 1000px;
+  margin: 1px auto;
+  padding: 80px 25px;  
+  max-width: auto;
   border-radius: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   font-family: 'Poppins', sans-serif;
@@ -129,11 +135,11 @@ header h1 {
 
 .hero {
   background: linear-gradient(to bottom right, #fff8e1, #ffe082);
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
   border-radius: 20px;
-  margin: 30px auto;
-  max-width: 1000px;
+  margin: 1px auto;
+  max-width: auto;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
@@ -142,7 +148,9 @@ header h1 {
   color: #222;
   margin-bottom: 10px;
 }
-
+.hero h3 {
+  text-align: center;
+}
 .hero .subtitle {
   font-size: 1.2rem;
   color: #444;
@@ -150,9 +158,9 @@ header h1 {
 }
 
 .highlight {
-  font-size: 1.5rem;
+  font-size: 2.4rem;
   margin: 20px 0;
-  color: #ff5722;
+  color: #9d7b00;
   font-weight: bold;
 }
 
