@@ -477,3 +477,30 @@ li a:hover {
   opacity: 1;
   transform: translateY(0);
 }
+
+.join-bar {
+  background-color: #212121;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 4px solid #ffc107;
+}
+
+.join-bar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.join-bar a:hover {
+  transform: scale(1.05);
+  color: #03a9f4;
+}
