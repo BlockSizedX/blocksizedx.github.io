@@ -18,6 +18,7 @@
       <button id="closeBtn">×</button>
       <ul>
         <li><a href="#projects">Featured Projects</a></li>
+        <li><a href="#faq">FeedBack</a></li>
         <li><a href="#join-bar">Contact Info</a></li>
         <!-- Add more if you like -->
       </ul>
@@ -36,11 +37,13 @@
         <a href="#projects">Our Projects</a>
         <a href="#minecraft">Minecraft Clips</a>
         <a href="#about">About us</a>
-        <a href="#faq">FAQs</a>
+        <a href="#faq">FeedBack</a>
     </nav>
     <main>
         <section class="hero" id="home" class="sec scroll-animate">
           <div class="hero-text">
+            <h3 class="highlight">🔵New Update: FeedBack Section</h3>
+            <a href="#faq" id="clicktofeed">Click To Go FeedBack Section</a>
             <h3 class="highlight">🔵New Release: Dodge the Box</h3>
             <a href="games/dodge-box.html"><img src="images/dodge-box.png" alt="Dodge the Box" class="game-img"></a>
             <br>
@@ -134,6 +137,19 @@
             <li>You can see my github repository on <a href="https://github.com/BlockSizedX/blocksizedx.github.io/">Clicking here.</a></li>
         </section>
         <section class="section" id="faq">
+
+            <h1>FeedBack</h1>
+            <form action="https://formspree.io/f/mnnzppaj" method="POST" onsubmit="handleSubmit(event)" class="contact-form">
+              <input type="text" name="name" placeholder="Your Name*" required>
+              <input type="text" name="contact" placeholder="Email or Phone (for reply)">
+              <textarea name="message" placeholder="Type your message...*" required></textarea>
+              <button type="submit">Send</button>
+              <p id="mailStatus" class="hidden">✅ Mailed successfully!</p>
+            </form>
+            <br>
+            <hr style="border: 2px solid black; width: 100%;">
+            <br>
+
             <h2>FAQs</h2>
             <br>
             <li>Is BlockSizedX a group of peoples?</li>
@@ -158,21 +174,9 @@
         </section>
 
     </main>
+    
 
 
-    <section class="section" id="feedback">
-    <h2>💬 Feedback</h2>
-    <form id="feedbackForm">
-      <label for="username">Your Name:</label><br>
-      <input type="text" id="username" name="username" required><br><br>
-
-      <label for="message">Your Feedback:</label><br>
-      <textarea id="message" name="message" rows="4" required></textarea><br><br>
-
-      <button type="submit">Submit Feedback</button>
-    </form>
-    <div id="feedbackMessages"></div>
-  </section>
 
 
     <div id="join-bar">
@@ -254,30 +258,23 @@
   });
 
   scrollElems.forEach(elem => observers.observe(elem));
+//feed==================================================================
 
-
-
-//feed==============================================================
-  const form = document.getElementById('feedbackForm');
-  const messages = document.getElementById('feedbackMessages');
-
-  form.addEventListener('submit', function (e) {
+  function handleSubmit(e) {
     e.preventDefault();
-
-    const name = document.getElementById('username').value;
-    const msg = document.getElementById('message').value;
-
-    const entry = document.createElement('div');
-    entry.className = 'feedback-entry';
-    entry.innerHTML = `<strong>${name}</strong>: ${msg}<br><div class="feedback-reply"><em>👑 BlockSizedX:</em> Thanks for your feedback!</div>`;
-
-    messages.prepend(entry); // add new one on top
-
-    form.reset();
-  });
-
-
-
-
+    const form = e.target;
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        document.getElementById("mailStatus").style.display = "block";
+        form.reset();
+      } else {
+        alert("❌ Error! Try again later.");
+      }
+    });
+  }
 
 </script>

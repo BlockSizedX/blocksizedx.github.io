@@ -136,11 +136,19 @@ header h1 {
 .hero {
   background: linear-gradient(to bottom right, #fff8e1, #ffe082);
   padding: 80px 20px;
-  text-align: center;
+  text-align: left;
   border-radius: 20px;
   margin: 1px auto;
   max-width: auto;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+#clicktofeed {
+  background-color: #ffdb58;
+  border-radius: 20px;
+}
+
+.hero a {
+  padding: 0 5%;
 }
 
 .hero h2 {
@@ -149,7 +157,7 @@ header h1 {
   margin-bottom: 10px;
 }
 .hero h3 {
-  text-align: center;
+  text-align: left;
 }
 .hero .subtitle {
   font-size: 1.2rem;
@@ -315,6 +323,10 @@ header h1 {
   text-align: left;
   
 }
+#faq h1 {
+  font-size: 200%;
+  text-decoration: underline;
+}
 #faq h2 {
   text-decoration: underline;
   text-align: center;
@@ -479,65 +491,107 @@ li a:hover {
 }
 
 #join-bar {
-  background-color: #212121;
-  color: white;
-  padding: 15px 20px;
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: space-around;
   align-items: center;
+  background: linear-gradient(90deg, #ffcf67, #ffd254);
+  padding: 12px 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   flex-wrap: wrap;
-  border-top: 4px solid #ffc107;
+  gap: 10px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 #join-bar a {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  background-color: rgb(255, 236, 206);
+  color: #81591d;
+  padding: 8px 12px;
+  border-radius: 8px;
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  transition: transform 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 #join-bar a:hover {
+  background-color: #fdcf45;
+  color: rgb(255, 171, 26);
   transform: scale(1.05);
-  color: #03a9f4;
 }
 
-#feedbackForm {
-    background: #fff3cd;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 500px;
-    margin: auto;
+#join-bar img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 600px) {
+  #join-bar {
+    flex-direction: column;
+    align-items: stretch;
   }
-  #feedbackForm input, #feedbackForm textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-family: 'Poppins';
+
+  #join-bar a {
+    justify-content: center;
   }
-  #feedbackMessages {
-    margin-top: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .feedback-entry {
-    background: #e3f2fd;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  .feedback-reply {
-    background: #d1ecf1;
-    padding: 8px;
-    border-left: 4px solid #0c5460;
-    margin-top: 5px;
-    border-radius: 6px;
-  }
+}
+
+
+
+
+
+.contact-form {
+  background: rgb(255, 222, 152);
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  max-width: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px 12px;
+  border: 2px solid #ff8800;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ffcc33;
+  box-shadow: 0 0 5px #ffa500;
+}
+
+.contact-form button {
+  background-color: #ff8800;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #ff9900;
+}
+
+#mailStatus {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
