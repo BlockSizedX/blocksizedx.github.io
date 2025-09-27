@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<<<<<<< HEAD
+<html>
+
+    <meta charset="UTF-8">
+
+    <head>
+        <title>BlockSized</title>
+
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+
+        <div id="HOME"></div>
+
+        <!--NAVBAR-->
+        <nav class="navbar" id="nav_main">
+            <h1><a href="index.html">BlockSizedX</a></h1>
+            <div id="navlinks">
+                <a href="#HOME">HOME</a>
+                <a href="#projects">PROJECTS</a>
+                <a href="#templates">TEMPLATES</a>
+                <a href="#about">ABOUT</a>
+                <a href="#contact">CONTACT</a>
+            </div>
+            
+        </nav>
+
+
+        <!--HOME-->
+
+        <div class="sec" id="home">
+
+            <div id="container-home">
+                
+
+                <div class="card" id="home-card">
+                    <img src="images/home_card.png" alt="card-home-png" width="300px">
+                </div>
+                <div id="home-text-lister-div">
+                    <h2>BlockSizedX</h2>
+                    <h1>THE BEST PLACE FOR HIGH QUALITY <br>PROJECTS, TEMPLATES and 2D GAMES.</h1>
+                                        
+                </div>
+            </div>
+            
+            <p>
+                You can play games by BlockSizedX here. You can get High Quality Website Templates, <br>
+                2D Game templates, Game demos, and much more.
+            </p>
+            <div id="home-button-flex">
+                <a href="#projects">PROJECTS</a>
+                <a href="#templates">TEMPLATES</a>
+                <a href="#contact">CONTACT US</a>
+            </div>
+            
+
+        </div>
+
+        <!--PROJECTS-->
+        <div class="sec" id="projects">
+
+
+
+        </div>
+
+        <!--TEMPLATES-->
+        <div class="sec" id="templates">
+
+            
+
+        </div>
+
+        <!--ABOUT-->
+        <div class="sec" id="about">
+
+            
+
+        </div>
+
+        <!--CONTACT-->
+        <div class="sec" id="contact">
+
+            
+
+        </div>
+
+        <!--FOOTER-->
+        <div class="footer">
+            <div id="footer-flex-containser">
+                <div id="footer-about">
+                    <h3>BlockSized</h3>
+                    <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
+                </div>
+
+                <div id="cont-details">
+                    <h3>Contact Us</h3>
+                    <a href="https://www.gmail.com/blocksized404@gmail.com">blocksized404@gmail.com</a><br>
+                    <a href="">Whatsapp channel</a><br>
+                </div>
+
+                <div id="links">
+                    <h3>Quick links</h3>
+                    <a href="#home">homepage</a><br>
+                    <a href="#projects">projects</a><br>
+                    <a href="#templates">templates</a><br>
+                    <a href="#about">about us</a><br>
+                    <a href="#contact">contact us</a><br>
+                </div>
+            </div>
+            <div id="copyrt">Copyright © BlockSizedX 2025 | All rights reservd.</div>
+            
+
+        </div>
+    </body>
+
+</html>
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlockSizedX</title>
+    <link rel="stylesheet" href="style/mainstyle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <header id="header">
+        <h1>BlockSizedX</h1>
+    </header>
+    <nav class="navbar">
+        <a href="#header">Home</a>
+        <a href="#projects">Our Projects</a>
+        <a href="#minecraft">Minecraft Clips</a>
+        <a href="#about">About us</a>
+        <a href="#faq">FAQs</a>
+    </nav>
+    <main>
+        <section class="section" id="home">
+            <h2>Welcome to the Epic Project Vault</h2>
+            <p>Explore my cool creations, experiments, and mini-games 🚀</p>
+        </section>
+        <section class="section" id="projects">
+            <h2>Projects</h2>
+            <p>Coming soon... 👷‍♂️</p>
+        </section>
+        <section class="section" id="minecraft">
+            <h1>Epic Minecraft Clips by BlockSizedX!</h1>
+            <h2>Watch Epic Minecraft Gameplay clips by BlockSizedX.</h2>
+            <br>
+            <br>
+            <video id="minecraft-video" autoplay muted playsinline height="380">
+              <source src="videos/1v1_bedwars-1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h3> 🛜Server: Mineberry 👤Player: BlockSized 🎮Gamemode: BedFight(Duels)</h3>
+     
+        </section>
+        <section class="section" id="about">
+            <h2>About Me</h2>
+            <p>I'm BlockSized, a dev who codes, crafts, and conquers in both games and real life! 😎</p>
+        </section>
+        <section class="section" id="faq">
+            <h2>FAQs</h2>
+            <p>Ask me anything! Not really, but maybe later 😜</p>
+        </section>
+    </main>
+    <footer class="footer">
+        &copy; 2025 BlockSizedX | Built with ❤️ by Nazal
+    </footer>
+</body>
+</html>
+
+
+
+
+<script>
+  const vid = document.getElementById("minecraft-video");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Reset to 0 and play when visible
+        vid.currentTime = 0;
+        vid.play();
+      } else {
+        // Pause when out of view
+        vid.pause();
+      }
+    });
+  }, {
+    threshold: 0.6 // triggers when 60% of section is visible
+  });
+
+  observer.observe(document.getElementById("minecraft"));
+</script>
+>>>>>>> parent of 9a2c312 (Update project files)
