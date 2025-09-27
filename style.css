@@ -1,4 +1,5 @@
 html {
+    
     background-color: rgb(13, 13, 13);
     scroll-behavior: smooth;
     font-family: 'Helvetica', Arial, sans-serif;
@@ -10,12 +11,14 @@ html {
 
 /* NAVBAR */
 .navbar {
+    
     z-index: 998;
     position: sticky;
     top: 2px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     background-color: rgba(66, 66, 66, 0.523);
     padding: 0px 20px;
     border-radius: 20px;
@@ -67,7 +70,7 @@ html {
     min-height: 100vh;
     border-radius: 10px;
     background-color: rgba(37, 37, 37, 0.507);
-    margin: 2% 2%;;
+    margin: 2% 0;
 }
 
 
@@ -212,7 +215,7 @@ img {
 #navlinks {
     margin: 2% 1%;
     margin-right: 18%;
-    margin-top: 3%;
+    margin-top: 2%;
     white-space: nowrap;
     display: flex;
     gap: 20px; /* cleaner spacing */
