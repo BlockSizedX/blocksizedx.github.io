@@ -52,6 +52,7 @@ html {
 
 
 #navlinks {
+    margin: 2% 1%;
     white-space: nowrap;;
     margin-right: 18%;
     margin-top: 3%;
@@ -89,7 +90,7 @@ html {
     margin-bottom: 4%;
     justify-content: center;
     display: flex;
-    gap: 18%;
+    gap: 14%;
 }
 
 .footer a, .footer p{
@@ -147,6 +148,7 @@ html {
     transform: scale(1.1);
 }
 #home-button-flex {
+    flex-wrap: wrap;
     margin-top: 4%;
     margin-bottom: 10%;
     justify-content: center;
@@ -159,7 +161,7 @@ html {
     padding: 10px 10px;
     text-decoration: none;
     border-radius: 10px;
-    margin: 0 8%;
+    margin: 0 7%;
     transition: all 0.3s ease;
 }
 #home-button-flex a:hover {
@@ -172,4 +174,79 @@ html {
     text-align: center;
     font-size: 160%;
     color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*GPT GENERATED FIXS=========================================*/
+
+/* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navbar: prevent links from overflowing */
+.navbar {
+    flex-wrap: wrap;
+}
+/* Default (desktop) - keep in one line */
+#navlinks {
+    margin: 2% 1%;
+    margin-right: 18%;
+    margin-top: 3%;
+    white-space: nowrap;
+    display: flex;
+    gap: 20px; /* cleaner spacing */
+    flex-wrap: nowrap; /* never wrap on desktop */
+}
+
+/* On smaller screens, allow wrapping */
+@media (max-width: 768px) {
+    #navlinks {
+        margin: 10px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-right: 0;
+    }
+}
+
+
+/* Sections adjust automatically */
+.sec {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Home container responsive */
+#container-home {
+    flex-wrap: wrap;
+    text-align: center;
+}
+#home-card {
+    padding-left: 0;
+}
+
+/* Footer responsive */
+#footer-flex-containser {
+    flex-wrap: wrap;
+    text-align: left;
 }
