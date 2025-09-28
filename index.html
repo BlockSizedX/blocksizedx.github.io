@@ -205,7 +205,7 @@
             measurementId: "G-K7F5ZH2CKC"
         };
         firebase.initializeApp(firebaseConfig);
-        const db = firebase.database("https://blocksizedx-comment-sys-default-rtdb.firebaseio.com/");
+        const db = firebase.database();
 
 
         const commentForm = document.getElementById('comment-form');
@@ -235,56 +235,65 @@
         });
 
         // Render comments (5 visible, rest scroll)
-        function renderComments(snapshot){
-        const topDiv = document.getElementById('top-comments');
-        const scrollDiv = document.getElementById('scroll-comments');
-        topDiv.innerHTML = '';
-        scrollDiv.innerHTML = '';
+        // Render comments (5 visible, rest scrollable)
+        function renderComments(snapshot) {
+            const topDiv = document.getElementById('top-comments');
+            const scrollDiv = document.getElementById('scroll-comments');
+            topDiv.innerHTML = '';
+            scrollDiv.innerHTML = '';
 
-        let data = [];
-        snapshot.forEach(s => data.push({key:s.key, val:s.val()}));
+            let data = [];
+            snapshot.forEach(s => data.push({ key: s.key, val: s.val() }));
 
-        // Sort by likes descending, timestamp ascending
-        data.sort((a,b)=>{
-            if((b.val.likes||0) === (a.val.likes||0)){
-                return b.val.timestamp - a.val.timestamp;
-            }
-            return (b.val.likes||0) - (a.val.likes||0);
-        });
-
-        data.forEach((item,index)=>{
-            const val = item.val;
-            const key = item.key;
-
-            const div = document.createElement('div');
-            div.className = 'comment-item';
-            const liked = val.likedBy && val.likedBy[userId] ? true : false;
-            const likeText = liked ? `❤️ ${val.likes||0}` : `🤍 ${val.likes||0}`;
-            div.innerHTML = `<b>${val.name}</b>: ${val.comment} 
-                            <span class="like-btn" onclick="toggleLike('${key}')">${likeText}</span>
-                            <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
-                            <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
-                            <div class="replies" id="replies-${key}"></div>`;
-
-            if(index<5){
-                topDiv.appendChild(div);
-            }else{
-                scrollDiv.appendChild(div);
-            }
-
-            // render replies
-            if(val.replies){
-                const repliesDiv = document.getElementById('replies-'+key);
-                for(const rKey in val.replies){
-                    const r = val.replies[rKey];
-                    const rDiv = document.createElement('div');
-                    rDiv.innerHTML = `<b>${r.name}</b>: ${r.comment} 
-                                    <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>`;
-                    repliesDiv.appendChild(rDiv);
+            // Sort by likes (highest first), then timestamp (newest first)
+            data.sort((a, b) => {
+                if ((b.val.likes || 0) === (a.val.likes || 0)) {
+                    return b.val.timestamp - a.val.timestamp;
                 }
-            }
-        });
-    }
+                return (b.val.likes || 0) - (a.val.likes || 0);
+            });
+
+            data.forEach((item, index) => {
+                const val = item.val;
+                const key = item.key;
+
+                const div = document.createElement('div');
+                div.className = 'comment-item';
+
+                const liked = val.likedBy && val.likedBy[userId] ? true : false;
+                const likeText = liked ? `❤️ ${val.likes || 0}` : `🤍 ${val.likes || 0}`;
+
+                div.innerHTML = `
+                    <b>${val.name}</b>: ${val.comment} 
+                    <span class="like-btn" onclick="toggleLike('${key}')">${likeText}</span>
+                    <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
+                    <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
+                    <div class="replies" id="replies-${key}"></div>
+                `;
+
+                // first 5 comments go into topDiv, others into scrollDiv
+                if (index < 5) {
+                    topDiv.appendChild(div);
+                } else {
+                    scrollDiv.appendChild(div);
+                }
+
+                // render replies if any
+                if (val.replies) {
+                    const repliesDiv = document.getElementById('replies-' + key);
+                    for (const rKey in val.replies) {
+                        const r = val.replies[rKey];
+                        const rDiv = document.createElement('div');
+                        rDiv.className = "reply-item";
+                        rDiv.innerHTML = `
+                            <b>${r.name}</b>: ${r.comment}
+                            <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>
+                        `;
+                        repliesDiv.appendChild(rDiv);
+                    }
+                }
+            });
+        }
 
 
         // Firebase listener
