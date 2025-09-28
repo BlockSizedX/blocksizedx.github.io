@@ -205,7 +205,8 @@
             measurementId: "G-K7F5ZH2CKC"
         };
         firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
+        const db = firebase.database("https://blocksizedx-comment-sys-default-rtdb.firebaseio.com/");
+
 
         const commentForm = document.getElementById('comment-form');
 
@@ -246,7 +247,7 @@
         // Sort by likes descending, timestamp ascending
         data.sort((a,b)=>{
             if((b.val.likes||0) === (a.val.likes||0)){
-                return a.val.timestamp - b.val.timestamp;
+                return b.val.timestamp - a.val.timestamp;
             }
             return (b.val.likes||0) - (a.val.likes||0);
         });
