@@ -197,6 +197,156 @@ h4 {
 
 
 
+/* ================= TEMPLATES PAGE ================= */
+#templates-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    justify-items: center;
+}
+
+.template-card {
+    background: rgba(50, 50, 50, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    max-width: 350px;
+    text-align: center;
+}
+
+.template-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 204, 94, 0.7);
+}
+
+.template-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.template-card h3 {
+    color: rgb(255, 213, 76);
+    margin: 15px 0 10px;
+}
+
+.template-card p {
+    color: white;
+    font-size: 90%;
+    padding: 0 15px 15px;
+}
+
+.template-card a {
+    display: inline-block;
+    margin: 10px 0 20px;
+    padding: 8px 15px;
+    background: rgba(105, 89, 46, 0.6);
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.template-card a:hover {
+    background: antiquewhite;
+    color: rgba(105, 89, 46, 0.8);
+    transform: scale(1.1);
+}
+
+
+/* ================= COMMENTS ================= */
+/* ================= COMMENTS ================= */
+#comment-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background: rgba(37,37,37,0.5);
+    border-radius: 15px;
+}
+
+#comment-section h2 {
+    text-align: center;
+    color: rgb(255, 204, 94);
+    margin-bottom: 20px;
+}
+
+.comment-form input, .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    border: none;
+    background: rgba(66,66,66,0.5);
+    color: white;
+    font-size: 1em;
+}
+
+.comment-form button {
+    background: rgb(255, 213, 76);
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.comment-form button:hover {
+    background: rgb(255, 229, 99);
+    transform: scale(1.05);
+}
+
+.comment-list {
+    margin-top: 20px;
+    max-height: 500px; /* scroll for extra comments */
+    overflow-y: auto;
+}
+
+.comment-item {
+    background: rgba(50,50,50,0.6);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    color: white;
+    position: relative;
+}
+
+.comment-item .reply-btn, 
+.comment-item .delete-btn,
+.comment-item .like-btn {
+    font-size: 0.8em;
+    color: rgb(255, 213, 76);
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.comment-item .replies {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(255, 213, 76, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

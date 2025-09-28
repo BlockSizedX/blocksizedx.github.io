@@ -16,6 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <head>
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
         <title>BlockSized</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -64,8 +68,9 @@
             </p>
             <div id="home-button-flex">
                 <a href="#projects">PROJECTS</a>
+                
+                <a href="#contact">COMMENTS & REVIEWS</a>
                 <a href="#templates">TEMPLATES</a>
-                <a href="#contact">CONTACT US</a>
             </div>
             
 
@@ -80,10 +85,29 @@
 
         <!--TEMPLATES-->
         <div class="sec" id="templates">
-            <h4>Website construction in progress</h4>
-            
+            <h2 style="text-align:center; color:white; margin-bottom:30px;">Our Templates</h2>
+            <div id="templates-container">
 
+                <!-- Template Card 1 -->
+                <div class="template-card">
+                    <img src="images/" alt="Template 1">
+                    <h3>Portfolio Template</h3>
+                    <p>Clean, modern portfolio design for developers & designers.</p>
+                    <a href="">View Template</a>
+                </div>
+
+                <!-- Template Card 2 -->
+                <div class="template-card">
+                    <img src="images/" alt="Template 2">
+                    <h3>Business Template</h3>
+                    <p>Professional layout for startups, companies, and agencies.</p>
+                    <a href="">View Template</a>
+                </div>
+
+                <!-- Add more cards here -->
+            </div>
         </div>
+
 
         <!--ABOUT-->
         <div class="sec" id="about">
@@ -94,9 +118,18 @@
 
         <!--CONTACT-->
         <div class="sec" id="contact">
+            <h2>Contact & Reviews</h2>
+            <div id="comment-section">
+                <form class="comment-form" id="comment-form">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <textarea id="comment" placeholder="Write your comment..." rows="3" required></textarea>
+                    <button type="submit">Post Comment</button>
+                </form>
 
-            <h4>Website construction in progress</h4>
-
+                <div class="comment-list" id="comment-list">
+                    <!-- Comments will load here -->
+                </div>
+            </div>
         </div>
 
         <!--FOOTER-->
@@ -128,6 +161,118 @@
             
 
         </div>
+
+
+
+
+
+
+
+
+    <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyD8YzEuKYAx7RxjckQikV2utU4R7Ym5g2w",
+            authDomain: "blocksizedx-comment-sys.firebaseapp.com",
+            projectId: "blocksizedx-comment-sys",
+            storageBucket: "blocksizedx-comment-sys.firebasestorage.app",
+            messagingSenderId: "524581279271",
+            appId: "1:524581279271:web:fa462916f822a16f162002",
+            measurementId: "G-K7F5ZH2CKC"
+        };
+
+        
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.database();
+
+            const commentForm = document.getElementById('comment-form');
+            const commentList = document.getElementById('comment-list');
+
+            commentForm.addEventListener('submit', e=>{
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const comment = document.getElementById('comment').value;
+                const newComment = db.ref('comments').push();
+                newComment.set({
+                name,
+                comment,
+                timestamp: Date.now(),
+                likes: 0,
+                replies: {}
+                });
+                commentForm.reset();
+            });
+
+            // Render comments sorted by likes
+            function renderComments(snapshot){
+                commentList.innerHTML = '';
+                let data = [];
+                snapshot.forEach(s => data.push({key:s.key, val:s.val()}));
+                
+                // Sort by likes descending
+                data.sort((a,b)=> (b.val.likes||0) - (a.val.likes||0));
+
+                data.forEach((item, index)=>{
+                const val = item.val;
+                const key = item.key;
+                const div = document.createElement('div');
+                div.className = 'comment-item';
+                div.innerHTML = `<b>${val.name}</b>: ${val.comment} 
+                                <span class="like-btn" onclick="likeComment('${key}', ${val.likes||0})">❤️ ${val.likes||0}</span>
+                                <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
+                                <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
+                                <div class="replies" id="replies-${key}"></div>`;
+                commentList.appendChild(div);
+
+                // show only first 5, rest scrollable automatically
+                if(index>=5) div.style.marginTop = '0';
+
+                // Render replies
+                if(val.replies){
+                    const repliesDiv = document.getElementById('replies-'+key);
+                    for(const rKey in val.replies){
+                    const r = val.replies[rKey];
+                    const rDiv = document.createElement('div');
+                    rDiv.innerHTML = `<b>${r.name}</b>: ${r.comment} 
+                                        <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>`;
+                    repliesDiv.appendChild(rDiv);
+                    }
+                }
+                });
+            }
+
+            db.ref('comments').on('value', snapshot=>{
+                if(snapshot.exists()){
+                renderComments(snapshot);
+                } else {
+                commentList.innerHTML = '<p>No comments yet!</p>';
+                }
+            });
+
+            function replyPrompt(commentKey){
+                const name = prompt("Your Name:");
+                const reply = prompt("Your Reply:");
+                if(name && reply){
+                const newReply = db.ref(`comments/${commentKey}/replies`).push();
+                newReply.set({name, comment: reply});
+                }
+            }
+
+            function deleteComment(key){
+                if(confirm("Delete this comment?")) db.ref('comments/'+key).remove();
+            }
+
+            function deleteReply(commentKey, replyKey){
+                if(confirm("Delete this reply?")) db.ref(`comments/${commentKey}/replies/${replyKey}`).remove();
+            }
+
+            function likeComment(key, current){
+                db.ref('comments/'+key).update({likes: current+1});
+            }
+
+
+        </script>
+
     </body>
 
 </html>
