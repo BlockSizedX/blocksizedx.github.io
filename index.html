@@ -208,7 +208,6 @@
         const db = firebase.database();
 
         const commentForm = document.getElementById('comment-form');
-        const commentList = document.getElementById('comment-list');
 
         // Track user ID
         let userId = localStorage.getItem('userId');
@@ -289,12 +288,16 @@
 
         // Firebase listener
         db.ref('comments').on('value', snapshot => {
+            const topDiv = document.getElementById('top-comments');
+            const scrollDiv = document.getElementById('scroll-comments');
             if(snapshot.exists()){
                 renderComments(snapshot);
             } else {
-                commentList.innerHTML = '<p>No comments yet!</p>';
+                topDiv.innerHTML = '<p>No comments yet!</p>';
+                scrollDiv.innerHTML = '';
             }
         });
+
 
         // Replies
         function replyPrompt(commentKey){
