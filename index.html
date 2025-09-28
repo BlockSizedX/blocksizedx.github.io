@@ -33,15 +33,18 @@
 
         <!--NAVBAR-->
         <nav class="navbar" id="nav_main">
-            <h1><a href="index.html">BlockSizedX</a></h1>
-            <div id="navlinks">
-                <a href="#HOME">HOME</a>
-                <a href="#projects">PROJECTS</a>
-                <a href="#templates">TEMPLATES</a>
-                <a href="#about">ABOUT</a>
-                <a href="#contact">CONTACT</a>
+            <div id="nav-flex-container">
+                <h1><a href="index.html">BlockSizedX</a></h1>
+                <div id="navlinks">
+                    <a href="#HOME">HOME</a>
+                    <a href="#templates">TEMPLATES</a>
+                    <a href="#projects">PROJECTS</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#contact">COMMENTS</a>
+                </div>
             </div>
-            
+
+
         </nav>
 
 
@@ -56,7 +59,8 @@
                     <img src="images/home_card.png" alt="card-home-png" width="300px">
                 </div>
                 <div id="home-text-lister-div">
-                    <h2>BlockSizedX</h2>
+                    <h2><span class="home-title">BlockSizedX</span></h2>
+                    
                     <h1>THE BEST PLACE FOR HIGH QUALITY <br>PROJECTS, TEMPLATES and 2D GAMES.</h1>
                                         
                 </div>
@@ -76,32 +80,45 @@
 
         </div>
 
-        <!--PROJECTS-->
-        <div class="sec" id="projects">
-
-            <h4>Website construction in progress</h4>
-
-        </div>
+        
 
         <!--TEMPLATES-->
         <div class="sec" id="templates">
-            <h2 style="text-align:center; color:white; margin-bottom:30px;">Our Templates</h2>
+            <h2 class="sec-title">Our Templates</h2>
+            <h4>High Quality Website and Game Templates at Free rate or special offer rate</h4>
+            
+            <div id="trending-template-web">
+                <div class="template-card" style="margin-top: 20px;">
+                    <img src="images/no-template.png" alt="Template 1">
+                </div>
+                <div>
+                    <h1><i>🔥</i> TRENDING WEB TEMPLATE <i>🔥</i></h1>
+                    <h2>Dark-Themed Business</h2>
+                    <p>Pro style clean responsive <br>Business Website template</p>
+                    <div style="display: flex; gap: 30px;">
+                        <p style="color: white; font-weight: none; font-size: 1.3rem;">89₹ / 1$ only</p>
+                        <a class="temp-card-a" href="">View Template</a>
+                    </div>
+                </div>
+                
+            </div>
+            <h1 class="sec-title">Website Templates</h1>
             <div id="templates-container">
 
                 <!-- Template Card 1 -->
                 <div class="template-card">
-                    <img src="images/" alt="Template 1">
+                    <img src="images/no-template.png" alt="Template 1">
                     <h3>Portfolio Template</h3>
                     <p>Clean, modern portfolio design for developers & designers.</p>
-                    <a href="">View Template</a>
+                    <a class="temp-card-a" href="">View Template</a>
                 </div>
 
                 <!-- Template Card 2 -->
                 <div class="template-card">
-                    <img src="images/" alt="Template 2">
+                    <img src="images/no-template.png" alt="Template 2">
                     <h3>Business Template</h3>
                     <p>Professional layout for startups, companies, and agencies.</p>
-                    <a href="">View Template</a>
+                    <a class="temp-card-a" href="">View Template</a>
                 </div>
 
                 <!-- Add more cards here -->
@@ -109,16 +126,24 @@
         </div>
 
 
+
+        <!--PROJECTS-->
+        <div class="sec" id="projects">
+
+            <h1 class="sec-title">Our Projects and Games</h1>
+
+        </div>
+
         <!--ABOUT-->
         <div class="sec" id="about">
 
-            <h4>Website construction in progress</h4>
+            <h1 class="sec-title">About Us</h1>
 
         </div>
 
         <!--CONTACT-->
        <div class="sec" id="contact">
-            <h2>Contact & Reviews</h2>
+            <h2 class="sec-title">Comments & Reviews</h2>
             <div id="comment-section">
                 <form class="comment-form" id="comment-form">
                     <input type="text" id="name" placeholder="Your Name" required>
