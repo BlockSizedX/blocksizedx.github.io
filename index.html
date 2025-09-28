@@ -208,13 +208,19 @@
                 commentList.innerHTML = '';
                 let data = [];
                 snapshot.forEach(s => data.push({key:s.key, val:s.val()}));
-                
-                // Sort by likes descending
-                data.sort((a,b)=> (b.val.likes||0) - (a.val.likes||0));
+
+                // Sort by likes descending and timestamp ascending (older first if same likes)
+                data.sort((a,b)=> {
+                if((b.val.likes||0) === (a.val.likes||0)){
+                    return a.val.timestamp - b.val.timestamp;
+                }
+                return (b.val.likes||0) - (a.val.likes||0);
+                });
 
                 data.forEach((item, index)=>{
                 const val = item.val;
                 const key = item.key;
+                
                 const div = document.createElement('div');
                 div.className = 'comment-item';
                 div.innerHTML = `<b>${val.name}</b>: ${val.comment} 
@@ -223,9 +229,6 @@
                                 <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
                                 <div class="replies" id="replies-${key}"></div>`;
                 commentList.appendChild(div);
-
-                // show only first 5, rest scrollable automatically
-                if(index>=5) div.style.marginTop = '0';
 
                 // Render replies
                 if(val.replies){
