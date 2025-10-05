@@ -520,6 +520,9 @@ h4 {
     color: rgb(255, 213, 76);
     cursor: pointer;
     margin-left: 10px;
+    background-color: rgb(64, 64, 64);
+    padding: 5px 5px;
+    border-radius: 10px;
 }
 
 .comment-item .replies {
@@ -531,18 +534,18 @@ h4 {
 .comment-list {
     margin-top: 20px;
     max-height: 1000px; /* total comment container */
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: relative;
 }
 
 /* extra scroll for comments beyond 5 */
 .comment-scroll {
     max-height: 500px; 
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 #top-comments {
     max-height: none; /* or whatever you want */
-    overflow-y: auto;
+    overflow-y: scroll;
     color: rgb(255, 250, 202);
 }
 
