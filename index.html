@@ -22,7 +22,8 @@
         <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
         <title>BlockSized</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="images/logo-without-text.png">
 
         <link rel="stylesheet" href="style.css">
 
@@ -182,15 +183,16 @@
                     <h3>BlockSizedX</h3>
                     <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
                     <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 1.2.4.1   </p>
+                    <p style="color: rgb(126, 126, 126);">update_ver: 1.2.5  </p>
                 </div>
 
                 <div id="cont-details">
                     <h3>Contact Us</h3>
                     <a href="mailto:blocksized404@gmail.com?subject=Hello%20BlockSizedX&body=Hi,%20I%20want%20to%20know%20about%20your%20templates!">
-                        <i class="fa-solid fa-envelope"></i> blocksized404@gmail.com
+                        <i class="fa fa-envelope"></i> blocksized404@gmail.com
                     </a><br>
-                    <a href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02"><i class="fa-brands fa-whatsapp"></i> Whatsapp channel</a><br>
+                    <a href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02"><i class="fa fa-whatsapp"></i> Whatsapp channel</a><br>
+                    <a href="https://wa.me/919961550562"><i class="fa fa-whatsapp"></i> Contact On Whatsapp</a><br>
                 </div>
 
                 <div id="links">
@@ -290,7 +292,7 @@
                 const likeText = liked ? `❤️ ${val.likes||0}` : `🤍 ${val.likes||0}`;
 
                 div.innerHTML = `
-                    <b>${val.name}</b>: ${val.comment}
+                    <span style="color: rgb(225, 250, 202);"><b><i class="fa fa-user-circle-o" aria-hidden="true"></i> ${val.name}</b></span>: ${val.comment}
                     <span class="like-btn" onclick="toggleLike('${key}')">${likeText}</span>
                     <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
                     <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
@@ -307,7 +309,7 @@
                         const r = val.replies[rKey];
                         const rDiv = document.createElement('div');
                         rDiv.className = 'reply-item';
-                        rDiv.innerHTML = `<b>${r.name}</b>: ${r.comment} <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>`;
+                        rDiv.innerHTML = `<span style="color: rgb(250, 250, 202);"><b><i class="fa fa-user-circle" aria-hidden="true"></i>   ${r.name}</b></span>:  ${r.comment} <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>`;
                         repliesDiv.appendChild(rDiv);
                     }
                 }

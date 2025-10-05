@@ -543,8 +543,8 @@ h4 {
 #top-comments {
     max-height: none; /* or whatever you want */
     overflow-y: auto;
+    color: rgb(255, 250, 202);
 }
-
 
 
 
