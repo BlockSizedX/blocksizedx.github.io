@@ -15,9 +15,7 @@ html {
     z-index: 998;
     position: sticky;
     top: 2px;
-    
-    
-    background-color: rgba(66, 66, 66, 0.523);
+    background-color: rgba(66, 66, 66, 0.526);
     padding: 0px 20px;
     border-radius: 20px;
     transition: all 0.3s ease;
@@ -39,6 +37,7 @@ html {
 .navbar h1 a{
 
     color: rgb(255, 213, 76);
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.695);
     font-size: 140%;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -145,7 +144,7 @@ html {
 
 /* Mobile */
 @media (max-width: 768px) {
-    #nav-flex-container {
+    #navlinks {
         flex-direction: column; /* stack H1 + menu toggle + links */
         align-items: flex-start;
     }
@@ -242,16 +241,17 @@ html {
 
 .footer a, .footer p{
     text-decoration: none;
-    color: rgb(234, 234, 234);
+    color: rgb(197, 197, 197);
     transition: all 0.3s ease;
 }
 .footer h3 {
     color: rgb(209, 180, 118);
 }
 .footer #copyrt {
+    font-size: 100%;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: rgb(189, 189, 189);
 }
 .footer a:hover {
     color: rgb(255, 220, 122);
@@ -309,16 +309,19 @@ html {
     text-shadow: none;
 }
 #home-button-flex {
+    display: flex;
     flex-wrap: wrap;
     margin-top: 4%;
     margin-bottom: 10%;
     justify-content: center;
     align-items: center;
     text-align: center ;
+    gap: 20px;
 }
 #home-button-flex a {
+    font-size: 120%;
     color: white;
-    background-color: rgba(105, 89, 46, 0.588);
+    background-color: rgba(255, 240, 198, 0.159);
     padding: 10px 10px;
     text-decoration: none;
     border-radius: 10px;
@@ -420,18 +423,23 @@ h4 {
 /*TRENDING TEMPLATE*/
 
 #trending-template-web {
-    margin: 50px auto;
+    margin: 100px auto;
+    width: 80%;
+    height: 100%;
+    background-color: rgba(223, 183, 83, 0.099);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.466);
+}
+#trending-flex {
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
-    justify-content: center;
     padding: 20px;
     gap: 5%;
-    height: 100%;
-    background-color: rgba(223, 183, 83, 0.214);
-    border-radius: 20px;
+    justify-content: center;
 }
 #trending-template-web h1 {
+    text-align: center;
+    padding-top: 20px;
     color: white;
     font-size: 150%;
 }
@@ -447,7 +455,7 @@ h4 {
     color: antiquewhite;
 }
 #trending-template-web p {
-    color: rgb(232, 214, 164);
+    color: rgb(255, 242, 207);
 }
 
 
