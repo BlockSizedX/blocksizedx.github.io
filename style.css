@@ -24,11 +24,14 @@ html {
 
 }
 #nav-flex-container {
+    
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+
 .navbar:hover {
     transform: scale(1.01);
     background-color: rgba(61, 55, 42, 0.879);
@@ -36,12 +39,12 @@ html {
 .navbar h1 a{
 
     color: rgb(255, 213, 76);
-    font-size: 180%;
+    font-size: 140%;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 .navbar h1 a:hover {
-    font-size: 200%;
+    font-size: 150%;
 }
 .navbar #navlinks a {
     margin: 0 4%;
@@ -102,6 +105,7 @@ html {
 .dropdown-content a {
   color: white;
   padding: 10px 15px;
+  padding-right: 30px;
   text-decoration: none;
   display: block;
   font-size: 95%;
@@ -111,7 +115,70 @@ html {
 .dropdown-content a:hover {
   background-color: rgba(255, 229, 99, 0.15);
   color: rgb(255, 229, 99);
+  border-radius: 20px;
 }
+
+/* --- Responsive Navbar --- */
+/* Make flex container row by default */
+#nav-flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* allows wrapping on mobile */
+}
+
+/* Hamburger toggle */
+.menu-toggle {
+    display: none; /* hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    background: white;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #nav-flex-container {
+        flex-direction: column; /* stack H1 + menu toggle + links */
+        align-items: flex-start;
+    }
+
+    .menu-toggle {
+        display: flex;
+        margin-left: auto; /* push it right next to H1 */
+    }
+
+    #navlinks {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    #navlinks a,
+    .dropdown-content a {
+        margin: 8px 20px;
+    }
+
+    #navlinks.active {
+        display: flex;
+    }
+
+    .dropdown-content {
+        position: relative;
+        box-shadow: none;
+        background-color: rgba(61, 55, 42, 0.9);
+    }
+}
+
 
 /* Show menu on hover */
 .dropdown:hover .dropdown-content {
@@ -463,6 +530,10 @@ h4 {
 /* extra scroll for comments beyond 5 */
 .comment-scroll {
     max-height: 500px; 
+    overflow-y: auto;
+}
+#top-comments {
+    max-height: none; /* or whatever you want */
     overflow-y: auto;
 }
 

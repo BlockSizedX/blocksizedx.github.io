@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <!-- META SEO BOOST -->
-    <meta name="description" content="BlockSizedX – Home of fun projects, cool games, Website Templates and tech experiments. Get premium Web templates and demos Join our Discord and YouTube!">
-    <meta name="keywords" content="BlockSized, BlockSizedX, fun games, 2D games, Godot projects, Website Templates ,Templates">
-    <meta name="author" content="BlockSizedX">
-    <meta charset="UTF-8">
-
-    <!-- Social Sharing -->
-    <meta property="og:title" content="BlockSizedX - Website Templates, Games and more." />
-    <meta property="og:description" content="Fun tech stuff by BlockSizedX! Explore games, Website templates, and join our growing community." />
-    <meta property="og:image" content="/images/logo.png" />
-    <meta property="og:url" content="https://blocksizedx.github.io" />
-    <meta name="twitter:card" content="summary_large_image">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
 
     <head>
+        <!-- META SEO BOOST -->
+        <meta name="description" content="BlockSizedX – Home of fun projects, cool games, Website Templates and tech experiments. Get premium Web templates and demos Join our Discord and YouTube!">
+        <meta name="keywords" content="BlockSized, BlockSizedX, fun games, 2D games, Godot projects, Website Templates ,Templates">
+        <meta name="author" content="BlockSizedX">
+        <meta charset="UTF-8">
+
+        <!-- Social Sharing -->
+        <meta property="og:title" content="BlockSizedX - Website Templates, Games and more." />
+        <meta property="og:description" content="Fun tech stuff by BlockSizedX! Explore games, Website templates, and join our growing community." />
+        <meta property="og:image" content="/images/logo.png" />
+        <meta property="og:url" content="https://blocksizedx.github.io" />
+        <meta name="twitter:card" content="summary_large_image">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
@@ -35,6 +36,12 @@
         <nav class="navbar" id="nav_main">
             <div id="nav-flex-container">
                 <h1><a href="index.html">BlockSizedX</a></h1>
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
                 <div id="navlinks">
                     <a href="#HOME">HOME</a>
                     <div class="dropdown">
@@ -159,9 +166,9 @@
 
                 <div id="top-comments"></div> <!-- First 5 comments visible -->
                 <div id="scroll-comments" style="max-height:300px; overflow-y:auto;"></div> <!-- Rest scroll -->
-
             </div>
         </div>
+
 
 
         <!--FOOTER-->
@@ -200,6 +207,26 @@
 
 
     <script>
+
+        // NAV BAR RESPONSIVE
+        const toggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('navlinks');
+
+        toggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+
+
+
+        const commentForm = document.getElementById('comment-form');
+        const topDiv = document.getElementById('top-comments');
+        const scrollDiv = document.getElementById('scroll-comments');
+
+        // Track user ID
+        let userId = localStorage.getItem('userId');
+        if(!userId) { userId = 'user_' + Date.now(); localStorage.setItem('userId', userId); }
+
         // Firebase config
         const firebaseConfig = {
             apiKey: "AIzaSyD8YzEuKYAx7RxjckQikV2utU4R7Ym5g2w",
@@ -213,132 +240,96 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-
-        const commentForm = document.getElementById('comment-form');
-
-        // Track user ID
-        let userId = localStorage.getItem('userId');
-        if(!userId) {
-            userId = 'user_' + Date.now();
-            localStorage.setItem('userId', userId);
-        }
-
         // Post comment
         commentForm.addEventListener('submit', e => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const comment = document.getElementById('comment').value;
-            const newComment = db.ref('comments').push();
-            newComment.set({
-                name,
-                comment,
+            const name = document.getElementById('name').value.trim();
+            const comment = document.getElementById('comment').value.trim();
+            if(!name || !comment) return;
+
+            db.ref('comments').push({
+                name, comment,
                 timestamp: Date.now(),
                 likes: 0,
                 likedBy: {},
                 replies: {}
             });
+
             commentForm.reset();
         });
 
-        // Render comments (5 visible, rest scroll)
-        // Render comments (5 visible, rest scrollable)
-        function renderComments(snapshot) {
-            const topDiv = document.getElementById('top-comments');
-            const scrollDiv = document.getElementById('scroll-comments');
+        // Render comments
+        function renderComments(snapshot){
             topDiv.innerHTML = '';
             scrollDiv.innerHTML = '';
+            if(!snapshot.exists()) return;
 
             let data = [];
             snapshot.forEach(s => data.push({ key: s.key, val: s.val() }));
 
-            // Sort by likes (highest first), then timestamp (newest first)
-            data.sort((a, b) => {
-                if ((b.val.likes || 0) === (a.val.likes || 0)) {
-                    return b.val.timestamp - a.val.timestamp;
-                }
-                return (b.val.likes || 0) - (a.val.likes || 0);
+            // Sort by likes descending, then timestamp descending
+            data.sort((a,b)=>{
+                if((b.val.likes||0)===(a.val.likes||0)) return b.val.timestamp - a.val.timestamp;
+                return (b.val.likes||0) - (a.val.likes||0);
             });
 
-            data.forEach((item, index) => {
+            data.forEach((item,index)=>{
                 const val = item.val;
                 const key = item.key;
 
                 const div = document.createElement('div');
                 div.className = 'comment-item';
 
-                const liked = val.likedBy && val.likedBy[userId] ? true : false;
-                const likeText = liked ? `❤️ ${val.likes || 0}` : `🤍 ${val.likes || 0}`;
+                const liked = val.likedBy && val.likedBy[userId];
+                const likeText = liked ? `❤️ ${val.likes||0}` : `🤍 ${val.likes||0}`;
 
                 div.innerHTML = `
-                    <b>${val.name}</b>: ${val.comment} 
+                    <b>${val.name}</b>: ${val.comment}
                     <span class="like-btn" onclick="toggleLike('${key}')">${likeText}</span>
                     <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
                     <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
                     <div class="replies" id="replies-${key}"></div>
                 `;
 
-                // first 5 comments go into topDiv, others into scrollDiv
-                if (index < 5) {
-                    topDiv.appendChild(div);
-                } else {
-                    scrollDiv.appendChild(div);
-                }
+                if(index < 5) topDiv.appendChild(div);
+                else scrollDiv.appendChild(div);
 
-                // render replies if any
-                if (val.replies) {
-                    const repliesDiv = document.getElementById('replies-' + key);
-                    for (const rKey in val.replies) {
+                // render replies
+                if(val.replies){
+                    const repliesDiv = document.getElementById('replies-'+key);
+                    for(const rKey in val.replies){
                         const r = val.replies[rKey];
                         const rDiv = document.createElement('div');
-                        rDiv.className = "reply-item";
-                        rDiv.innerHTML = `
-                            <b>${r.name}</b>: ${r.comment}
-                            <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>
-                        `;
+                        rDiv.className = 'reply-item';
+                        rDiv.innerHTML = `<b>${r.name}</b>: ${r.comment} <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>`;
                         repliesDiv.appendChild(rDiv);
                     }
                 }
             });
         }
 
-
         // Firebase listener
-        db.ref('comments').on('value', snapshot => {
-            const topDiv = document.getElementById('top-comments');
-            const scrollDiv = document.getElementById('scroll-comments');
-            if(snapshot.exists()){
-                renderComments(snapshot);
-            } else {
-                topDiv.innerHTML = '<p>No comments yet!</p>';
-                scrollDiv.innerHTML = '';
-            }
-        });
-
+        db.ref('comments').on('value', snapshot=>renderComments(snapshot));
 
         // Replies
         function replyPrompt(commentKey){
             const name = prompt("Your Name:");
             const reply = prompt("Your Reply:");
             if(name && reply){
-                const newReply = db.ref(`comments/${commentKey}/replies`).push();
-                newReply.set({name, comment: reply});
+                db.ref(`comments/${commentKey}/replies`).push({name, comment:reply});
             }
         }
 
-        // Delete comment/reply
-        function deleteComment(key){
-            if(confirm("Delete this comment?")) db.ref('comments/'+key).remove();
-        }
-        function deleteReply(commentKey, replyKey){
-            if(confirm("Delete this reply?")) db.ref(`comments/${commentKey}/replies/${replyKey}`).remove();
-        }
+        // Delete
+        function deleteComment(key){ if(confirm("Delete this comment?")) db.ref('comments/'+key).remove(); }
+        function deleteReply(commentKey, replyKey){ if(confirm("Delete reply?")) db.ref(`comments/${commentKey}/replies/${replyKey}`).remove(); }
 
-        // Toggle like/unlike
+        // Likes
         function toggleLike(key){
             const ref = db.ref('comments/'+key);
-            ref.once('value', snap => {
+            ref.once('value', snap=>{
                 let val = snap.val();
-                if(!val.likedBy) val.likedBy = {};
+                if(!val.likedBy) val.likedBy={};
                 if(val.likedBy[userId]){
                     val.likes = (val.likes||0)-1;
                     delete val.likedBy[userId];
@@ -349,6 +340,7 @@
                 ref.update({likes: val.likes, likedBy: val.likedBy});
             });
         }
+
     </script>
 
     </body>
