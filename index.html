@@ -183,7 +183,7 @@
                     <h3>BlockSizedX</h3>
                     <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
                     <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 1.2.5.1  </p>
+                    <p style="color: rgb(126, 126, 126);">update_ver: 1.2.5.2  </p>
                 </div>
 
                 <div id="cont-details">
@@ -295,7 +295,6 @@
                     <span style="color: rgb(225, 250, 202);"><b><i class="fa fa-user-circle-o" aria-hidden="true"></i> ${val.name}</b></span>: ${val.comment}
                     <span class="like-btn" onclick="toggleLike('${key}')">${likeText}</span>
                     <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
-                    <span class="delete-btn" onclick="deleteComment('${key}')">Delete</span>
                     <div class="replies" id="replies-${key}"></div>
                 `;
 
@@ -309,7 +308,7 @@
                         const r = val.replies[rKey];
                         const rDiv = document.createElement('div');
                         rDiv.className = 'reply-item';
-                        rDiv.innerHTML = `<span style="color: rgb(250, 250, 202);"><b><i class="fa fa-user-circle" aria-hidden="true"></i>   ${r.name}</b></span>:  ${r.comment} <span class="delete-btn" onclick="deleteReply('${key}','${rKey}')">Delete</span>`;
+                        rDiv.innerHTML = `<span style="color: rgb(250, 250, 202);"><b><i class="fa fa-user-circle" aria-hidden="true"></i>   ${r.name}</b></span>:  ${r.comment}`;
                         repliesDiv.appendChild(rDiv);
                     }
                 }

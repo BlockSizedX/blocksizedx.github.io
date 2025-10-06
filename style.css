@@ -544,7 +544,7 @@ h4 {
     overflow-y: scroll;
 }
 #top-comments {
-    max-height: none; /* or whatever you want */
+    min-height: 50vh;
     overflow-y: scroll;
     color: rgb(255, 250, 202);
 }
