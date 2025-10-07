@@ -3,7 +3,7 @@ html {
     background-color: rgb(13, 13, 13);
     scroll-behavior: smooth;
     font-family: 'Helvetica', Arial, sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/bg.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('images/bg.png');
     background-position: center;
     background-size: 100%;
 
@@ -211,7 +211,7 @@ html {
     padding: 20px 0px;
     min-height: 100vh;
     border-radius: 10px;
-    background-color: rgba(37, 37, 37, 0.507);
+    background-color: rgba(34, 34, 34, 0.625);
     margin: 2% 0;
 }
 
@@ -426,7 +426,7 @@ h4 {
     margin: 100px auto;
     width: 80%;
     height: 100%;
-    background-color: rgba(223, 183, 83, 0.099);
+    background-color: rgba(44, 43, 34, 0.617);
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.466);
 }
@@ -453,11 +453,23 @@ h4 {
 }
 #trending-template-web h2 {
     color: antiquewhite;
+    font-size: 180%;
 }
 #trending-template-web p {
     color: rgb(255, 242, 207);
 }
-
+#template-card-last-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    gap: 20px;
+}
+#template-card-last-flex h5 {
+    color: rgb(254, 238, 192);
+    font-weight: bolder;
+    font-size: 80%;
+}
 
 /* ================= COMMENTS ================= */
 /* ================= COMMENTS ================= */
