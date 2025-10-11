@@ -190,7 +190,7 @@
                     <h3>BlockSizedX</h3>
                     <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
                     <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 1.2.5.3  </p>
+                    <p style="color: rgb(126, 126, 126);">update_ver: 1.3  </p>
                 </div>
 
                 <div id="cont-details">
@@ -215,7 +215,24 @@
             
 
         </div>
+        <div class="chatbot-btn" id="chatbotBtn" title="Chat with us">
+            <i class="fa fa-comments"></i>
+        </div>
 
+        <div class="chatbot-window" id="chatbotWindow" aria-hidden="true">
+        <div class="chatbot-header">
+            <div>BlockSizedX Bot</div>
+            <div style="font-size:18px; cursor:pointer;" id="chatbotClose"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-empty-hint">Hi! How can I help you today?</div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatInput" class="chatbot-input" placeholder="Type your question..." />
+            <button id="chatSend" class="btn" style="padding:8px 12px; border-radius: 40%; background-color: rgb(255, 215, 35);"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+</button>
+        </div>
+        </div>
 
 
 
@@ -354,6 +371,185 @@
                 ref.update({likes: val.likes, likedBy: val.likedBy});
             });
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //SCRIPT CHATBOT
+        (function(){
+            const chatbotBtn = document.getElementById('chatbotBtn');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatMessages = document.getElementById('chatbotMessages');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+
+            const responses = [
+                // 👋 Greetings
+                {
+                    keywords: ["hi", "hello", "hey", "yo", "whats up", "sup", "heyy", "hii", "hola", "greetings"],
+                    answer: "Hey there 👋 Welcome to BlockSizedX! Wanna check out some templates or games?"
+                },
+                {
+                    keywords: ["nope", "no", "nothing", "onnulla", "onnula", "poda", "poo", "nothing else", "myre", "no da"],
+                    answer: "Ahh okay, if u wanna know anything, just search for templates, games, etc!"
+                },
+                // 🕸️ About site
+                {
+                    keywords: ["who are you", "about", "about site", "this website", "what is blocksizedx", "who made this", "developer", "who built", "owner", "creator"],
+                    answer: "I'm BlockSizedX — your friendly dev site 💻. I make web & game templates, playable mini-games, and cool open projects!"
+                },
+
+                // 🧩 Templates info
+                {
+                    keywords: ["template", "templates", "web templates", "html templates", "css templates", "game templates", "free templates", "cheap templates", "download templates", "buy templates", "sell templates"],
+                    answer: "We’ve got both **web templates** and **game templates** — free or super cheap 💸. Check them on the Templates section!"
+                },
+
+                // 🎮 Games
+                {
+                    keywords: ["game", "games", "play game", "mini games", "test games", "try games", "play online", "arcade", "fun games", "try project"],
+                    answer: "Yesss 🎮 you can play fun mini games right here on BlockSizedX! Just go to the 'Games' or 'Projects' page and have fun 😎"
+                },
+
+                // 💾 Projects / portfolio
+                {
+                    keywords: ["project", "projects", "see projects", "my projects", "view projects", "portfolio", "what projects", "demo projects"],
+                    answer: "You can explore all my projects on the **Projects page** — from web apps to games and experiments 🚀"
+                },
+
+                // 💰 Pricing / free / cheap
+                {
+                    keywords: ["price", "cost", "free", "cheap", "paid", "buy", "purchase", "how much", "is it free", "download free", "pricing"],
+                    answer: "Almost everything’s **free or super cheap** 💸 — because I want devs like you to build cool stuff easily 😎"
+                },
+
+                // 💬 Contact
+                {
+                    keywords: ["contact", "message", "email", "mail", "support", "how to contact", "reach you", "chat", "talk", "feedback"],
+                    answer: "You can contact me anytime at **blocksized404@gmail.com** or through my GitHub page 💌"
+                },
+
+                // 🌐 Website links
+                {
+                    keywords: ["website", "github", "link", "site", "blocksizedx", "page", "blocksized", "repo", "repository"],
+                    answer: "Visit my official site 🌐 **blocksizedx.github.io** and check all projects there!"
+                },
+
+                // 🧠 Learn / try / code
+                {
+                    keywords: ["learn", "tutorial", "code", "source code", "how it works", "view code", "example", "open source"],
+                    answer: "All templates & games are open-source 👨‍💻 — explore the code and learn! You’ll find GitHub links on each project page."
+                },
+
+                // 🚀 New updates
+                {
+                    keywords: ["new", "latest", "update", "recent", "new projects", "what’s new", "recent upload"],
+                    answer: "I keep updating BlockSizedX often ⚡ — check the homepage for latest uploads & projects!"
+                },
+
+                // ❤️ Thanks
+                {
+                    keywords: ["thanks", "thank you", "cool", "awesome", "nice", "good job", "love this", "great"],
+                    answer: "Aww thanks 😄 You’re awesome too! Keep exploring BlockSizedX 💪"
+                },
+
+                // ❓ Default help
+                {
+                    keywords: ["help", "what can you do", "commands", "how to use", "how this works", "guide"],
+                    answer: "You can ask me about templates, projects, games, or how to contact BlockSizedX 😎"
+                }
+                ];
+
+
+            const fallback = "Sorry, I didn’t get that 😅 — please email us at blocksized404@gmail.com .";
+
+            function formatTime(date){
+                const h = date.getHours(), m = date.getMinutes();
+                return (h<10?'0':'')+h + ":" + (m<10?'0':'')+m;
+            }
+
+            function appendMessage(text, who){
+                const hint = chatMessages.querySelector('.chatbot-empty-hint');
+                if (hint) hint.remove();
+
+                const msg = document.createElement('div');
+                msg.classList.add('chat-msg', who === 'user' ? 'user' : 'bot');
+                msg.textContent = text;
+
+                const ts = document.createElement('div');
+                ts.classList.add('chat-timestamp');
+                ts.textContent = formatTime(new Date());
+
+                const wrap = document.createElement('div');
+                wrap.style.display = 'flex';
+                wrap.style.flexDirection = 'column';
+                wrap.appendChild(msg);
+                wrap.appendChild(ts);
+
+                chatMessages.appendChild(wrap);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function findResponse(userText){
+                const txt = userText.toLowerCase();
+                for (let obj of responses){
+                for (let kw of obj.keywords){
+                    if (txt.includes(kw)) return obj.answer;
+                }
+                }
+                return null;
+            }
+
+            function handleSend(){
+                const text = chatInput.value.trim();
+                if (!text) return;
+                appendMessage(text, 'user');
+                chatInput.value = '';
+                setTimeout(()=>{
+                const reply = findResponse(text) || fallback;
+                appendMessage(reply, 'bot');
+                }, 400);
+            }
+
+            chatbotBtn.onclick = ()=>{
+                const open = chatbotWindow.style.display === 'flex';
+                chatbotWindow.style.display = open ? 'none' : 'flex';
+                chatbotWindow.setAttribute('aria-hidden', open);
+                if (!open) setTimeout(()=> chatInput.focus(), 150);
+            };
+
+            chatbotClose.onclick = ()=>{
+                chatbotWindow.style.display = 'none';
+                chatbotWindow.setAttribute('aria-hidden', 'true');
+            };
+
+            chatSend.onclick = handleSend;
+            chatInput.addEventListener('keydown', e=>{
+                if(e.key==='Enter'){ e.preventDefault(); handleSend(); }
+            });
+
+            setTimeout(()=>{
+                if (!chatMessages.querySelector('.chat-msg')){
+                appendMessage("Hello 👋 I'm your assistant. How can I help?", 'bot');
+                }
+            }, 700);
+            })();
+
+
+
+
+
 
     </script>
 
