@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aahil's Profile</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #f7b733, #fc4a1a);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-card {
+            background: rgba(0,0,0,0.6);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            animation: pop 1s ease;
+        }
+
+        .profile-card h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .profile-card h2 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-top: 0;
+        }
+
+        .profile-card p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .hobby {
+            background: #ff6f61;
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 5px 2px;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <h1>Aahil Naufal</h1>
+        <h2>Age: 9 | Class: 4th Std</h2>
+        <p>School: SkyBorn Modern Secondary School</p>
+        <p>Hobbies:</p>
+        <span class="hobby">Gaming 🎮</span>
+        <span class="hobby">Crazy 😜</span>
+        <p>thendi brandhann</p>
+    </div>
+</body>
+</html>
