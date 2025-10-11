@@ -38,12 +38,12 @@ html {
 
     color: rgb(255, 213, 76);
     text-shadow: 0 0 30px rgba(0, 0, 0, 0.695);
-    font-size: 140%;
+    font-size: 130%;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 .navbar h1 a:hover {
-    font-size: 150%;
+    font-size: 140%;
 }
 .navbar #navlinks a {
     margin: 0 4%;
@@ -56,7 +56,7 @@ html {
     
 }
 .navbar #navlinks a:hover {
-    font-size: 120%;
+    text-shadow: 0 0 10px white;
     color: rgb(255, 229, 99);
 }
 
@@ -116,6 +116,97 @@ html {
   color: rgb(255, 229, 99);
   border-radius: 20px;
 }
+
+
+.dropdown-c {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden menu */
+.dropdown-content-c {
+  display: none;
+  position: absolute;
+  top: 100%; /* appears below Templates link */
+  left: 0;
+  background-color: rgba(61, 55, 42, 0.95);
+  border-radius: 10px;
+  min-width: 180px;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Menu links */
+.dropdown-content-c a {
+  color: white;
+  padding: 10px 15px;
+  padding-right: 30px;
+  text-decoration: none;
+  display: block;
+  font-size: 95%;
+  transition: all 0.3s ease;
+}
+
+.dropdown-content-c a:hover {
+  background-color: rgba(255, 229, 99, 0.15);
+  color: rgb(255, 229, 99);
+  border-radius: 20px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-c:hover .dropdown-content-c {
+  display: block;
+}
+.dropdown-content,
+.dropdown-content-c {
+  margin-top: 2px; /* closes tiny gap */
+}
+.dropdown:hover .dropdown-content,
+.dropdown-c:hover .dropdown-content-c {
+  display: block;
+}
+/* Make parent a relative block so hover area includes dropdown */
+.dropdown, .dropdown-c {
+    position: relative;
+    display: inline-block;
+}
+
+/* Position submenu slightly overlapping to avoid gap */
+.dropdown-content, .dropdown-content-c {
+    display: none;
+    position: absolute;
+    top: 100%;   /* right below parent */
+    left: 0;
+    margin-top: 0; /* remove gaps */
+    background-color: rgba(61, 55, 42, 0.95);
+    border-radius: 10px;
+    min-width: 180px;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-content,
+.dropdown-c:hover .dropdown-content-c {
+    display: block;
+}
+
+/* Optional: extend hover area to include submenu completely */
+.dropdown-content, .dropdown-content-c {
+    pointer-events: auto;
+}
+
+/* Optional: smooth hover background for links */
+.dropdown-content a:hover, .dropdown-content-c a:hover {
+    background-color: rgba(255, 229, 99, 0.15);
+    color: rgb(255, 229, 99);
+    border-radius: 20px;
+}
+
+
+
 
 /* --- Responsive Navbar --- */
 /* Make flex container row by default */
@@ -552,15 +643,38 @@ h4 {
 }
 
 /* extra scroll for comments beyond 5 */
-.comment-scroll {
-    max-height: 500px; 
-    overflow-y: scroll;
+#all-comments {
+    max-height: 70vh;  /* scrollable height */
+    overflow-y: auto;
+    margin-top: 20px;
 }
-#top-comments {
-    min-height: 50vh;
-    overflow-y: scroll;
-    color: rgb(255, 250, 202);
+
+.comment-item {
+    background: rgba(50,50,50,0.6);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    color: white;
 }
+
+.comment-item .reply-btn, 
+.comment-item .delete-btn,
+.comment-item .like-btn {
+    font-size: 0.8em;
+    color: rgb(255, 213, 76);
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    background: rgba(64,64,64,0.6);
+}
+
+.comment-item .replies {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(255, 213, 76, 0.5);
+}
+
 
 /*CHATBOT*/
 .chatbot-btn {

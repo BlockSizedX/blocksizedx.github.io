@@ -12,7 +12,7 @@
         <!-- Social Sharing -->
         <meta property="og:title" content="BlockSizedX - Website Templates, Games and more." />
         <meta property="og:description" content="Fun tech stuff by BlockSizedX! Explore games, Website templates, and join our growing community." />
-        <meta property="og:image" content="/images/logo.png" />
+        <meta property="og:image" content="/images/logo-without-text.png" />
         <meta property="og:url" content="https://blocksizedx.github.io" />
         <meta name="twitter:card" content="summary_large_image">
 
@@ -46,16 +46,24 @@
                 <div id="navlinks">
                     <a href="#HOME">HOME</a>
                     <div class="dropdown">
-                    <a href="#templates">TEMPLATES</a>
-                    <div class="dropdown-content">
-                        <a href="#templates">All Templates</a>
-                        <a href="#web-templates">Website Templates</a>
-                        <a href="#game-templates">Game Templates</a>
+                        <a href="#templates">TEMPLATES</a>
+                        <div class="dropdown-content">
+                            <a href="#templates">All Templates</a>
+                            <a href="#web-templates">Website Templates</a>
+                            <a href="#game-templates">Game Templates</a>
+                        </div>
                     </div>
-                    </div>
+                    <a href="pages/news.html">NEWS</a>
                     <a href="#projects">PROJECTS</a>
                     <a href="#about">ABOUT</a>
-                    <a href="#contact">COMMENTS</a>
+                    <div class="dropdown-c">
+                        <a href="#contact">CONTACT US</a>
+                        <div class="dropdown-content-c">
+                            <a href="#comments">Comments</a>
+                            <a href="#contact-info">Contact Info</a>
+                            <a href="#call-us">Call Us</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -168,17 +176,18 @@
 
         <!--CONTACT-->
        <div class="sec" id="contact">
+            <span id="comments"></span>
             <h2 class="sec-title">Comments & Reviews</h2>
             <div id="comment-section">
                 <form class="comment-form" id="comment-form">
                     <input type="text" id="name" placeholder="Your Name" required>
                     <textarea id="comment" placeholder="Write your comment..." rows="3" required></textarea>
                     <button type="submit">Post Comment</button>
-                </form>
+            </form>
 
-                <div id="top-comments"></div> <!-- First 5 comments visible -->
-                <div id="scroll-comments" style="max-height:100vh; overflow-y:auto;"></div> <!-- Rest scroll -->
-            </div>
+            <div id="all-comments"></div> <!-- All comments + replies -->
+</div>
+
         </div>
 
 
@@ -190,7 +199,7 @@
                     <h3>BlockSizedX</h3>
                     <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
                     <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 1.3  </p>
+                    <p style="color: rgb(126, 126, 126);">update_ver: 1.3.1  </p>
                 </div>
 
                 <div id="cont-details">
@@ -248,129 +257,6 @@
             navLinks.classList.toggle('active');
         });
 
-
-
-
-        const commentForm = document.getElementById('comment-form');
-        const topDiv = document.getElementById('top-comments');
-        const scrollDiv = document.getElementById('scroll-comments');
-
-        // Track user ID
-        let userId = localStorage.getItem('userId');
-        if(!userId) { userId = 'user_' + Date.now(); localStorage.setItem('userId', userId); }
-
-        // Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyD8YzEuKYAx7RxjckQikV2utU4R7Ym5g2w",
-            authDomain: "blocksizedx-comment-sys.firebaseapp.com",
-            projectId: "blocksizedx-comment-sys",
-            storageBucket: "blocksizedx-comment-sys.firebasestorage.app",
-            messagingSenderId: "524581279271",
-            appId: "1:524581279271:web:fa462916f822a16f162002",
-            measurementId: "G-K7F5ZH2CKC"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
-
-        // Post comment
-        commentForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const comment = document.getElementById('comment').value.trim();
-            if(!name || !comment) return;
-
-            db.ref('comments').push({
-                name, comment,
-                timestamp: Date.now(),
-                likes: 0,
-                likedBy: {},
-                replies: {}
-            });
-
-            commentForm.reset();
-        });
-
-        // Render comments
-        function renderComments(snapshot){
-            topDiv.innerHTML = '';
-            scrollDiv.innerHTML = '';
-            if(!snapshot.exists()) return;
-
-            let data = [];
-            snapshot.forEach(s => data.push({ key: s.key, val: s.val() }));
-
-            // Sort by likes descending, then timestamp descending
-            data.sort((a,b)=>{
-                if((b.val.likes||0)===(a.val.likes||0)) return b.val.timestamp - a.val.timestamp;
-                return (b.val.likes||0) - (a.val.likes||0);
-            });
-
-            data.forEach((item,index)=>{
-                const val = item.val;
-                const key = item.key;
-
-                const div = document.createElement('div');
-                div.className = 'comment-item';
-
-                const liked = val.likedBy && val.likedBy[userId];
-                const likeText = liked ? `❤️ ${val.likes||0}` : `🤍 ${val.likes||0}`;
-
-                div.innerHTML = `
-                    <span style="color: rgb(225, 250, 202);"><b><i class="fa fa-user-circle-o" aria-hidden="true"></i> ${val.name}</b></span>: ${val.comment}
-                    <span class="like-btn" onclick="toggleLike('${key}')">${likeText}</span>
-                    <span class="reply-btn" onclick="replyPrompt('${key}')">Reply</span>
-                    <div class="replies" id="replies-${key}"></div>
-                `;
-
-                if(index < 5) topDiv.appendChild(div);
-                else scrollDiv.appendChild(div);
-
-                // render replies
-                if(val.replies){
-                    const repliesDiv = document.getElementById('replies-'+key);
-                    for(const rKey in val.replies){
-                        const r = val.replies[rKey];
-                        const rDiv = document.createElement('div');
-                        rDiv.className = 'reply-item';
-                        rDiv.innerHTML = `<span style="color: rgb(250, 250, 202);"><b><i class="fa fa-user-circle" aria-hidden="true"></i>   ${r.name}</b></span>:  ${r.comment}`;
-                        repliesDiv.appendChild(rDiv);
-                    }
-                }
-            });
-        }
-
-        // Firebase listener
-        db.ref('comments').on('value', snapshot=>renderComments(snapshot));
-
-        // Replies
-        function replyPrompt(commentKey){
-            const name = prompt("Your Name:");
-            const reply = prompt("Your Reply:");
-            if(name && reply){
-                db.ref(`comments/${commentKey}/replies`).push({name, comment:reply});
-            }
-        }
-
-        // Delete
-        function deleteComment(key){ if(confirm("Delete this comment?")) db.ref('comments/'+key).remove(); }
-        function deleteReply(commentKey, replyKey){ if(confirm("Delete reply?")) db.ref(`comments/${commentKey}/replies/${replyKey}`).remove(); }
-
-        // Likes
-        function toggleLike(key){
-            const ref = db.ref('comments/'+key);
-            ref.once('value', snap=>{
-                let val = snap.val();
-                if(!val.likedBy) val.likedBy={};
-                if(val.likedBy[userId]){
-                    val.likes = (val.likes||0)-1;
-                    delete val.likedBy[userId];
-                } else {
-                    val.likes = (val.likes||0)+1;
-                    val.likedBy[userId] = true;
-                }
-                ref.update({likes: val.likes, likedBy: val.likedBy});
-            });
-        }
 
 
 
@@ -468,8 +354,12 @@
                 {
                     keywords: ["help", "what can you do", "commands", "how to use", "how this works", "guide"],
                     answer: "You can ask me about templates, projects, games, or how to contact BlockSizedX 😎"
-                }
-                ];
+                },
+                {
+                    keywords: ["brother", "your brother", "about brother","aahil","aahi", "bro", "what is blocksizedx brother", "broo", "broother", "bad"],
+                    answer: "Its my bro!,Aahil and he is a lil bit crazy haha. "
+                },
+                    ];
 
 
             const fallback = "Sorry, I didn’t get that 😅 — please email us at blocksized404@gmail.com .";
