@@ -5,7 +5,7 @@
     <head>
         <!-- META SEO BOOST -->
         <meta name="description" content="BlockSizedX – Explore Modern Website and Game Templates, Play Fun Games, Get it for free and cheap rates.">
-        <meta name="keywords" content="BlockSized, BlockSizedX, fun games, 2D games, Godot projects, Website Templates ,Templates, Web templates, Web development, Blocks">
+        <meta name="keywords" content="BlockSized, BlockSizedX, fun games, 2D games, Godot projects, Website Templates ,Templates, Web templates, Web development, Blocks, blocksize, Block size, blocksized website">
         <meta name="author" content="BlockSizedX">
         <meta charset="UTF-8">
 
@@ -176,19 +176,50 @@
 
         <!--CONTACT-->
        <div class="sec" id="contact">
+
+            <h2 class="sec-title">Contact Info</h2>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                <i class="fa fa-whatsapp"></i>
+                <span><b>Whatsapp Channel: </b> <a style="text-decoration: none; color: antiquewhite;" href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02">Click To Join Whatsapp Channel</a></span>
+                </div>
+
+                <div class="contact-item">
+                <i class="fa fa-envelope"></i>
+                <span><b>Email: </b><a style="text-decoration: none; color: antiquewhite;" href="mailto:blocksized404@gmail.com?subject=Hello%20BlockSizedX&body=Hi,%20I%20want%20to%20know%20about%20your%20templates!">blocksized404@gmail.com</a>
+</span>
+                </div>
+                <div class="contact-item">
+                <i class="fa fa-whatsapp"></i>
+                <span><b>Whatsapp Chat: </b> <a style="text-decoration: none; color: antiquewhite;" href="https://wa.me/919961550562">Click To Chat On Whatsapp </a></span>
+                </div>
+                <div class="contact-item">
+                <i class="fa fa-map-marker"></i>
+                <span><b>Location:</b> Kerala, India 🇮🇳</span>
+                </div>
+
+                <div class="contact-item">
+                <i class="fa fa-globe"></i>
+                <span><b>Website:</b> <a style="text-decoration: none; color: antiquewhite;" href="https://blocksizedx.github.io">blocksizedx.github.io</a></span>
+                </div>
+            </div>
+
             <span id="comments"></span>
             <h2 class="sec-title">Comments & Reviews</h2>
+
             <div id="comment-section">
                 <form class="comment-form" id="comment-form">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <textarea id="comment" placeholder="Write your comment..." rows="3" required></textarea>
-                    <button type="submit">Post Comment</button>
-            </form>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="comment" placeholder="Write your comment..." rows="3" required></textarea>
+                <button type="submit">Post Comment</button>
+                </form>
 
-            <div id="all-comments"></div> <!-- All comments + replies -->
-</div>
+                <div id="all-comments"></div>
+            </div>
 
-        </div>
+            </div>
+
 
 
 
@@ -199,7 +230,7 @@
                     <h3>BlockSizedX</h3>
                     <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
                     <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 1.3.1  </p>
+                    <p style="color: rgb(126, 126, 126);">update_ver: 1.4  </p>
                 </div>
 
                 <div id="cont-details">
@@ -220,6 +251,7 @@
                     <a href="#contact">contact us</a><br>
                 </div>
             </div>
+            <div id="cop-line"></div>
             <div id="copyrt">Copyright © BlockSizedX 2025 | All rights reservd.</div>
             
 
@@ -281,6 +313,14 @@
             const chatSend = document.getElementById('chatSend');
 
             const responses = [
+                {
+                    keywords: ["whatsapp", "number", "phone number", "phone nomber"],
+                    answer: "+91 9961550562 is whatsapp number. see you there!"
+                },
+                {
+                    keywords: ["keywords", "words", "what is keywords", "search", "what to search", "functions", "questions", "ques", "quest", "find"],
+                    answer: "You can ask me keywords like Whatsapp, number, templates, projects, games, about, contact and more."
+                },
                 // 👋 Greetings
                 {
                     keywords: ["hi", "hello", "hey", "yo", "whats up", "sup", "heyy", "hii", "hola", "greetings"],
@@ -362,7 +402,7 @@
                     ];
 
 
-            const fallback = "Sorry, I didn’t get that 😅 — please email us at blocksized404@gmail.com .";
+            const fallback = "Sorry, I didn’t get that 😅 — search fo keywords for please email us at blocksized404@gmail.com .";
 
             function formatTime(date){
                 const h = date.getHours(), m = date.getMinutes();

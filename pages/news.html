@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What's New | BlockSizedX</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #222;
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #ffe75e;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .news-card {
+      background: #161616;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-card img {
+      width: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.505);
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .image-flex {
+        display: flex;
+
+    }
+    .image-flex img {
+        width: 20%;
+        
+    }
+    .news-card h2 {
+      color: #00bcd4;
+      margin-bottom: 10px;
+    }
+
+    .news-card p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #222;
+      color: #777;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+
+    .date {
+      font-size: 0.8em;
+      color: #888;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .back-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #00bcd4;
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 1.5em;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 227, 48, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #00e1ff;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📰 What's New?</h1>
+  </header>
+
+  <div class="container">
+    <div class="news-card">
+      <span class="date">October 12, 2025</span>
+      <h2>Added Contact Section</h2>
+      <img src="../images/news-contact.png" alt="Website contact sec">
+      <p>We just Added contact section so you can easly get contact Info there </p>
+    </div>
+
+    <div class="news-card">
+      <span class="date">October 10, 2025</span>
+      <h2>Added ChatBot</h2>
+      <div class="image-flex">
+        <img src="../images/news-chat.png" alt="chatbot image">
+        <img src="../images/news-chat-icon.png" alt="Chatbot icon">
+      </div>
+      <p>We added a chatbot on our main page. you can use it by clicking the chat icon on bottom right of main BlockSizedX page. <br>You can ask that bot for anthing related to our site as keywords<br><a style="text-decoration: none; color: #00bcd4;" href="../index.html">You can go to mainpage by clicking here or by clicking the back button.</a></p>
+    </div>
+  </div>
+  <button class="back-btn" onclick="history.back()">⟵</button>
+  <footer>
+    © 2025 BlockSizedX | All Rights Reserved
+  </footer>
+</body>
+</html>
