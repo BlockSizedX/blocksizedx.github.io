@@ -5,14 +5,13 @@
     <head>
         <!-- META SEO BOOST -->
         <meta name="description" content="BlockSizedX – Explore Modern Website and Game Templates, Play Fun Games, Get it for free and cheap rates.">
-        <meta name="keywords" content="BlockSized, BlockSizedX, fun games, 2D games, Godot projects, Website Templates ,Templates, Web templates, Web development, Blocks, blocksize, Block size, blocksized website">
+        <meta name="keywords" content="website templates. Web templates, website, templates, game templates, cheap templates, cheap web, web, game, game dev, free website templates, BlockSized, BlockSizedX, fun games, 2D games, Godot projects, Website Templates ,Templates, Web templates, Web development, Blocks, blocksize, Block size, blocksized website">
         <meta name="author" content="BlockSizedX">
         <meta charset="UTF-8">
 
         <!-- Social Sharing -->
         <meta property="og:title" content="BlockSizedX - Website Templates, Games and more." />
-        <meta property="og:description" content="Fun tech stuff by BlockSizedX! Explore games, Website templates, and join our growing community." />
-        <meta property="og:image" content="/images/logo-without-text.png" />
+        <meta name="description" content="BlockSizedX - Premium website templates & 2D game assets. Get responsive web templates, Godot game projects, and professional designs at affordable prices. Free and premium templates for developers and creators.">        <meta property="og:image" content="/images/logo-without-text.png" />
         <meta property="og:url" content="https://blocksizedx.github.io" />
         <meta name="twitter:card" content="summary_large_image">
 
@@ -21,11 +20,12 @@
         <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-        <title>BlockSized</title>
+        <title>BlockSizedX - Website templates and games</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" type="image/png" href="images/logo-without-text.png">
 
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="homestyle.css">
 
     </head>
 
@@ -34,176 +34,670 @@
         <div id="HOME"></div>
 
         <!--NAVBAR-->
+        <!--NAVBAR-->
+        <!--NAVBAR-->
+        <!--NAVBAR-->
         <nav class="navbar" id="nav_main">
             <div id="nav-flex-container">
+                <!-- Left: Logo -->
                 <h1><a href="index.html">BlockSizedX</a></h1>
-                <div class="menu-toggle" id="menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
 
-                <div id="navlinks">
-                    <a href="#HOME">HOME</a>
-                    <div class="dropdown">
-                        <a href="#templates">TEMPLATES</a>
-                        <div class="dropdown-content">
-                            <a href="#templates">All Templates</a>
-                            <a href="#web-templates">Website Templates</a>
-                            <a href="#game-templates">Game Templates</a>
+                <!-- Right: Search + Navigation -->
+                <div class="nav-right-section">
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="navSearch" placeholder="Search..." class="search-input">
+                            <button onclick="performSearch()" class="search-btn">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </div>
+                        <div class="search-results" id="searchResults"></div>
                     </div>
-                    
-                    <a href="#projects">PROJECTS</a>
-                    <a href="#about">ABOUT</a>
-                    <div class="dropdown-c">
-                        <a href="#contact">CONTACT US</a>
-                        <div class="dropdown-content-c">
-                            <a href="#comments">Comments</a>
-                            <a href="#contact-info">Contact Info</a>
-                            <a href="tel:+919961550562">Call Us <i class="fa fa-phone"></i></a>
 
+                    <!-- Hamburger Menu -->
+                    <div class="menu-toggle" id="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <!-- Your EXACT Navigation Links (unchanged) -->
+                    <div id="navlinks">
+                        <a href="#HOME">HOME</a>
+                        <div class="dropdown">
+                            <a href="#templates">TEMPLATES</a>
                         </div>
+                        <a href="#projects">PROJECTS</a>
+                        <a href="#about">ABOUT</a>
+                        <div class="dropdown-c">
+                            <a href="#contact">CONTACT</a>
+                            <div class="dropdown-content-c">
+                                <a href="#comments">Comments</a>
+                                <a href="#contact-info">Get In Touch</a>
+                                <a href="tel:+919961550562">Call Us <i class="fa fa-phone"></i></a>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-
-
         </nav>
 
 
         <!--HOME-->
 
+        <!--HOME-->
         <div class="sec" id="home">
-
-            <div id="container-home">
-                
-
-                <div class="card" id="home-card">
-                    <img src="images/home_card.png" alt="card-home-png" width="300px">
+            <div class="home-container">
+                <!-- Animated Background Elements -->
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
                 </div>
-                <div id="home-text-lister-div">
-                    <h2><span class="home-title">BlockSizedX</span></h2>
-                    
-                    <h1>THE BEST PLACE FOR HIGH QUALITY <br>PROJECTS, TEMPLATES and 2D GAMES.</h1>
-                                        
+
+                <div class="home-content">
+                    <!-- Left: Text Content -->
+                    <div class="home-text">
+                        
+                        
+                        <h1 class="main-headline">
+                            <span class="gradient-text">Craft Digital</span>
+                            <span class="highlight">Experiences</span>
+                            That <span class="animated-underline">Inspire</span>
+                        </h1>
+                        
+                        <p class="sub-headline">
+                            High-quality website templates, 2D game assets, and interactive projects 
+                            designed to elevate your digital presence. From code to creation.
+                        </p>
+
+                        <!-- Stats Row -->
+                        <div class="stats-row">
+                            <div class="stat">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Client Satisfaction</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Support</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="cta-buttons">
+                            <a href="#templates" class="btn primary">
+                                <i class="fa fa-rocket"></i>
+                                Explore Templates
+                            </a>
+                            <a href="#projects" class="btn secondary">
+                                <i class="fa fa-gamepad"></i>
+                                View Projects
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual Element -->
+                    <div class="home-visual">
+                        <div class="floating-card">
+                            <img src="images/home_card.png" alt="BlockSizedX Projects" class="hero-image">
+                            <div class="card-glow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-text">Explore More</div>
+                    <div class="scroll-arrow">
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
                 </div>
             </div>
-            
-            <p>
-                You can play games by BlockSizedX here. You can get High Quality Website Templates, <br>
-                2D Game templates, Game demos, and much more.
-            </p>
-            <div id="home-button-flex">
-                
-                <a href="#projects">PROJECTS</a>
-                <a href="pages/news.html">🔹NEWS</a>
-                <a href="#contact">COMMENTS & REVIEWS</a>
-                <a href="#templates">TEMPLATES</a>
-            </div>
-            
-
         </div>
 
         
 
         <!--TEMPLATES-->
+        <!--TEMPLATES-->
         <div class="sec" id="templates">
-            <h2 class="sec-title">Our Templates</h2>
-            <h4>High Quality Website and Game Templates at Free rate or special offer rate</h4>
+            <h1 class="sec-title">Our Templates</h1>
+            <p class="section-subtitle">High-quality website and game templates at affordable prices</p>
             
-            <div id="trending-template-web">
-                <h1><i></i> TRENDING WEB TEMPLATE <i></i></h1>
-
-                <div id="trending-flex">
-                    <div class="template-card" style="margin-top: 20px;">
-                        <img src="images/no-template.png" alt="Template 1">
+            <!-- Featured Template -->
+            <div class="featured-template">
+                <div class="featured-badge">
+                    <i class="fa fa-star"></i> TRENDING
+                </div>
+                <div class="featured-content">
+                    <div class="featured-image">
+                        <img src="images/no-template.png" alt="Dark Business Template">
                     </div>
-                    <div style="margin: auto 0;">
-                        <h2>Dark-Themed Business</h2>
-                        <p>Pro style clean responsive <br>Business Website template</p>
-                        <div style="display: flex; gap: 30px;">
-                            <p style="color: rgb(255, 234, 160); font-weight: bold; font-size: 1.3rem; background-color: rgba(4, 27, 46, 0.68); padding: 2px 2px; border-radius: 5px;"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> 89₹ / 1$</p>
-                            <a class="temp-card-a" href="">View Template</a>
+                    <div class="featured-details">
+                        <h2>Dark-Themed Business Template</h2>
+                        <p class="featured-description">Professional responsive business website template with modern dark theme, perfect for startups and agencies.</p>
+                        <div class="featured-features">
+                            <span><i class="fa fa-check"></i> Fully Responsive</span>
+                            <span><i class="fa fa-check"></i> Modern Design</span>
+                            <span><i class="fa fa-check"></i> Easy Customizable</span>
                         </div>
-
+                        <div class="featured-price">
+                            <span class="price-tag">
+                                <i class="fa fa-credit-card"></i> 89₹ / 1$
+                            </span>
+                            <a href="#" class="template-btn primary">
+                                <i class="fa fa-eye"></i> View Template
+                            </a>
+                        </div>
                     </div>
                 </div>
-
             </div>
-            <h1 class="sec-title">Website Templates</h1>
-            <div id="templates-container">
 
+            <!-- Templates Grid -->
+            <div class="templates-grid">
+
+                
                 <!-- Template Card 1 -->
                 <div class="template-card">
-                    <img src="images/no-template.png" alt="Template 1">
-                    <h3>Portfolio Template</h3>
-                    <p>Clean, modern portfolio design for developers & designers.</p>
-                    <div id="template-card-last-flex">
-                        <h5><i class="fa fa-credit-card-alt" aria-hidden="true"></i> NA₹ / NA$</h5>
-                        <a class="temp-card-a" href="">View Template</a>
+                    <div class="template-badge">WEB</div>
+                    <div class="template-image">
+                        <img src="images/no-template.png" alt="Portfolio Template">
                     </div>
-                    
+                    <div class="template-content">
+                        <h3>Portfolio Template</h3>
+                        <p>Clean, modern portfolio design for developers & designers with smooth animations.</p>
+                        <div class="template-features">
+                            <span><i class="fa fa-mobile"></i> Responsive</span>
+                            <span><i class="fa fa-paint-brush"></i> Modern UI</span>
+                        </div>
+                        <div class="template-footer">
+                            <span class="template-price">
+                                <i class="fa fa-credit-card"></i> FREE
+                            </span>
+                            <a href="#" class="template-btn">
+                                <i class="fa fa-download"></i> Get Template
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Template Card 2 -->
                 <div class="template-card">
-                    <img src="images/no-template.png" alt="Template 2">
-                    <h3>Business Template</h3>
-                    <p>Professional layout for startups, companies, and agencies.</p>
-                    <div id="template-card-last-flex">
-                        <h5><i class="fa fa-credit-card-alt" aria-hidden="true"></i> NA₹ / NA$</h5>
-                        <a class="temp-card-a" href="">View Template</a>
+                    <div class="template-badge">WEB</div>
+                    <div class="template-image">
+                        <img src="images/no-template.png" alt="Business Template">
+                    </div>
+                    <div class="template-content">
+                        <h3>Business Template</h3>
+                        <p>Professional layout for startups, companies, and agencies with contact forms.</p>
+                        <div class="template-features">
+                            <span><i class="fa fa-mobile"></i> Responsive</span>
+                            <span><i class="fa fa-rocket"></i> Fast Loading</span>
+                        </div>
+                        <div class="template-footer">
+                            <span class="template-price">
+                                <i class="fa fa-credit-card"></i> 49₹
+                            </span>
+                            <a href="#" class="template-btn">
+                                <i class="fa fa-eye"></i> View Demo
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Add more cards here -->
+                <!-- Template Card 3 -->
+                <div class="template-card">
+                    <div class="template-badge game-badge">GAME</div>
+                    <div class="template-image">
+                        <img src="images/no-template.png" alt="2D Platformer">
+                    </div>
+                    <div class="template-content">
+                        <h3>2D Platformer Template</h3>
+                        <p>Complete 2D platformer game template with character controller and level system.</p>
+                        <div class="template-features">
+                            <span><i class="fa fa-gamepad"></i> Godot Engine</span>
+                            <span><i class="fa fa-code"></i> Full Source</span>
+                        </div>
+                        <div class="template-footer">
+                            <span class="template-price">
+                                <i class="fa fa-credit-card"></i> 99₹
+                            </span>
+                            <a href="#" class="template-btn">
+                                <i class="fa fa-download"></i> Get Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template Card 4 -->
+                <div class="template-card">
+                    <div class="template-badge game-badge">GAME</div>
+                    <div class="template-image">
+                        <img src="images/no-template.png" alt="Space Shooter">
+                    </div>
+                    <div class="template-content">
+                        <h3>Space Shooter Template</h3>
+                        <p>Arcade-style space shooter with enemy AI, power-ups, and scoring system.</p>
+                        <div class="template-features">
+                            <span><i class="fa fa-gamepad"></i> Godot Engine</span>
+                            <span><i class="fa fa-star"></i> Particle Effects</span>
+                        </div>
+                        <div class="template-footer">
+                            <span class="template-price">
+                                <i class="fa fa-credit-card"></i> 79₹
+                            </span>
+                            <a href="#" class="template-btn">
+                                <i class="fa fa-eye"></i> View Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="templates-cta">
+                <div class="cta-content">
+                    <h2>Need a Custom Template?</h2>
+                    <p>We can create custom website or game templates tailored to your specific needs.</p>
+                    <a href="#contact" class="cta-btn">
+                        <i class="fa fa-envelope"></i> Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!--PROJECTS-->
+        <div class="sec" id="projects">
+            <h1 class="sec-title">Our Projects & Games</h1>
+            <p class="section-subtitle">Showcasing our best work in web development and game design</p>
+
+            <!-- Projects Filter -->
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Projects</button>
+                <button class="filter-btn" data-filter="game">Games</button>
+                <button class="filter-btn" data-filter="template">Templates</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- Project 1 - Web -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="images/no-template.png" alt="Portfolio Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Web Development</span>
+                        <h3>Modern Portfolio Website</h3>
+                        <p>Clean, responsive portfolio template with smooth animations and modern design principles.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-btn">
+                                <i class="fa fa-external-link"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Game -->
+                <div class="project-card" data-category="game">
+                    <div class="project-image">
+                        <img src="images/no-template.png" alt="Space Shooter Game">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-gamepad"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">2D Game</span>
+                        <h3>Galaxy Shooter</h3>
+                        <p>Arcade-style space shooter with enemy AI, power-ups, and progressive difficulty system.</p>
+                        <div class="project-tech">
+                            <span>Godot</span>
+                            <span>GDScript</span>
+                            <span>Pixel Art</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-btn">
+                                <i class="fa fa-play"></i> Play Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Template -->
+                <div class="project-card" data-category="template">
+                    <div class="project-image">
+                        <img src="images/no-template.png" alt="Business Template">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Website Template</span>
+                        <h3>Business Pro Template</h3>
+                        <p>Professional business website template with contact forms, services section, and responsive design.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-btn">
+                                <i class="fa fa-download"></i> Get Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Web -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="images/no-template.png" alt="E-commerce Site">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-code"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Web Application</span>
+                        <h3>E-commerce Platform</h3>
+                        <p>Full-featured online store with cart system, user authentication, and payment integration.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-btn">
+                                <i class="fa fa-external-link"></i> View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Game -->
+                <div class="project-card" data-category="game">
+                    <div class="project-image">
+                        <img src="images/no-template.png" alt="Platformer Game">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-gamepad"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">2D Platformer</span>
+                        <h3>Adventure Quest</h3>
+                        <p>Side-scrolling platformer with character progression, multiple levels, and boss battles.</p>
+                        <div class="project-tech">
+                            <span>Godot</span>
+                            <span>GDScript</span>
+                            <span>Tilemaps</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-btn">
+                                <i class="fa fa-play"></i> Play Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - Template -->
+                <div class="project-card" data-category="template">
+                    <div class="project-image">
+                        <img src="images/no-template.png" alt="Portfolio Template">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Portfolio Template</span>
+                        <h3>Developer Portfolio</h3>
+                        <p>Modern portfolio template specifically designed for developers and designers.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-footer">
+                            <a href="#" class="project-btn">
+                                <i class="fa fa-download"></i> Free Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="projects-cta">
+                <div class="cta-content">
+                    <h2>Have a Project in Mind?</h2>
+                    <p>Let's work together to bring your ideas to life with custom web and game development solutions.</p>
+                    <a href="#contact" class="cta-btn">
+                        <i class="fa fa-rocket"></i> Start a Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+       <!--ABOUT-->
+        <div class="sec" id="about">
+            <h1 class="sec-title">About BlockSizedX</h1>
+            
+            <div class="about-content">
+                <!-- Mission Section -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To create high-quality, affordable website and game templates that empower developers and creators to build amazing projects without breaking the bank.</p>
+                </div>
+
+                <!-- What We Do -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <h3>What We Do</h3>
+                    <p>We specialize in developing responsive website templates, 2D game templates using Godot Engine, and interactive web projects that are both functional and visually appealing.</p>
+                </div>
+
+                <!-- Why Choose Us -->
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h3>Why Choose Us</h3>
+                    <p>Professional quality at affordable prices. All our templates are thoroughly tested, well-documented, and come with free updates and support.</p>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="tech-section">
+                <h2 class="sub-title">Our Technology Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="fa fa-html5"></i>
+                        <span>HTML5/CSS3/JS</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa fa-github"></i>
+                        <span>Git & GitHub</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa fa-database"></i>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa fa-gamepad"></i>
+                        <span>Godot Engine</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa fa-mobile"></i>
+                        <span>Responsive Design</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fa fa-cloud"></i>
+                        <span>Web Templates</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-section">
+                <h2 class="sub-title">Our Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Passion for Code</div>
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
-        <!--PROJECTS-->
-        <div class="sec" id="projects">
 
-            <h1 class="sec-title">Our Projects and Games</h1>
-
-        </div>
-
-        <!--ABOUT-->
-        <div class="sec" id="about">
-
-            <h1 class="sec-title">About Us</h1>
-
-        </div>
 
         <!--CONTACT-->
+        <span id="contact-info"></span>
        <div class="sec" id="contact">
 
-            <h2 class="sec-title">Contact Info</h2>
-            <span id="contact-info"></span>
-            <div class="contact-info">
-                <div class="contact-item">
-                <i class="fa fa-whatsapp"></i>
-                <span><b>Whatsapp Channel: </b> <a style="text-decoration: none; color: antiquewhite;" href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02">Click To Join Whatsapp Channel</a></span>
+            <h1 class="sec-title">Get In Touch</h1>
+            
+            <div class="contact-grid">
+                <!-- Contact Info Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Send us an email anytime for inquiries, support, or collaborations.</p>
+                    <a href="mailto:blocksized404@gmail.com" class="contact-link">
+                        blocksized404@gmail.com
+                    </a>
                 </div>
 
-                <div class="contact-item">
-                <i class="fa fa-envelope"></i>
-                <span><b>Email: </b><a style="text-decoration: none; color: antiquewhite;" href="mailto:blocksized404@gmail.com?subject=Hello%20BlockSizedX&body=Hi,%20I%20want%20to%20know%20about%20your%20templates!">blocksized404@gmail.com</a></span>
-                </div>
-                <div class="contact-item">
-                <i class="fa fa-whatsapp"></i>
-                <span><b>Whatsapp Chat: </b> <a style="text-decoration: none; color: antiquewhite;" href="https://wa.me/919961550562">Click To Chat On Whatsapp </a></span>
-                </div>
-                <div class="contact-item">
-                <i class="fa fa-map-marker"></i>
-                <span><b>Location:</b> Kerala, India</span>
+                <!-- WhatsApp Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Chat with us directly for quick responses and instant support.</p>
+                    <a href="https://wa.me/919961550562" class="contact-link">
+                        +91 9961550562
+                    </a>
                 </div>
 
-                <div class="contact-item">
-                <i class="fa fa-globe"></i>
-                <span><b>Website:</b> <a style="text-decoration: none; color: antiquewhite;" href="https://blocksizedx.github.io">blocksizedx.github.io</a></span>
+                <!-- Channel Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fa fa-newspaper-o"></i>
+                    </div>
+                    <h3>Updates Channel</h3>
+                    <p>Join our WhatsApp channel for latest updates, new templates, and announcements.</p>
+                    <a href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02" class="contact-link">
+                        Join Channel
+                    </a>
+                </div>
+            </div>
+
+            <!-- Additional Contact Info -->
+            <div class="contact-details">
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h4>Our Location</h4>
+                        <p>Kerala, India</p>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h4>Website</h4>
+                        <a href="https://blocksizedx.github.io">blocksizedx.github.io</a>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h4>Response Time</h4>
+                        <p>Within 24 hours</p>
+                    </div>
                 </div>
             </div>
 
@@ -239,7 +733,7 @@
                     <h3>BlockSizedX</h3>
                     <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
                     <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 1.5  </p>
+                    <p style="color: rgb(126, 126, 126);">update_ver: 2.0  </p>
                 </div>
 
                 <div id="cont-details">
@@ -555,13 +1049,44 @@
         });
 
         // NAV BAR RESPONSIVE
+        // NAV BAR RESPONSIVE
+        // NAV BAR RESPONSIVE
         const toggle = document.getElementById('menu-toggle');
         const navLinks = document.getElementById('navlinks');
+        const searchContainer = document.querySelector('.search-container');
 
         toggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            
+            // On mobile, show search when menu is open
+            if (window.innerWidth <= 768) {
+                if (navLinks.classList.contains('active')) {
+                    searchContainer.style.display = 'block';
+                } else {
+                    searchContainer.style.display = 'none';
+                }
+            }
         });
 
+        // Close menu when clicking on a link (mobile)
+        document.querySelectorAll('#navlinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    searchContainer.style.display = 'none';
+                }
+            });
+        });
+
+        // Close menu when clicking outside (mobile)
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth <= 768) {
+                if (!event.target.closest('.nav-right-section') && !event.target.closest('.navbar h1')) {
+                    navLinks.classList.remove('active');
+                    searchContainer.style.display = 'none';
+                }
+            }
+        });
         // SCRIPT CHATBOT (unchanged)
         (function(){
             const chatbotBtn = document.getElementById('chatbotBtn');
@@ -711,6 +1236,110 @@
                 }
             }, 700);
         })();
+
+
+
+
+
+
+
+
+
+        // Search Functionality
+        const searchData = [
+            { id: 'home', title: 'Home', type: 'Page', section: 'HOME', icon: 'fa-home' },
+            { id: 'templates', title: 'Templates', type: 'Section', section: 'templates', icon: 'fa-file-code-o' },
+            { id: 'web-templates', title: 'Website Templates', type: 'Category', section: 'templates', icon: 'fa-desktop' },
+            { id: 'game-templates', title: 'Game Templates', type: 'Category', section: 'templates', icon: 'fa-gamepad' },
+            { id: 'projects', title: 'Projects & Games', type: 'Section', section: 'projects', icon: 'fa-rocket' },
+            { id: 'about', title: 'About Us', type: 'Section', section: 'about', icon: 'fa-info-circle' },
+            { id: 'contact', title: 'Contact Us', type: 'Section', section: 'contact', icon: 'fa-envelope' },
+            { id: 'comments', title: 'Comments & Reviews', type: 'Section', section: 'comments', icon: 'fa-comments' },
+            { id: 'contact-info', title: 'Contact Information', type: 'Section', section: 'contact-info', icon: 'fa-address-card' },
+            { id: 'portfolio-template', title: 'Portfolio Template', type: 'Template', section: 'templates', icon: 'fa-download' },
+            { id: 'business-template', title: 'Business Template', type: 'Template', section: 'templates', icon: 'fa-briefcase' },
+            { id: 'platformer-template', title: '2D Platformer Template', type: 'Game Template', section: 'templates', icon: 'fa-gamepad' },
+            { id: 'space-shooter', title: 'Space Shooter Template', type: 'Game Template', section: 'templates', icon: 'fa-space-shuttle' }
+        ];
+
+        function performSearch() {
+            const searchTerm = document.getElementById('navSearch').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (!searchTerm) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            const filteredResults = searchData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) || 
+                item.type.toLowerCase().includes(searchTerm)
+            );
+            
+            displaySearchResults(filteredResults);
+        }
+
+        function displaySearchResults(results) {
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No results found</div>';
+                resultsContainer.style.display = 'block';
+                return;
+            }
+            
+            resultsContainer.innerHTML = results.map(item => `
+                <div class="search-result-item" onclick="scrollToSection('${item.section}')">
+                    <i class="fa ${item.icon}"></i>
+                    <span>${item.title}</span>
+                    <span class="result-type">${item.type}</span>
+                </div>
+            `).join('');
+            
+            resultsContainer.style.display = 'block';
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                // Close search results
+                document.getElementById('searchResults').style.display = 'none';
+                
+                // Smooth scroll to section
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Add highlight effect
+                section.style.transition = 'all 0.5s ease';
+                section.style.boxShadow = '0 0 0 2px rgba(255, 213, 76, 0.5)';
+                
+                setTimeout(() => {
+                    section.style.boxShadow = 'none';
+                }, 2000);
+            }
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(event) {
+            const searchContainer = document.querySelector('.search-container');
+            const searchResults = document.getElementById('searchResults');
+            
+            if (!searchContainer.contains(event.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Search on Enter key
+        document.getElementById('navSearch').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Real-time search (optional - uncomment if you want instant search)
+        // document.getElementById('navSearch').addEventListener('input', performSearch);
     </script>
 
     </body>
