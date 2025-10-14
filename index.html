@@ -53,7 +53,7 @@
                             <a href="#game-templates">Game Templates</a>
                         </div>
                     </div>
-                    <a href="pages/news.html">NEWS</a>
+                    
                     <a href="#projects">PROJECTS</a>
                     <a href="#about">ABOUT</a>
                     <div class="dropdown-c">
@@ -95,8 +95,9 @@
                 2D Game templates, Game demos, and much more.
             </p>
             <div id="home-button-flex">
-                <a href="pages/news.html">NEWS</a>
+                
                 <a href="#projects">PROJECTS</a>
+                <a href="pages/news.html">🔹NEWS</a>
                 <a href="#contact">COMMENTS & REVIEWS</a>
                 <a href="#templates">TEMPLATES</a>
             </div>
@@ -288,8 +289,7 @@
 
 
     <script>
-
-        // Your Firebase Config (replace with your actual config)
+        // Your Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyD8YzEuKYAx7RxjckQikV2utU4R7Ym5g2w",
             authDomain: "blocksizedx-comment-sys.firebaseapp.com",
@@ -301,14 +301,95 @@
             databaseURL: "https://blocksizedx-comment-sys-default-rtdb.firebaseio.com/"
         };
 
-        
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-
         // Comment System JavaScript
         let currentUser = null;
+
+        // Load Comments FOR EVERYONE immediately
+        function loadComments() {
+            console.log("🔥 Loading comments for everyone...");
+            
+            database.ref('comments').on('value', (snapshot) => {
+                const comments = snapshot.val() || {};
+                console.log("📨 Comments loaded:", comments);
+                displayComments(comments);
+            }, (error) => {
+                console.error("❌ Error loading comments:", error);
+            });
+        }
+
+        function displayComments(comments) {
+            const commentsContainer = document.getElementById('all-comments');
+            commentsContainer.innerHTML = '';
+            
+            if (Object.keys(comments).length === 0) {
+                commentsContainer.innerHTML = '<p style="text-align: center; color: #888;">No comments yet. Be the first to comment!</p>';
+                return;
+            }
+            
+            // Convert to array and sort by timestamp (newest first)
+            const commentsArray = Object.entries(comments)
+                .sort(([,a], [,b]) => b.timestamp - a.timestamp);
+            
+            commentsArray.forEach(([commentId, comment]) => {
+                const commentElement = createCommentElement(commentId, comment, false);
+                commentsContainer.appendChild(commentElement);
+            });
+        }
+
+        function createCommentElement(commentId, comment, isReply = false, parentId = null) {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = isReply ? 'reply-item' : 'comment-item';
+            commentDiv.dataset.commentId = commentId;
+            if (parentId) commentDiv.dataset.parentId = parentId;
+            
+            const timeAgo = getTimeAgo(comment.timestamp);
+            const isOwner = currentUser && comment.authorId === currentUser.id;
+            const hasLiked = currentUser && comment.likedBy && comment.likedBy[currentUser.id];
+            
+            commentDiv.innerHTML = `
+                <div class="comment-header">
+                    <span class="comment-author">${comment.author}</span>
+                    <span class="comment-time">${timeAgo}</span>
+                </div>
+                <div class="comment-text">${comment.text}</div>
+                <div class="comment-actions">
+                    <span class="comment-action-btn">
+                        👍 ${comment.likes || 0}
+                    </span>
+                    ${currentUser ? `
+                        <button class="comment-action-btn like-btn ${hasLiked ? 'liked' : ''}" 
+                                onclick="toggleLike('${commentId}', ${isReply ? `'${parentId}'` : 'null'})">
+                            ${hasLiked ? '👎 Unlike' : '👍 Like'}
+                        </button>
+                        <button class="comment-action-btn" onclick="toggleReplyForm('${commentId}')">
+                            💬 Reply
+                        </button>
+                    ` : `
+                        <span class="comment-action-btn" style="color: #888;">Login to interact</span>
+                    `}
+                    ${isOwner ? `<button class="comment-action-btn delete-btn" onclick="deleteComment('${commentId}', ${isReply ? `'${parentId}'` : 'null'})">🗑️ Delete</button>` : ''}
+                </div>
+                ${currentUser ? `
+                <div class="reply-form" id="reply-form-${commentId}">
+                    <textarea placeholder="Write your reply..." rows="2"></textarea>
+                    <button onclick="postReply('${commentId}')">Post Reply</button>
+                    <button onclick="toggleReplyForm('${commentId}')">Cancel</button>
+                </div>
+                ` : ''}
+                <div class="replies" id="replies-${commentId}">
+                    ${comment.replies ? Object.entries(comment.replies)
+                        .sort(([,a], [,b]) => a.timestamp - b.timestamp)
+                        .map(([replyId, reply]) => createCommentElement(replyId, reply, true, commentId).outerHTML)
+                        .join('') : ''}
+                </div>
+            `;
+            
+            return commentDiv;
+        }
 
         // User Authentication
         function loginUser() {
@@ -323,8 +404,10 @@
                 name: userName
             };
             
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
             document.getElementById('auth-section').style.display = 'none';
             document.getElementById('comment-form').style.display = 'block';
+            // Reload to show interactive buttons
             loadComments();
         }
 
@@ -366,77 +449,6 @@
             return 'comment_' + Date.now();
         }
 
-        // Load Comments
-        function loadComments() {
-            console.log("🔥 Loading comments from Firebase...");
-            
-            database.ref('comments').on('value', (snapshot) => {
-                console.log("📨 Firebase response:", snapshot.val());
-                const comments = snapshot.val() || {};
-                console.log("🔄 Comments data:", comments);
-                displayComments(comments);
-            }, (error) => {
-                console.error("❌ Firebase error:", error);
-                alert("Error loading comments: " + error.message);
-            });
-        }
-
-        function displayComments(comments) {
-            const commentsContainer = document.getElementById('all-comments');
-            commentsContainer.innerHTML = '';
-            
-            // Convert to array and sort by timestamp (newest first)
-            const commentsArray = Object.entries(comments)
-                .sort(([,a], [,b]) => b.timestamp - a.timestamp);
-            
-            commentsArray.forEach(([commentId, comment]) => {
-                const commentElement = createCommentElement(commentId, comment, false);
-                commentsContainer.appendChild(commentElement);
-            });
-        }
-
-        function createCommentElement(commentId, comment, isReply = false, parentId = null) {
-            const commentDiv = document.createElement('div');
-            commentDiv.className = isReply ? 'reply-item' : 'comment-item';
-            commentDiv.dataset.commentId = commentId;
-            if (parentId) commentDiv.dataset.parentId = parentId;
-            
-            const timeAgo = getTimeAgo(comment.timestamp);
-            const isOwner = currentUser && comment.authorId === currentUser.id;
-            const hasLiked = currentUser && comment.likedBy && comment.likedBy[currentUser.id];
-            
-            commentDiv.innerHTML = `
-                <div class="comment-header">
-                    <span class="comment-author">${comment.author}</span>
-                    <span class="comment-time">${timeAgo}</span>
-                </div>
-                <div class="comment-text">${comment.text}</div>
-                <div class="comment-actions">
-                    <button class="comment-action-btn like-btn ${hasLiked ? 'liked' : ''}" 
-                            onclick="toggleLike('${commentId}', ${isReply ? `'${parentId}'` : 'null'})">
-                        👍 ${comment.likes || 0}
-                    </button>
-                    <button class="comment-action-btn" onclick="toggleReplyForm('${commentId}')">
-                        💬 Reply
-                    </button>
-                    ${isOwner ? `<button class="comment-action-btn delete-btn" onclick="deleteComment('${commentId}', ${isReply ? `'${parentId}'` : 'null'})">🗑️ Delete</button>` : ''}
-                </div>
-                <div class="reply-form" id="reply-form-${commentId}">
-                    <textarea placeholder="Write your reply..." rows="2"></textarea>
-                    <button onclick="postReply('${commentId}')">Post Reply</button>
-                    <button onclick="toggleReplyForm('${commentId}')">Cancel</button>
-                </div>
-                <div class="replies" id="replies-${commentId}">
-                    ${comment.replies ? Object.entries(comment.replies)
-                        .sort(([,a], [,b]) => a.timestamp - b.timestamp)
-                        .map(([replyId, reply]) => createCommentElement(replyId, reply, true, commentId).outerHTML)
-                        .join('') : ''}
-                </div>
-            `;
-            
-            return commentDiv;
-        }
-
         // Comment Actions
         function toggleReplyForm(commentId) {
             const form = document.getElementById(`reply-form-${commentId}`);
@@ -461,7 +473,7 @@
                 timestamp: Date.now(),
                 likes: 0,
                 likedBy: {},
-                replies: {}
+                replies: {} // Can have nested replies too!
             };
             
             database.ref(`comments/${commentId}/replies/${reply.id}`).set(reply)
@@ -528,42 +540,19 @@
 
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if user was already logged in (basic persistence)
+            // Load comments for EVERYONE immediately
+            loadComments();
+            
+            // Check if user was already logged in
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
                 currentUser = JSON.parse(savedUser);
                 document.getElementById('auth-section').style.display = 'none';
                 document.getElementById('comment-form').style.display = 'block';
+                // Reload comments to show interactive buttons
                 loadComments();
             }
-            
-            // Save user to localStorage when logging in
-            window.loginUser = function() {
-                const userName = document.getElementById('userName').value.trim();
-                if (!userName) {
-                    alert('Please enter your name');
-                    return;
-                }
-                
-                currentUser = {
-                    id: generateUserId(),
-                    name: userName
-                };
-                
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                
-                document.getElementById('auth-section').style.display = 'none';
-                document.getElementById('comment-form').style.display = 'block';
-                loadComments();
-            };
         });
-
-
-
-
-
-
-
 
         // NAV BAR RESPONSIVE
         const toggle = document.getElementById('menu-toggle');
@@ -573,21 +562,7 @@
             navLinks.classList.toggle('active');
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //SCRIPT CHATBOT
+        // SCRIPT CHATBOT (unchanged)
         (function(){
             const chatbotBtn = document.getElementById('chatbotBtn');
             const chatbotWindow = document.getElementById('chatbotWindow');
@@ -605,7 +580,6 @@
                     keywords: ["keywords", "words", "what is keywords", "search", "what to search", "functions", "questions", "ques", "quest", "find"],
                     answer: "You can ask me keywords like Whatsapp, number, templates, projects, games, about, contact and more."
                 },
-                // 👋 Greetings
                 {
                     keywords: ["hi", "hello", "hey", "yo", "whats up", "sup", "heyy", "hii", "hola", "greetings"],
                     answer: "Hey there 👋 Welcome to BlockSizedX! Wanna check out some templates or games?"
@@ -614,67 +588,46 @@
                     keywords: ["nope", "no", "nothing", "onnulla", "onnula", "poda", "poo", "nothing else", "myre", "no da"],
                     answer: "Ahh okay, if u wanna know anything, just search for templates, games, etc!"
                 },
-                // 🕸️ About site
                 {
                     keywords: ["who are you", "about", "about site", "this website", "what is blocksizedx", "who made this", "developer", "who built", "owner", "creator"],
                     answer: "I'm BlockSizedX — your friendly dev site 💻. I make web & game templates, playable mini-games, and cool open projects!"
                 },
-
-                // 🧩 Templates info
                 {
                     keywords: ["template", "templates", "web templates", "html templates", "css templates", "game templates", "free templates", "cheap templates", "download templates", "buy templates", "sell templates"],
-                    answer: "We’ve got both **web templates** and **game templates** — free or super cheap 💸. Check them on the Templates section!"
+                    answer: "We've got both **web templates** and **game templates** — free or super cheap 💸. Check them on the Templates section!"
                 },
-
-                // 🎮 Games
                 {
                     keywords: ["game", "games", "play game", "mini games", "test games", "try games", "play online", "arcade", "fun games", "try project"],
                     answer: "Yesss 🎮 you can play fun mini games right here on BlockSizedX! Just go to the 'Games' or 'Projects' page and have fun 😎"
                 },
-
-                // 💾 Projects / portfolio
                 {
                     keywords: ["project", "projects", "see projects", "my projects", "view projects", "portfolio", "what projects", "demo projects"],
                     answer: "You can explore all my projects on the **Projects page** — from web apps to games and experiments 🚀"
                 },
-
-                // 💰 Pricing / free / cheap
                 {
                     keywords: ["price", "cost", "free", "cheap", "paid", "buy", "purchase", "how much", "is it free", "download free", "pricing"],
-                    answer: "Almost everything’s **free or super cheap** 💸 — because I want devs like you to build cool stuff easily 😎"
+                    answer: "Almost everything's **free or super cheap** 💸 — because I want devs like you to build cool stuff easily 😎"
                 },
-
-                // 💬 Contact
                 {
                     keywords: ["contact", "message", "email", "mail", "support", "how to contact", "reach you", "chat", "talk", "feedback"],
                     answer: "You can contact me anytime at **blocksized404@gmail.com** or through my GitHub page 💌"
                 },
-
-                // 🌐 Website links
                 {
                     keywords: ["website", "github", "link", "site", "blocksizedx", "page", "blocksized", "repo", "repository"],
                     answer: "Visit my official site 🌐 **blocksizedx.github.io** and check all projects there!"
                 },
-
-                // 🧠 Learn / try / code
                 {
                     keywords: ["learn", "tutorial", "code", "source code", "how it works", "view code", "example", "open source"],
-                    answer: "All templates & games are open-source 👨‍💻 — explore the code and learn! You’ll find GitHub links on each project page."
+                    answer: "All templates & games are open-source 👨‍💻 — explore the code and learn! You'll find GitHub links on each project page."
                 },
-
-                // 🚀 New updates
                 {
-                    keywords: ["new", "latest", "update", "recent", "new projects", "what’s new", "recent upload"],
+                    keywords: ["new", "latest", "update", "recent", "new projects", "what's new", "recent upload"],
                     answer: "I keep updating BlockSizedX often ⚡ — check the homepage for latest uploads & projects!"
                 },
-
-                // ❤️ Thanks
                 {
                     keywords: ["thanks", "thank you", "cool", "awesome", "nice", "good job", "love this", "great"],
-                    answer: "Aww thanks 😄 You’re awesome too! Keep exploring BlockSizedX 💪"
+                    answer: "Aww thanks 😄 You're awesome too! Keep exploring BlockSizedX 💪"
                 },
-
-                // ❓ Default help
                 {
                     keywords: ["help", "what can you do", "commands", "how to use", "how this works", "guide"],
                     answer: "You can ask me about templates, projects, games, or how to contact BlockSizedX 😎"
@@ -683,10 +636,9 @@
                     keywords: ["brother", "your brother", "about brother","aahil","aahi", "bro", "what is blocksizedx brother", "broo", "broother", "bad"],
                     answer: "Its my bro!,Aahil and he is a lil bit crazy haha. "
                 },
-                    ];
+            ];
 
-
-            const fallback = "Sorry, I didn’t get that 😅 — search fo keywords for please email us at blocksized404@gmail.com .";
+            const fallback = "Sorry, I didn't get that 😅 — search fo keywords for please email us at blocksized404@gmail.com .";
 
             function formatTime(date){
                 const h = date.getHours(), m = date.getMinutes();
@@ -758,13 +710,7 @@
                 appendMessage("Hello 👋 I'm your assistant. How can I help?", 'bot');
                 }
             }, 700);
-            })();
-
-
-
-
-
-
+        })();
     </script>
 
     </body>
