@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Purchase - BlockSizedX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Import your existing styles */
+        :root {
+            --primary: #ffd54c;
+            --primary-dark: #e6b800;
+            --dark-bg: #0d0d0d;
+            --card-bg: rgba(50, 50, 50, 0.7);
+            --text-light: #e0e0e0;
+            --text-dark: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header matching your site */
+        header {
+            background: linear-gradient(135deg, rgba(33, 33, 33, 0.95), rgba(50, 45, 35, 0.9));
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 213, 76, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .back-btn {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        
+        .back-btn:hover {
+            color: var(--primary);
+        }
+        
+        /* Main content layout */
+        .payment-page {
+            padding: 40px 0;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Template details card */
+        .template-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 213, 76, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .template-card:hover {
+            border-color: rgba(255, 213, 76, 0.5);
+            box-shadow: 0 10px 25px rgba(255, 213, 76, 0.15);
+        }
+        
+        .template-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .template-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .template-content {
+            padding: 25px;
+        }
+        
+        .template-content h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .template-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .template-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .template-features span {
+            background: rgba(255, 213, 76, 0.1);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 213, 76, 0.2);
+        }
+        
+        .template-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Payment process card */
+        .process-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 213, 76, 0.2);
+        }
+        
+        .process-steps {
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 50px;
+            bottom: -30px;
+            width: 2px;
+            background: rgba(255, 213, 76, 0.3);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--text-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .step-content p {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+        
+        /* Payment form */
+        .payment-form {
+            background: rgba(40, 40, 40, 0.6);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 213, 76, 0.1);
+        }
+        
+        .form-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 16px;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-dark);
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 213, 76, 0.4);
+        }
+        
+        .btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* Verification section */
+        .verification-section {
+            display: none;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 213, 76, 0.2);
+        }
+        
+        .verification-section.active {
+            display: block;
+        }
+        
+        /* Success message */
+        .success-message {
+            display: none;
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .success-message.active {
+            display: block;
+        }
+        
+        .success-icon {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        
+        .download-link {
+            display: block;
+            background: var(--primary);
+            color: var(--text-dark);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .download-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* UPI Apps */
+        .upi-apps {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .upi-app {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            font-size: 24px;
+            color: #333;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer matching your site */
+        footer {
+            background: linear-gradient(rgb(47, 47, 47), rgb(57, 57, 57));
+            padding: 30px 0 15px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 213, 76, 0.2);
+            color: #b0b0b0;
+            font-size: 14px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">BlockSizedX</a>
+                <a href="index.html#templates" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Templates
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="payment-page">
+        <div class="container">
+            <h1 class="page-title">Complete Your Purchase</h1>
+            
+            <div class="content-grid">
+                <!-- Template Details -->
+                <div class="template-card">
+                    <div class="template-image">
+                        <img src="https://via.placeholder.com/600x400/333/fff?text=Template+Preview" alt="Template Preview" id="template-preview">
+                    </div>
+                    <div class="template-content">
+                        <h2 id="template-name">Portfolio Template</h2>
+                        <p id="template-description">Clean, modern portfolio design for developers & designers with smooth animations and responsive layout.</p>
+                        
+                        <div class="template-features" id="template-features">
+                            <span>Responsive Design</span>
+                            <span>Modern UI</span>
+                            <span>Easy Customizable</span>
+                            <span>Fast Loading</span>
+                        </div>
+                        
+                        <div class="template-price" id="template-price">FREE</div>
+                        
+                        <div class="template-info">
+                            <p><i class="fas fa-file-code"></i> Includes source code</p>
+                            <p><i class="fas fa-images"></i> Includes demo images</p>
+                            <p><i class="fas fa-life-ring"></i> Free support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Process -->
+                <div class="process-card">
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Select Payment Method</h3>
+                                <p>Choose how you want to pay for your template</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Complete Payment</h3>
+                                <p>Pay via UPI or other available methods</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Verify Transaction</h3>
+                                <p>Enter your transaction reference ID</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Download Template</h3>
+                                <p>Get instant access to your template files</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Form -->
+                    <div class="payment-form">
+                        <h3 class="form-title">Payment Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="customer-name">Your Name</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customer-email">Your Email</label>
+                            <input type="email" id="customer-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="payment-method">Payment Method</label>
+                            <select id="payment-method">
+                                <option value="upi">UPI Payment</option>
+                                <option value="free" id="free-option">Free Download</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn" id="pay-btn">
+                            <i class="fas fa-credit-card"></i> Proceed to Payment
+                        </button>
+                        
+                        <div class="upi-apps">
+                            <div class="upi-app">
+                                <i class="fab fa-google-pay"></i>
+                            </div>
+                            <div class="upi-app">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="upi-app">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="upi-app">
+                                <i class="fab fa-amazon-pay"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Verification Section -->
+                    <div class="verification-section" id="verification-section">
+                        <h3 class="form-title">Verify Your Payment</h3>
+                        <p style="text-align: center; margin-bottom: 20px; color: #b0b0b0;">
+                            After completing payment, enter your UPI transaction reference ID below
+                        </p>
+                        
+                        <div class="form-group">
+                            <label for="transaction-id">Transaction Reference ID</label>
+                            <input type="text" id="transaction-id" placeholder="Enter UPI transaction reference ID" required>
+                        </div>
+                        
+                        <button class="btn" id="verify-btn">
+                            <i class="fas fa-check-circle"></i> Verify & Download
+                        </button>
+                    </div>
+                    
+                    <!-- Success Message -->
+                    <div class="success-message" id="success-message">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Payment Verified Successfully!</h3>
+                        <p>Your template is ready for download. The link will expire in 24 hours.</p>
+                        
+                        <a href="#" class="download-link" id="download-link">
+                            <i class="fas fa-download"></i> Download Template Now
+                        </a>
+                        
+                        <p style="margin-top: 15px; font-size: 14px;">
+                            Having issues? <a href="mailto:blocksized404@gmail.com" style="color: var(--primary);">Contact our support</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BlockSizedX</h3>
+                    <p>The best place to get projects, templates, demos and much more. With high quality and trust.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <a href="mailto:blocksized404@gmail.com">
+                        <i class="fas fa-envelope"></i> blocksized404@gmail.com
+                    </a>
+                    <a href="https://wa.me/919961550562">
+                        <i class="fab fa-whatsapp"></i> +91 9961550562
+                    </a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#templates">Templates</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                Copyright © BlockSizedX 2025 | All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+        <script>
+            
+        // Get template details from URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const templateName = urlParams.get('template') || 'Portfolio Template';
+            const templatePrice = urlParams.get('price') || '0';
+            
+            // Update page with template details
+            document.getElementById('template-name').textContent = templateName;
+            document.getElementById('template-price').textContent = 
+                templatePrice === '0' ? 'FREE' : `₹${templatePrice}`;
+            
+            // Set template image based on name
+            const templateImage = document.getElementById('template-preview');
+            if (templateName.includes('Portfolio')) {
+                templateImage.src = '../template-download/images/port-1.png';
+            } else if (templateName.includes('Business')) {
+                templateImage.src = 'https://via.placeholder.com/600x400/333/fff?text=Business+Template';
+            } else if (templateName.includes('Platformer')) {
+                templateImage.src = 'https://via.placeholder.com/600x400/333/fff?text=2D+Platformer+Template';
+            }
+            
+            // Update description based on template
+            const description = document.getElementById('template-description');
+            if (templateName.includes('Portfolio')) {
+                description.textContent = 'Clean, modern portfolio design for developers & designers with smooth animations and responsive layout. Perfect for showcasing your work and skills.';
+            } else if (templateName.includes('Business')) {
+                description.textContent = 'Professional business website template with modern design, contact forms, and responsive layout. Ideal for startups, companies, and agencies.';
+            } else if (templateName.includes('Platformer')) {
+                description.textContent = 'Complete 2D platformer game template with character controller, level system, and enemy AI. Built with Godot Engine and includes full source code.';
+            }
+            
+            // Update features based on template
+            const featuresContainer = document.getElementById('template-features');
+            featuresContainer.innerHTML = '';
+            
+            let features = [];
+            if (templateName.includes('Portfolio')) {
+                features = ['Responsive Design', 'Modern UI', 'Easy Customizable', 'Fast Loading', 'Smooth Animations'];
+            } else if (templateName.includes('Business')) {
+                features = ['Responsive Design', 'Professional Layout', 'Contact Forms', 'SEO Optimized', 'Fast Loading'];
+            } else if (templateName.includes('Platformer')) {
+                features = ['Godot Engine', 'Full Source Code', 'Character Controller', 'Level System', 'Enemy AI'];
+            }
+            
+            features.forEach(feature => {
+                const span = document.createElement('span');
+                span.textContent = feature;
+                featuresContainer.appendChild(span);
+            });
+            
+            // ========== AUTO-FREE SELECTION ==========
+            const paymentMethod = document.getElementById('payment-method');
+            const payButton = document.getElementById('pay-btn');
+            
+            if (templatePrice === '0') {
+                // Hide UPI payment option and show only free download
+                paymentMethod.innerHTML = '<option value="free">Free Download</option>';
+                payButton.innerHTML = '<i class="fas fa-download"></i> Get Template Now';
+                
+                // Show free template message
+                setTimeout(() => {
+                    const paymentForm = document.querySelector('.payment-form');
+                    const freeMessage = document.createElement('div');
+                    freeMessage.innerHTML = `
+                        <div style="background: rgba(76, 175, 80, 0.2); padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 1px solid rgba(76, 175, 80, 0.5);">
+                            <i class="fas fa-gift" style="color: #4CAF50; margin-right: 8px;"></i>
+                            This template is <strong>FREE</strong> - no payment required!
+                        </div>
+                    `;
+                    paymentForm.insertBefore(freeMessage, paymentForm.firstChild);
+                    
+                    // Make form fields optional for free templates
+                    const customerName = document.getElementById('customer-name');
+                    const customerEmail = document.getElementById('customer-email');
+                    customerName.placeholder = "Your name (optional)";
+                    customerEmail.placeholder = "Your email (optional)";
+                }, 500);
+            } else {
+                // For paid templates, hide free option
+                const freeOption = document.getElementById('free-option');
+                if (freeOption) freeOption.style.display = 'none';
+            }
+            // ========== END AUTO-FREE SELECTION ==========
+            
+            // Payment button handler
+            document.getElementById('pay-btn').addEventListener('click', function() {
+                const customerName = document.getElementById('customer-name').value;
+                const customerEmail = document.getElementById('customer-email').value;
+                const paymentMethod = document.getElementById('payment-method').value;
+                
+                // For free templates, name and email are optional
+                if (templatePrice !== '0' && (!customerName || !customerEmail)) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                if (paymentMethod === 'free' || templatePrice === '0') {
+                    // Free template - skip payment
+                    processFreeTemplate(customerName, customerEmail);
+                } else {
+                    // Paid template - initiate UPI payment
+                    initiateUPIPayment(customerName, customerEmail);
+                }
+            });
+            
+            // Verification button handler
+            document.getElementById('verify-btn').addEventListener('click', function() {
+                const transactionId = document.getElementById('transaction-id').value;
+                
+                if (!transactionId) {
+                    alert('Please enter your transaction reference ID');
+                    return;
+                }
+                
+                verifyPayment(transactionId);
+            });
+            
+            // Process free template (no payment needed)
+            function processFreeTemplate(name, email) {
+                // Generate download link (in real implementation, this would come from backend)
+                const downloadUrl = `https://drive.google.com/file/d/1Rk82LcvF0zcy_sjb-fn5eTDC9LOjNZRr/view?usp=drive_link`;
+                document.getElementById('download-link').href = downloadUrl;
+                
+                // Show success message immediately
+                document.getElementById('success-message').classList.add('active');
+                
+                // Log free download (in real implementation, save to database)
+                console.log('Free template download:', {
+                    template: templateName,
+                    customer: { name, email },
+                    timestamp: new Date().toISOString()
+                });
+                
+                // Auto-scroll to download section
+                document.getElementById('success-message').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+            
+            // Initiate UPI payment
+            function initiateUPIPayment(name, email) {
+                // Generate unique order ID
+                const orderId = 'BSX' + Date.now() + Math.floor(Math.random() * 1000);
+                
+                // Create UPI payment URL
+                const upiId = 'blocksizedx@upi'; // Replace with your actual UPI ID
+                const upiUrl = `upi://pay?pa=${upiId}&pn=BlockSizedX&am=${templatePrice}&tid=${orderId}&tn=Payment for ${templateName}&cu=INR`;
+                
+                // Try to open UPI app
+                window.location.href = upiUrl;
+                
+                // Show verification form after a delay
+                setTimeout(() => {
+                    document.querySelector('.payment-form').style.display = 'none';
+                    document.getElementById('verification-section').classList.add('active');
+                    
+                    // In a real implementation, you would save order details to your backend
+                    console.log('Payment initiated:', {
+                        orderId,
+                        template: templateName,
+                        price: templatePrice,
+                        customer: { name, email },
+                        timestamp: new Date().toISOString()
+                    });
+                }, 2000);
+            }
+            
+            // Verify payment using transaction ID
+            function verifyPayment(transactionId) {
+                // Show loading state
+                const verifyBtn = document.getElementById('verify-btn');
+                verifyBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+                verifyBtn.disabled = true;
+                
+                // In a real implementation, this would call your Google Apps Script backend
+                setTimeout(() => {
+                    // Simulate API call to Google Apps Script
+                    const scriptUrl = 'https://script.google.com/macros/s/YOUR_GOOGLE_APPS_SCRIPT_ID/exec';
+                    
+                    // For demo purposes, we'll simulate a successful verification
+                    const verificationSuccessful = true;
+                    
+                    if (verificationSuccessful) {
+                        // Generate download link (in real implementation, this would come from backend)
+                        const downloadUrl = `https://drive.google.com/file/d/1Rk82LcvF0zcy_sjb-fn5eTDC9LOjNZRr/view?usp=drive_link`;
+                        document.getElementById('download-link').href = downloadUrl;
+                        
+                        // Show success message
+                        document.getElementById('verification-section').classList.remove('active');
+                        document.getElementById('success-message').classList.add('active');
+                        
+                        // Log successful verification
+                        console.log('Payment verified:', {
+                            transactionId,
+                            template: templateName,
+                            timestamp: new Date().toISOString()
+                        });
+                    } else {
+                        alert('Payment verification failed. Please check your transaction ID and try again.');
+                    }
+                    
+                    // Reset button
+                    verifyBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Download';
+                    verifyBtn.disabled = false;
+                }, 2000);
+            }
+        });
+    </script>
+    
+</body>
+</html>
