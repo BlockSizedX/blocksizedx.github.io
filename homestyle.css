@@ -36,15 +36,15 @@
 .shape {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255, 213, 76, 0.1), rgba(255, 213, 76, 0.05));
+    background: linear-gradient(135deg, rgba(255, 213, 76, 0.054), rgba(255, 213, 76, 0.05));
     animation: float 6s ease-in-out infinite;
 }
 
 .shape-1 {
     width: 200px;
     height: 200px;
-    top: 10%;
-    left: 5%;
+    top: 0%;
+    right: 27%;
     animation-delay: 0s;
 }
 
