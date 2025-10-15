@@ -390,4 +390,8 @@
 
 
 
+/* ================= DISABLE ALL HOME ANIMATIONS ================= */
 
+.shape {
+    display: none;
+}
