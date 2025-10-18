@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Purchase - BlockSizedX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="payment-style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">BlockSizedX</a>
+                <a href="../index.html#templates" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Templates
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="payment-page">
+        <div class="container">
+            <h1 class="page-title" id="template-title">Complete Your Purchase</h1>
+            
+            <div class="content-grid">
+                <!-- Template Details -->
+                <div class="template-card">
+                    <div class="template-image">
+                        <img src="" alt="Template Preview" id="template-preview">
+                    </div>
+                    <div class="template-content">
+                        <h2 id="template-name"></h2>
+                        <p id="template-description"></p>
+                        
+                        <div class="template-features" id="template-features"></div>
+                        <div class="template-price" id="template-price"></div>
+                        
+                        <div class="template-info">
+                            <p><i class="fas fa-file-code"></i> Includes source code</p>
+                            <p><i class="fas fa-newspaper-o"></i> Includes inline documentetion</p>
+                            <p><i class="fas fa-life-ring"></i> Free support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Process -->
+                <div class="process-card">
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Select Payment Method</h3>
+                                <p>Choose how you want to pay for your template</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Complete Payment</h3>
+                                <p>Pay via UPI or other available methods</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Verify Transaction</h3>
+                                <p>Enter your transaction reference ID</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Download Template</h3>
+                                <p>Get instant access to your template files</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Form -->
+                    <div class="payment-form">
+                        <h3 class="form-title">Payment Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="customer-name">Your Name</label>
+                            <input type="text" id="customer-name" placeholder="Your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customer-email">Your Email</label>
+                            <input type="email" id="customer-email" placeholder="Your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="payment-method">Payment Method</label>
+                            <select id="payment-method">
+                                <option value="upi">UPI Payment</option>
+                                <option value="free">Free Download</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn" id="pay-btn">
+                            <i class="fas fa-credit-card"></i> Proceed to Payment
+                        </button>
+                        
+                        <div class="upi-apps">
+                            <div class="upi-app"><i class="fab fa-google-pay"></i></div>
+                            <div class="upi-app"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="upi-app"><i class="fas fa-university"></i></div>
+                            <div class="upi-app"><i class="fab fa-amazon-pay"></i></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Verification Section -->
+                    <div class="verification-section" id="verification-section">
+                        <h3 class="form-title">Verify Your Payment</h3>
+                        <p style="text-align: center; margin-bottom: 20px; color: #b0b0b0;">
+                            After completing payment, enter your UPI transaction reference ID below
+                        </p>
+                        
+                        <div class="form-group">
+                            <label for="transaction-id">Transaction Reference ID</label>
+                            <input type="text" id="transaction-id" placeholder="Enter UPI transaction reference ID">
+                        </div>
+                        
+                        <button class="btn" id="verify-btn">
+                            <i class="fas fa-check-circle"></i> Verify & Download
+                        </button>
+                    </div>
+                    
+                    <!-- Success Message -->
+                    <div class="success-message" id="success-message">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Payment Verified Successfully!</h3>
+                        <p>Your template is ready for download. The link will expire in 24 hours.</p>
+                        
+                        <a href="#" class="download-link" id="download-link">
+                            <i class="fas fa-download"></i> Download Template Now
+                        </a>
+                        
+                        <p style="margin-top: 15px; font-size: 14px;">
+                            Having issues? <a href="mailto:blocksized404@gmail.com" style="color: var(--primary);">Contact our support</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BlockSizedX</h3>
+                    <p>The best place to get projects, templates, demos and much more. With high quality and trust.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <a href="mailto:blocksized404@gmail.com"><i class="fas fa-envelope"></i> blocksized404@gmail.com</a>
+                    <a href="https://wa.me/919961550562"><i class="fab fa-whatsapp"></i> +91 9961550562</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#templates">Templates</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                Copyright © BlockSizedX 2025 | All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="templates.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>
