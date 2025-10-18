@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initiateUPIPayment(name, email) {
         const orderId = 'BSX'+Date.now()+Math.floor(Math.random()*1000);
-        const upiId = 'raseena3131@okaxis';
+        const upiId = 'raseena3131@okhdfcbank';
         const upiUrl = `upi://pay?pa=${upiId}&pn=BlockSizedX&am=${template.price}&tid=${orderId}&tn=Payment for ${template.name}&cu=INR`;
         window.location.href = upiUrl;
 
