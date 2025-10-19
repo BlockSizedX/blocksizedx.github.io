@@ -88,4 +88,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Payment verified:", transactionId);
         },2000);
     }
+
+    // GALLERY SECTION
+    const galleryGrid = document.getElementById('gallery-grid');
+    if (galleryGrid && template.gallery && template.gallery.length > 0) {
+    galleryGrid.innerHTML = ''; // clear default static demos
+    template.gallery.forEach(img => {
+        const div = document.createElement('div');
+        div.classList.add('gallery-item');
+        div.innerHTML = `<img src="${img}" alt="${template.name} demo">`;
+        galleryGrid.appendChild(div);
+    });
+    }
+
 });

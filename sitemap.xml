@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url>
     <loc>https://blocksizedx.github.io/</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
   </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#HOME</loc>
-  </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#about</loc>
-  </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#contact</loc>
-  </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#templates</loc>
-  </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#web-templates</loc>
-  </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#game-templates</loc>
-  </url>
-  <url>
-    <loc>https://blocksizedx.github.io/#projects</loc>
-  </url>
+
   <url>
     <loc>https://blocksizedx.github.io/pages/news</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
-  <!-- Add more URLs as needed -->
+  <url>
+    <loc>https://blocksizedx.github.io/template-download/complete-downlod</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
 </urlset>
