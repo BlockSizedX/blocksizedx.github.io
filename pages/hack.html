@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Security Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .terminal {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            line-height: 1.4;
+        }
+        
+        .prompt {
+            color: #00ff00;
+            margin-right: 8px;
+        }
+        
+        .input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #00ff00;
+            animation: blink 1s infinite;
+            margin-left: 4px;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .output {
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #00ff00;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .scanning {
+            color: #ffff00;
+        }
+        
+        .success {
+            color: #00ffff;
+        }
+        
+        .warning {
+            color: #ff9900;
+        }
+        
+        .error {
+            color: #ff0000;
+        }
+        
+        .final-message {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 30px;
+            color: #ffffff;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .nose {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="terminal">
+        <div class="output">Initializing security analysis protocol...</div>
+        <div class="output">Establishing secure connection...</div>
+        <div class="output success">Connected to target system</div>
+        <div class="output">Starting vulnerability scan...</div>
+    </div>
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const terminal = document.getElementById('terminal');
+            const progressBar = document.getElementById('progress');
+            let progress = 0;
+            
+            // Function to add output with delay
+            function addOutput(text, className = '', delay = 1000) {
+                setTimeout(() => {
+                    const output = document.createElement('div');
+                    output.className = 'output ' + className;
+                    output.textContent = text;
+                    terminal.appendChild(output);
+                    terminal.scrollTop = terminal.scrollHeight;
+                }, delay);
+            }
+            
+            // Function to update progress bar
+            function updateProgress(value) {
+                progress = value;
+                progressBar.style.width = progress + '%';
+            }
+            
+            // Simulate hacking sequence
+            setTimeout(() => {
+                addOutput('Scanning network interfaces...', 'scanning', 0);
+                updateProgress(5);
+            }, 1500);
+            
+            setTimeout(() => {
+                addOutput('Detected 3 active connections', 'success', 0);
+                updateProgress(10);
+            }, 2500);
+            
+            setTimeout(() => {
+                addOutput('Bypassing firewall...', 'scanning', 0);
+                updateProgress(15);
+            }, 3500);
+            
+            setTimeout(() => {
+                addOutput('Firewall bypassed successfully', 'success', 0);
+                updateProgress(25);
+            }, 4500);
+            
+            setTimeout(() => {
+                addOutput('Accessing main database...', 'scanning', 0);
+                updateProgress(30);
+            }, 5500);
+            
+            setTimeout(() => {
+                addOutput('Database encryption detected', 'warning', 0);
+                updateProgress(35);
+            }, 6500);
+            
+            setTimeout(() => {
+                addOutput('Running decryption algorithm...', 'scanning', 0);
+                updateProgress(40);
+            }, 7500);
+            
+            setTimeout(() => {
+                addOutput('Decryption in progress... 25%', '', 0);
+                updateProgress(45);
+            }, 8500);
+            
+            setTimeout(() => {
+                addOutput('Decryption in progress... 67%', '', 0);
+                updateProgress(55);
+            }, 9500);
+            
+            setTimeout(() => {
+                addOutput('Decryption complete', 'success', 0);
+                updateProgress(65);
+            }, 10500);
+            
+            setTimeout(() => {
+                addOutput('Analyzing user data structures...', 'scanning', 0);
+                updateProgress(70);
+            }, 11500);
+            
+            setTimeout(() => {
+                addOutput('Found biometric database', 'success', 0);
+                updateProgress(75);
+            }, 12500);
+            
+            setTimeout(() => {
+                addOutput('Extracting facial recognition data...', 'scanning', 0);
+                updateProgress(80);
+            }, 13500);
+            
+            setTimeout(() => {
+                addOutput('Running pattern analysis...', 'scanning', 0);
+                updateProgress(85);
+            }, 14500);
+            
+            setTimeout(() => {
+                addOutput('Unexpected pattern detected', 'warning', 0);
+                updateProgress(90);
+            }, 15500);
+            
+            setTimeout(() => {
+                addOutput('Running deep analysis...', 'scanning', 0);
+                updateProgress(92);
+            }, 16500);
+            
+            setTimeout(() => {
+                addOutput('Analysis complete', 'success', 0);
+                updateProgress(95);
+            }, 17500);
+            
+            setTimeout(() => {
+                addOutput('Compiling final report...', 'scanning', 0);
+                updateProgress(98);
+            }, 18500);
+            
+            // The big reveal
+            setTimeout(() => {
+                updateProgress(100);
+                addOutput('', '', 0);
+                addOutput('SECURITY ANALYSIS COMPLETE', 'success', 0);
+                addOutput('================================', '', 500);
+                addOutput('CRITICAL DISCOVERY:', 'warning', 1000);
+                addOutput('After extensive analysis of human biometric data...', '', 1500);
+                addOutput('', '', 2000);
+                
+                const noseMessage = document.createElement('div');
+                noseMessage.className = 'final-message';
+                noseMessage.innerHTML = 'HUMANS HAVE NOSE';
+                terminal.appendChild(noseMessage);
+                
+                const nose = document.createElement('div');
+                nose.className = 'final-message nose';
+                nose.textContent = '👃';
+                terminal.appendChild(nose);
+                
+                const explanation = document.createElement('div');
+                explanation.className = 'output';
+                explanation.innerHTML = '<br>Further analysis confirms: This facial protrusion appears to be<br>a primary olfactory sensor with dual intake ports.';
+                terminal.appendChild(explanation);
+                
+                terminal.scrollTop = terminal.scrollHeight;
+            }, 19500);
+        });
+    </script>
+</body>
+</html>
