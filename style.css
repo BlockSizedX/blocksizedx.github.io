@@ -928,6 +928,7 @@ html {
     color: rgb(209, 180, 118);
 }
 .footer #copyrt {
+    margin-top: 10px;
     font-size: 100%;
     justify-content: center;
     text-align: center;

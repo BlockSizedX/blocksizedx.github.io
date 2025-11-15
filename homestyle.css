@@ -1,10 +1,9 @@
 /* ================= PRO HOME SECTION ================= */
 #home {
     background: linear-gradient(135deg, 
-        rgba(13, 13, 13, 0.95) 0%,
-        rgba(30, 25, 15, 0.9) 50%,
-        rgba(13, 13, 13, 0.95) 100%),
-        url('images/bg.png');
+        rgba(13, 13, 13, 0.80) 0%,
+        rgba(30, 25, 15, 0.80) 50%,
+        rgba(13, 13, 13, 0.80) 100%);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -394,4 +393,9 @@
 
 .shape {
     display: none;
+}
+@media (max-width: 768px) {
+    .stats-row {
+        display: none;
+    }
 }
