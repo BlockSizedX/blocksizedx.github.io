@@ -1,564 +1,377 @@
 <!DOCTYPE html>
-<html>
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlockSizedX | Web Design & Templates</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="https://blocksizedx.github.io" class="logo">
+                <img src="assets/text_transparent.png" alt="BlockSizedX logo">
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#works" class="nav-link">Works</a></li>
+                <li><a href="#templates" class="nav-link">Templates</a></li>
+                <li><a href="#contact" class="nav-btn">Get in touch</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5GCHYP4C9"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-M5GCHYP4C9');
-        </script>
-        <!-- META SEO BOOST -->
-        <meta name="description" content="BlockSizedX – Explore Modern Website and Game Templates, Play Fun Games, Get it for free and cheap rates.">
-        <meta name="keywords" content="BlockSizedX - Premium website templates & 2D game assets. Get responsive web templates, Godot game projects, and professional designs at affordable prices. Free and premium templates for developers and creators.">
-        <meta name="author" content="BlockSizedX">
-        <meta charset="UTF-8">
-
-        <!-- Social Sharing -->
-        <meta property="og:title" content="BlockSizedX - Website Templates, Games and more." />
-        <meta name="description" content="BlockSizedX - Premium website templates & 2D game assets. Get responsive web templates, Godot game projects, and professional designs at affordable prices. Free and premium templates for developers and creators.">   
-        <meta property="og:image" content="/images/logo-without-text.png" />
-        <meta property="og:url" content="https://blocksizedx.github.io" />
-        <meta name="twitter:card" content="summary_large_image">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-        
-        <title>BlockSizedX - Website templates and games</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="icon" type="image/png" href="images/logo-without-text.png">
-
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="homestyle.css">
-
-    </head>
-
-    <body>
-
-        <div id="HOME"></div>
-
-        <!--NAVBAR-->
-        <!--NAVBAR-->
-        <!--NAVBAR-->
-        <!--NAVBAR-->
-        <nav class="navbar" id="nav_main">
-            <div id="nav-flex-container">
-                <!-- Left: Logo -->
-                <h1><a href="index.html">BlockSizedX</a></h1>
-
-                <!-- Right: Search + Navigation -->
-                <div class="nav-right-section">
-                    <!-- Search Bar -->
-                    <div class="search-container">
-                        <div class="search-box">
-                            <input type="text" id="navSearch" placeholder="Search..." class="search-input">
-                            <button onclick="performSearch()" class="search-btn">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                        <div class="search-results" id="searchResults"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Crafting Digital</span>
+                    <span class="hero-title-line">Experiences That</span>
+                    <span class="hero-title-line"><span class="highlight">Inspire</span></span>
+                </h1>
+                <p class="hero-subtitle">I transform ideas into pixel-perfect, responsive websites that drive results and elevate brands in the digital space.</p>
+                <div class="hero-btns">
+                    <a href="#works" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-text">Projects</span>
                     </div>
-
-                    <!-- Hamburger Menu -->
-                    <div class="menu-toggle" id="menu-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-text">Client Satisfaction</span>
                     </div>
-
-                    <!-- Your EXACT Navigation Links (unchanged) -->
-                    <div id="navlinks">
-                        <a href="#HOME">Home</a>
-                        <div class="dropdown">
-                            <a href="#templates">Templates</a>
-                        </div>
-                        
-                        <a href="#about">About</a>
-                        <a href="#contact">Get in touch</a>
-                        <a href="pages/news.html"><i class="fa fa-newspaper-o"></i></a>
-                        
+                    <div class="stat">
+                        <span class="stat-number">2K+</span>
+                        <span class="stat-text">Templates Sold</span>
                     </div>
                 </div>
             </div>
-        </nav>
-
-
-        <!--HOME-->
-
-        <!--HOME-->
-        <div class="sec" id="home">
-            <div class="home-container">
-                <!-- Animated Background Elements -->
+            <div class="hero-visual">
                 <div class="floating-shapes">
                     <div class="shape shape-1"></div>
                     <div class="shape shape-2"></div>
                     <div class="shape shape-3"></div>
                 </div>
+                <div class="hero-image">
+                    <div class="mockup">
+                        <img style="height: 500px;" src="assets/logo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="home-content">
-                    <div class="home-visual">
-                        <div class="floating-card">
-                            <img src="images/home_card.png" alt="BlockSizedX Projects" class="hero-image">
-                            <div class="card-glow"></div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span class="highlight">BlockSizedX</span></h2>
+                <p class="section-subtitle">Crafting digital experiences with precision and passion</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Transforming Ideas Into Digital Reality</h3>
+                    <p>Welcome to BlockSizedX, where web design meets innovation. I specialize in creating modern, responsive websites that not only look stunning but also perform exceptionally across all devices.</p>
+                    <p>With years of experience in the digital space, I've helped numerous businesses establish their online presence through custom web solutions and premium templates.</p>
+                    <div class="skills">
+                        <div class="skill">
+                            <span class="skill-name">UI/UX Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">Frontend Development</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">Responsive Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 98%"></div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Left: Text Content -->
-                    <div class="home-text">
-                        
-                        
-                        <h1 class="main-headline">
-                            <span class="gradient-text">Craft Digital</span>
-                            <span class="highlight">Experiences</span>
-                            That <span class="animated-underline">Inspire</span>
-                        </h1>
-                        
-                        <p class="sub-headline">
-                            High-quality website templates, 2D game assets, and interactive projects 
-                            designed to elevate your digital presence. From code to creation.
-                        </p>
-
-                        <!-- Stats Row -->
-                        <div class="stats-row">
-                            <div class="stat">
-                                <div class="stat-number">50+</div>
-                                <div class="stat-label">Projects Completed</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">Client Satisfaction</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">24/7</div>
-                                <div class="stat-label">Support</div>
-                            </div>
-                        </div>
-
-                        <!-- CTA Buttons -->
-                        <div class="cta-buttons">
-                            <a href="#contact" class="btn primary">
-                                <i class="fa fa-code"></i>
-                                Custom Website
-                            </a>
-                            <a href="#templates" class="btn secondary">
-                                <i class="fa fa-rocket"></i>
-                                Explore Templates
-                            </a>
+                </div>
+                <div class="about-image">
+                    <div class="about-card">
+                        <div class="card-content">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Fast & Efficient</h4>
+                            <p>Lightning-fast websites with optimized performance</p>
                         </div>
                     </div>
+                    <div class="about-card">
+                        <div class="card-content">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Fully Responsive</h4>
+                            <p>Perfect on all devices from mobile to desktop</p>
+                        </div>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-content">
+                            <i class="fas fa-code"></i>
+                            <h4>Clean Code</h4>
+                            <p>Well-structured, commented, and maintainable code</p>
+                        </div>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-content">
+                            <i class="fas fa-palette"></i>
+                            <h4>Modern Design</h4>
+                            <p>Latest design trends with user experience focus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Right: Visual Element -->
+    <!-- Works Section -->
+    <section class="works" id="works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured <span class="highlight">Works</span></h2>
+                <p class="section-subtitle">Showcasing my best web design projects and creative solutions</p>
+            </div>
+            <div class="works-grid" id="worksGrid">
+                <!-- Works will be loaded from works.json -->
+            </div>
+            <div class="text-center">
+                <a href="works.html" class="btn btn-outline">Explore All Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="templates" id="templates">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Premium <span class="highlight">Templates</span></h2>
+                <p class="section-subtitle">Ready-to-use website templates for your next project</p>
+            </div>
+            <div class="templates-grid" id="templatesGrid">
+                <!-- Templates will be loaded from templates.json -->
+            </div>
+            <div class="text-center">
+                <a href="templates.html" class="btn btn-primary">View All Templates</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <p class="section-subtitle">Let's discuss your project and bring your vision to life</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p style="margin-bottom: 20px;">blocksizedx@gmail.com</p>
+                        <a href="mailto:blocksizedx@gmail.com" class="btn-secondary">Mail Me</a>
+                    </div>
+                    <div class="info-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <h4>Whatsapp</h4>
+                        <p style="margin-bottom: 20px;">+91 9961550562</p>
+                        <a href="https://wa.me/9961550562" class="btn-secondary">Chat With Me</a>
+                    </div>
+                    <div class="info-card">
+                        <i class="fab fa-instagram"></i>
+                        <h4>Instagram</h4>
+                        <p style="margin-bottom: 20px;">@blocksizedx</p>
+                        <a href="https://www.instagram.com/blocksizedx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-secondary">DM With me</a>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Location</h4>
+                        <p>Worldwide via online</p>
+                    </div>
                     
                 </div>
+                <form class="contact-form" onsubmit="sendMail(event)">
 
-                
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                    </button>
+
+                </form>
+
+
             </div>
         </div>
+    </section>
 
-        
-
-        <!--TEMPLATES-->
-        <!--TEMPLATES-->
-        <div class="sec" id="templates">
-            <h1 class="sec-title">Our Templates</h1>
-            <p class="section-subtitle">High-quality website and game templates at affordable prices</p>
-            
-            <!-- Featured Template -->
-            <div class="featured-template">
-                <div class="featured-badge">
-                    <i class="fa fa-star"></i> TRENDING
-                </div>
-                <div class="featured-content">
-                    <div class="featured-image">
-                        <img src="images/cafe1_1.png" alt="portfolio Template">
-                    </div>
-                    <div class="featured-details">
-                        <h2>Premium Cafe/Restaurent Template</h2>
-                        <p class="featured-description">Modern premium cafe or restauraent template with menu, gallery and more...</p>
-                        <div class="featured-features">
-                            <span><i class="fa fa-check"></i> Fully Responsive</span>
-                            <span><i class="fa fa-check"></i> Modern Design</span>
-                            <span><i class="fa fa-check"></i> Easy Customizable</span>
-                        </div>
-                        <div class="featured-price">
-                            <span class="price-tag">
-                                <i class="fa fa-credit-card"></i> 129₹
-                            </span>
-                            <a href="template-download/complete-downlod.html?template=cafe-1" class="template-btn">
-                                <i class="fa fa-download"></i> Get Template
-                            </a>
-                            
-                        </div>
-                        <p style="color: rgba(185, 185, 185, 0.472);">Click get Template for Preview Images</p>
-                    </div>
-                </div>
-            </div>
-
-            <h1 class="sec-title">Templates</h1>
-            <!-- Filter Buttons -->
-            
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fa fa-th"></i> All Templates
-                </button>
-                <button class="filter-btn" data-filter="web">
-                    <i class="fa fa-desktop"></i> Website Templates
-                </button>
-                <button class="filter-btn" data-filter="game">
-                    <i class="fa fa-gamepad"></i> Game Templates
-                </button>
-                <button class="filter-btn" data-filter="free">
-                    <i class="fa fa-gift"></i> Free Templates
-                </button>
-                <button class="filter-btn" data-filter="premium">
-                    <i class="fa fa-crown"></i> Premium Templates
-                </button>
-            </div>
-            <!-- Templates Grid -->
-            <div class="templates-grid">
-
-                
-                <!-- Template Card 1 -->
-                <div class="template-card">
-                    <div class="template-badge">WEB</div>
-                    <div class="template-image">
-                        <img src="images/port-1.png" alt="Portfolio Template">
-                    </div>
-                    <div class="template-content">
-                        <h3>Simple Professional Portfolio Template</h3>
-                        <p>Clean, modern portfolio design for developers & designers with smooth animations.</p>
-                        <div class="template-features">
-                            <span><i class="fa fa-mobile"></i> Responsive</span>
-                            <span><i class="fa fa-paint-brush"></i> Modern UI</span>
-                        </div>
-                        <div class="template-footer">
-                            <span class="template-price">
-                                <i class="fa fa-credit-card"></i> 99₹
-                            </span>
-                            
-                            <a href="template-download/complete-downlod.html?template=portfolio-1" class="template-btn">
-                                <i class="fa fa-download"></i> Get Template
-                            </a>
-                            <p style="color: rgba(185, 185, 185, 0.472);">Click get Template for Preview Images</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Template Card 2 -->
-                <div class="template-card">
-                    <div class="template-badge">WEB</div>
-                    <div class="template-image">
-                        <img src="images/buisiness-1.png" alt="Business Template">
-                    </div>
-                    <div class="template-content">
-                        <h3>Business Template</h3>
-                        <p>Professional layout for startups, companies, and agencies with contact forms.</p>
-                        <div class="template-features">
-                            <span><i class="fa fa-mobile"></i> Responsive</span>
-                            <span><i class="fa fa-rocket"></i> Fast Loading</span>
-                        </div>
-                        <div class="template-footer">
-                            <span class="template-price">
-                                <i class="fa fa-credit-card"></i> FREE
-                            </span>
-                            <a href="template-download/complete-downlod.html?template=business-1" class="template-btn">
-                                <i class="fa fa-download"></i> wGet Template
-                            </a>
-                            <p style="color: rgba(185, 185, 185, 0.472);">Click get Template for Preview Images</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Template Card 3 -->
-                <div class="template-card">
-                    <div class="template-badge web-badge">WEB</div>
-                    <div class="template-image">
-                        <img src="images/cafe1_1.png" alt="CAFE TEMPlate">
-                    </div>
-                    <div class="template-content">
-                        <h3>Premium Cafe/Restaurent Template</h3>
-                        <p>Modern premium cafe or restauraent template with menu, gallery and more...</p>
-                        <div class="template-features">
-                            <span><i class="fa fa-rocket"></i> Responsive</span>
-                            <span><i class="fa fa-star"></i> Modern</span>
-                            <span><i class="fa fa-code"></i> Full Source</span>
-                        </div>
-                        <div class="template-footer">
-                            <span class="template-price">
-                                <i class="fa fa-credit-card"></i> 129₹
-                            </span>
-                            <a href="template-download/complete-downlod.html?template=cafe-1" class="template-btn">
-                                <i class="fa fa-download"></i> Get Template
-                            </a>
-                            <p style="color: rgba(185, 185, 185, 0.472);">Click get Template for Preview Images</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Template Card 4 -->
-
-            <!-- CTA Section -->
-            <div class="templates-cta">
-                <div class="cta-content">
-                    <h2>Need a Custom Template?</h2>
-                    <p>We can create custom website or game templates tailored to your specific needs.</p>
-                    <a href="#contact" class="cta-btn">
-                        <i class="fa fa-envelope"></i> Contact Us
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="https://blocksizedx.github.io" class="logo">
+                        <img style="width: 240px;" src="assets/logo_beside_text_transparent.png" alt="BlockSizedX logo">
                     </a>
+                    <p>Creating digital experiences that make a difference. Professional web design and premium templates.</p>
+                    <div class="social-links">
+                        <a href="https://www.github.com/BlockSizedX/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/9961005062" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/blocksizedx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Frontend Development</a></li>
+                        <li><a href="#">Template Development</a></li>
+                        <li><a href="#">Website Maintenance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates and new template releases</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
                 </div>
             </div>
-        </div>
-
-       <!--ABOUT-->
-        <div class="sec" id="about">
-            <h1 class="sec-title">About BlockSizedX</h1>
-            
-            <div class="about-content">
-                <!-- Mission Section -->
-                <div class="about-card">
-                    <div class="about-icon">
-                        <i class="fa fa-rocket"></i>
-                    </div>
-                    <h3>Our Mission</h3>
-                    <p>To create high-quality, affordable website and game templates that empower developers and creators to build amazing projects without breaking the bank.</p>
-                </div>
-
-                <!-- What We Do -->
-                <div class="about-card">
-                    <div class="about-icon">
-                        <i class="fa fa-code"></i>
-                    </div>
-                    <h3>What We Do</h3>
-                    <p>We specialize in developing responsive website templates, 2D game templates using Godot Engine, and interactive web projects that are both functional and visually appealing.</p>
-                </div>
-
-                <!-- Why Choose Us -->
-                <div class="about-card">
-                    <div class="about-icon">
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h3>Why Choose Us</h3>
-                    <p>Professional quality at affordable prices. All our templates are thoroughly tested, well-documented, and come with free updates and support.</p>
-                </div>
-            </div>
-
-            <!-- Tech Stack -->
-            <div class="tech-section">
-                <h2 class="sub-title">Our Technology Stack</h2>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <i class="fa fa-html5"></i>
-                        <span>HTML5/CSS3/JS</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa fa-github"></i>
-                        <span>Git & GitHub</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa fa-database"></i>
-                        <span>Firebase</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa fa-gamepad"></i>
-                        <span>Godot Engine</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa fa-mobile"></i>
-                        <span>Responsive Design</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fa fa-cloud"></i>
-                        <span>Web Templates</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="stats-section">
-                <h2 class="sub-title">Our Numbers</h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support Available</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">∞</div>
-                        <div class="stat-label">Passion for Code</div>
-                    </div>
-                </div>
+            <div class="footer-bottom">
+                <p><span class="footer-bottom-span"> <a href="pages/terms-and-conditions.html" target="_blank">Terms and Conditions</a> | <a href="pages/privacy-policy.html" target="_blank">Privacy Policy</a> | <a href="pages/terms-and-conditions.html#refund-policy" target="_blank">Refund Policy</a></span><br>
+                    &copy; <span id="currentYear"></span> BlockSizedX. All rights reserved.
+                </p>
             </div>
         </div>
+    </footer>
+        <div id="legal-consent-bar">
+    <p>
+        By continuing to use this website or any services provided by BlockSizedX,
+        you acknowledge and agree to our
+        <a href="pages/terms-and-conditions.html" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+        and
+        <a href="pages/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+    </p>
+    <button id="consent-close" aria-label="Close">✕</button>
+    </div>
 
+    <style>
+    #legal-consent-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-top: 1px solid #e5e7eb;
+        box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        z-index: 9999;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
+    #legal-consent-bar p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #374151;
+    }
 
+    #legal-consent-bar a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 500;
+    }
 
+    #legal-consent-bar a:hover {
+        text-decoration: underline;
+    }
 
-        <!--CONTACT-->
-        <span id="contact-info"></span>
-       <div class="sec" id="contact">
+    #consent-close {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 5px 8px;
+    }
 
-            <h1 class="sec-title">Get In Touch</h1>
-            
-            <div class="contact-grid">
-                <!-- Contact Info Card -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-                    <h3>Email Us</h3>
-                    <p>Send us an email anytime for inquiries, support, or collaborations.</p>
-                    <a href="mailto:blocksized404@gmail.com" class="contact-link">
-                        blocksized404@gmail.com
-                    </a>
-                </div>
+    #consent-close:hover {
+        color: #111827;
+    }
 
-                <!-- WhatsApp Card -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa fa-whatsapp"></i>
-                    </div>
-                    <h3>WhatsApp</h3>
-                    <p>Chat with us directly for quick responses and instant support.</p>
-                    <a href="https://wa.me/919961550562" class="contact-link">
-                        +91 9961550562
-                    </a>
-                </div>
+    @media (max-width: 600px) {
+        #legal-consent-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        }
 
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa fa-instagram"></i>
-                    </div>
-                    <h3>Instagram</h3>
-                    <p>Follow us on Instagram for realtime updates and enquiries.</p>
-                    <a href="https://www.instagram.com/blocksizedx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="contact-link">
-                        Follow Us
-                    </a>
-                </div>
+        #consent-close {
+        align-self: flex-end;
+        }
+    }
+    </style>
 
-                <!-- Channel Card -->
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fa fa-newspaper-o"></i>
-                    </div>
-                    <h3>Updates Channel</h3>
-                    <p>Join our WhatsApp channel for latest updates, new templates, and announcements.</p>
-                    <a href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02" class="contact-link">
-                        Join Channel
-                    </a>
-                </div>
-            </div>
+    <script>
+    const consentBar = document.getElementById("legal-consent-bar");
+    const closeBtn = document.getElementById("consent-close");
 
-            <!-- Additional Contact Info -->
-            <div class="contact-details">
-                <div class="detail-item">
-                    <div class="detail-icon">
-                        <i class="fa fa-map-marker"></i>
-                    </div>
-                    <div class="detail-content">
-                        <h4>Our Location</h4>
-                        <p>Kerala, India</p>
-                    </div>
-                </div>
+    // Check if already accepted
+    if (localStorage.getItem("blocksizedxConsent") === "true") {
+        consentBar.style.display = "none";
+    }
 
-                <div class="detail-item">
-                    <div class="detail-icon">
-                        <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="detail-content">
-                        <h4>Website</h4>
-                        <a href="https://blocksizedx.github.io">blocksizedx.github.io</a>
-                    </div>
-                </div>
-
-                <div class="detail-item">
-                    <div class="detail-icon">
-                        <i class="fa fa-clock-o"></i>
-                    </div>
-                    <div class="detail-content">
-                        <h4>Instagram</h4>
-                        <p>@blocksizedx</p>
-                    </div>
-                </div>
-            </div>
-
-            
-
-        </div>
-
-
-
-
-        <!--FOOTER-->
-        <div class="footer">
-            <div id="footer-flex-containser">
-                <div id="footer-about">
-                    <h3>BlockSizedX</h3>
-                    <p>The best place to get projects, <br>templates, demos and much more.<br>With high quality and trust</p>
-                    <!--UPDATE VER-->
-                    <p style="color: rgb(126, 126, 126);">update_ver: 2.1  </p>
-                </div>
-
-                <div id="cont-details">
-                    <h3>Contact Us</h3>
-                    <a href="mailto:blocksized404@gmail.com?subject=Hello%20BlockSizedX&body=Hi,%20I%20want%20to%20know%20about%20your%20templates!">
-                        <i class="fa fa-envelope"></i> blocksized404@gmail.com
-                    </a><br>
-                    <a href="https://whatsapp.com/channel/0029Vb6Ci3t4tRrsLpLiOf02"><i class="fa fa-whatsapp"></i> Whatsapp channel</a><br>
-                    <a href="https://wa.me/919961550562"><i class="fa fa-whatsapp"></i> Contact On Whatsapp</a><br>
-                </div>
-
-                <div id="links">
-                    <h3>Quick links</h3>
-                    <a href="#HOME">homepage</a><br>
-                    <a href="#projects">projects</a><br>
-                    <a href="#templates">templates</a><br>
-                    <a href="#about">about us</a><br>
-                    <a href="#contact">contact us</a><br>
-                </div>
-            </div>
-            <div id="cop-line"></div>
-            <div id="copyrt">&copy; BlockSizedX 2025 | All rights reservd.</div>
-            
-
-        </div>
-        
-        <div class="chatbot-btn" id="chatbotBtn" title="Chat with us">
-            <i class="fa fa-comments"></i>
-        </div>
-
-        <div class="chatbot-window" id="chatbotWindow" aria-hidden="true">
-        <div class="chatbot-header">
-            <div>BlockSizedX Bot</div>
-            <div style="font-size:18px; cursor:pointer;" id="chatbotClose"><i class="fa fa-times"></i></div>
-        </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <div class="chatbot-empty-hint">Hi! How can I help you today?</div>
-        </div>
-        <div class="chatbot-input-area">
-            <input type="text" id="chatInput" class="chatbot-input" placeholder="Type your question..." />
-            <button id="chatSend" class="btn" style="padding:8px 12px; border-radius: 40%; background-color: rgb(255, 215, 35);"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        </div>
-
-
-
-
-
-    
-        <script src="script.js"></script>
-    </body>
-
+    closeBtn.addEventListener("click", () => {
+        consentBar.style.display = "none";
+        localStorage.setItem("blocksizedxConsent", "true");
+    });
+    </script>
+    <script src="script.js"></script>
+</body>
 </html>

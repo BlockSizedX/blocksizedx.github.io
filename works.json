@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Stylo Footwear E-commerce",
+    "description": "A sustainable e-commerce platform with modern UI and seamless shopping experience.",
+    "shortDescription": "Sustainable e-commerce platform",
+    "category": "ecommerce",
+    "date": "Nov 2025",
+    "duration": "1 week",
+    "tags": ["E-commerce", "html", "css", "JavaScript", "Responsive"],
+    "color1": "#0077b6",
+    "color2": "#00b4d8",
+    "icon": "fas fa-shopping-cart",
+    "liveDemo": "https://blocksizedx.github.io/stylofootwear.github.io",
+    "github": "https://github.com/BlockSizedX/stylofootwear.github.io",
+    "images": ["assets/work-stylo.png"]
+  },
+  {
+    "id": 2,
+    "name": "Fruzo Cafe - Cafe Website",
+    "description": "A sustainable Cafe Landing page with menu and seamless experience.",
+    "shortDescription": "Sustainable Cafe Website",
+    "category": "cafe",
+    "date": "Dec 2025",
+    "duration": "2 week",
+    "tags": ["landing pages", "html", "css", "JavaScript", "Cafe"],
+    "color1": "#0077b6",
+    "color2": "#00b4d8",
+    "icon": "fas fa-shopping-cart",
+    "liveDemo": "https://blocksizedx.github.io/fruzocafeofficial.github.io",
+    "github": "https://github.com/BlockSizedX/fruzocafeofficial.github.io",
+    "images": ["assets/work-fruzo.png"]
+  }
+]
