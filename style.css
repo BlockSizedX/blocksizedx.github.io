@@ -1,5 +1,24 @@
 /* Reset and Base Styles */
 :root {
+    --primary: #e6b800;
+    --secondary: #5e5503;
+    --tertiary: #d8ad00;
+    --light: #efdf90;
+    --dark: #4c4104;
+    --bg: #fbf4dc;
+    --white: #ffffff;
+    --black: #000000;
+    --gray: #6c757d;
+    --light-gray: #f8f9fa;
+    --nav-link: #826b12;
+    --logo: #897307;
+    --shadow: 0 10px 30px rgba(182, 146, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 12px;
+    --container-width: 1200px;
+}
+
+/*:root {
     --primary: #0077b6;
     --secondary: #03045E;
     --tertiary: #00b4d8;
@@ -17,22 +36,6 @@
     --border-radius: 12px;
     --container-width: 1200px;
 }
-
-/*:root {
-    --primary: #0077b6;
-    --secondary: #03045E;
-    --tertiary: #00b4d8;
-    --light: #90e0ef;
-    --dark: #032D43;
-    --bg: #caf0f8;
-    --white: #ffffff;
-    --black: #000000;
-    --gray: #6c757d;
-    --light-gray: #f8f9fa;
-    --shadow: 0 10px 30px rgba(0, 119, 182, 0.1);
-    --transition: all 0.3s ease;
-    --border-radius: 12px;
-    --container-width: 1200px;
 }*/
 
 /* width */
@@ -47,13 +50,13 @@
 
 /* handle */
 ::-webkit-scrollbar-thumb {
-  background: #0077b6;
+  background: #7f6a00;
   border-radius: 10px;
 }
 
 /* handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #023e8a;
+  background: #605400;
 }
 
 
@@ -128,7 +131,7 @@ h1, h2, h3, h4 {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(0, 119, 182, 0.3);
+    box-shadow: 0 15px 30px rgba(182, 158, 0, 0.3);
 }
 
 .btn-secondary {
@@ -200,7 +203,7 @@ h1, h2, h3, h4 {
 }
 .nav-link:hover,
 .nav-link.active {
-    color: var(--primary);
+    color: var(--tertiary);
     background: var(--bg);
 }
 
@@ -214,7 +217,7 @@ h1, h2, h3, h4 {
 }
 
 .nav-btn:hover {
-    background: rgba(0, 191, 255, 0.184);
+    background: rgba(255, 234, 0, 0.184);
     color: var(--primary);
     transform: translateY(5px);
 }
@@ -306,7 +309,7 @@ h1, h2, h3, h4 {
 .shape {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--tertiary));
+    background: linear-gradient(135deg, var(--nav-link), var(--tertiary));
     opacity: 0.1;
 }
 
@@ -465,7 +468,7 @@ h1, h2, h3, h4 {
 
 .about-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 119, 182, 0.15);
+    box-shadow: 0 20px 40px rgba(182, 146, 0, 0.15);
 }
 
 .about-card i {
@@ -502,7 +505,7 @@ h1, h2, h3, h4 {
 
 .work-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 119, 182, 0.2);
+    box-shadow: 0 20px 40px rgba(182, 149, 0, 0.2);
 }
 
 .work-image {
@@ -589,7 +592,7 @@ h1, h2, h3, h4 {
 
 .template-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 119, 182, 0.15);
+    box-shadow: 0 20px 40px rgba(118, 94, 8, 0.359);
 }
 
 .template-image {
@@ -692,7 +695,7 @@ h1, h2, h3, h4 {
 
 .gallery-image-thumb:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.2);
+    box-shadow: 0 5px 15px rgba(182, 146, 0, 0.2);
 }
 
 .lightbox-thumbnails {
@@ -809,7 +812,7 @@ h1, h2, h3, h4 {
 
 .info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 119, 182, 0.1);
+    box-shadow: 0 15px 30px rgba(182, 143, 0, 0.1);
 }
 .info-card a {
     border-radius: 10px;
@@ -974,7 +977,7 @@ h1, h2, h3, h4 {
     color: rgba(255, 255, 255, 0.49);
 }
 .footer-bottom .footer-bottom-span a {
-    color: lightslategray;
+    color: rgb(153, 147, 119);
     text-decoration: none;
     transition: all 0.5s ease;
 }
