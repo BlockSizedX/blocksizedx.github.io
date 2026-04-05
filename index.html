@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlockSizedX | Web Design & Templates</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlockSizedX — Web Design & Development</title>
+  <meta name="description" content="BlockSizedX by Muhammed Nazal Naufal — Freelance Web Designer & Developer crafting high-performance websites and web apps.">
+  <meta name="theme-color" content="#f7f5f2">
 
-    <meta name="description" content="BlockSizedX is a web designing and web development freelance brand creating fast, modern, and responsive websites. Specialised in clean UI, smooth UX, and performance-focused web solutions." />
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "BlockSizedX",
-        "url": "https://blocksizedx.github.io/",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://blocksizedx.github.io/?s={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "BlockSizedX",
-        "url": "https://blocksizedx.github.io/"
-    }
-    </script>
-
-
-    <meta name="keywords" content="
+  <link rel="stylesheet" href="style.css">
+  
+  <meta name="keywords" content="
     blocksized,
     blocksizedx,
     bsx,
@@ -50,397 +30,572 @@
     blocksizedx science,
     blocksizedx tech brand
     " />
+  <meta name="author" content="BlockSizedX" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+
+  <meta property="og:title" content="BlockSizedX | Web designing and Development" />
+  <meta property="og:description" content="BlockSizedX is a web designing and web development freelance brand creating fast, modern, and responsive websites. Specialised in clean UI, smooth UX, and performance-focused web solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://blocksizedx.github.io/" />
+  <meta property="og:site_name" content="BlockSizedX" />
+
+  <meta name="twitter:card" content="assets/logo_beside_text_fullscreen.png" />
+  <meta name="twitter:title" content="BlockSizedX" />
+  <meta name="twitter:description" content="BlockSizedX is a web designing and web development freelance brand creating fast, modern, and responsive websites. Specialised in clean UI, smooth UX, and performance-focused web solutions." />
 
 
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/logo-with-bg.png" type="image/x-icon"> 
+  <!-- Icons via inline SVG / feather-like -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "BlockSizedX",
+      "url": "https://blocksizedx.github.io/",
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://blocksizedx.github.io/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+      }
+  }
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BlockSizedX",
+      "url": "https://blocksizedx.github.io/"
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5GCHYP4C9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <meta name="author" content="BlockSizedX" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-
-    <meta property="og:title" content="BlockSizedX | Web designing and Development" />
-    <meta property="og:description" content="BlockSizedX is a web designing and web development freelance brand creating fast, modern, and responsive websites. Specialised in clean UI, smooth UX, and performance-focused web solutions." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://blocksizedx.github.io/" />
-    <meta property="og:site_name" content="BlockSizedX" />
-
-    <meta name="twitter:card" content="assets/logo_beside_text_fullscreen.png" />
-    <meta name="twitter:title" content="BlockSizedX" />
-    <meta name="twitter:description" content="BlockSizedX is a web designing and web development freelance brand creating fast, modern, and responsive websites. Specialised in clean UI, smooth UX, and performance-focused web solutions." />
-
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    gtag('config', 'G-M5GCHYP4C9');
+  </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="https://blocksizedx.github.io" class="logo">
-                <img src="assets/logo_beside_text_transparent.png" alt="BlockSizedX logo">
-            </a>
-            <div class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#works" class="nav-link">Works</a></li>
-                <li><a href="#templates" class="nav-link">Templates</a></li>
-                <li><a href="#contact" class="nav-btn">Get in touch</a></li>
-            </ul>
+
+<!-- ══ NAVBAR ══════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">BlockSizedX</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#get-website">Get a Site</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button id="nav-auth-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Sign In
+        </button>
+        <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="gradient-text">Web Designer</span>
-                    <span class="hero-title-line">and</span>
-                    <span class="hero-title-line"><span class="highlight">Developer</span></span>
-                </h1>
-                
-                <div class="hero-btns">
-                    <a href="#works" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-text">Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-text">Client Satisfaction</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">2K+</span>
-                        <span class="stat-text">Templates Sold</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                </div>
-                <div class="hero-image">
-                    <div class="mockup-bg-card"></div>
-                    <div class="mockup">
-                        <img style="height: 500px;" src="assets/blocksizedx_code-bg-image.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About <span class="highlight">BlockSizedX</span></h2>
-                <p class="section-subtitle">Crafting digital experiences with precision and passion</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Transforming Ideas Into Digital Reality</h3>
-                    <p>Welcome to BlockSizedX, where web design meets innovation. I specialize in creating modern, responsive websites that not only look stunning but also perform exceptionally across all devices.</p>
-                    <p>With years of experience in the digital space, I've helped numerous businesses establish their online presence through custom web solutions and premium templates.</p>
-                    <div class="skills">
-                        <div class="skill">
-                            <span class="skill-name">UI/UX Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Frontend Development</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span class="skill-name">Responsive Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 98%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div class="about-card">
-                        <div class="card-content">
-                            <i class="fas fa-rocket"></i>
-                            <h4>Fast & Efficient</h4>
-                            <p>Lightning-fast websites with optimized performance</p>
-                        </div>
-                    </div>
-                    <div class="about-card">
-                        <div class="card-content">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h4>Fully Responsive</h4>
-                            <p>Perfect on all devices from mobile to desktop</p>
-                        </div>
-                    </div>
-                    <div class="about-card">
-                        <div class="card-content">
-                            <i class="fas fa-code"></i>
-                            <h4>Clean Code</h4>
-                            <p>Well-structured, commented, and maintainable code</p>
-                        </div>
-                    </div>
-                    <div class="about-card">
-                        <div class="card-content">
-                            <i class="fas fa-palette"></i>
-                            <h4>Modern Design</h4>
-                            <p>Latest design trends with user experience focus</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Works Section -->
-    <section class="works" id="works">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured <span class="highlight">Works</span></h2>
-                <p class="section-subtitle">Showcasing my best web design projects and creative solutions</p>
-            </div>
-            <div class="works-grid" id="worksGrid">
-                <!-- Works will be loaded from works.json -->
-            </div>
-            <div class="text-center">
-                <a href="works.html" class="btn btn-outline">Explore All Works</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Templates Section -->
-    <section class="templates" id="templates">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Premium <span class="highlight">Templates</span></h2>
-                <p class="section-subtitle">Ready-to-use website templates for your next project</p>
-            </div>
-            <div class="templates-grid" id="templatesGrid">
-                <!-- Templates will be loaded from templates.json -->
-            </div>
-            <div class="text-center">
-                <a href="templates.html" class="btn btn-primary">View All Templates</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
-                <p class="section-subtitle">Let's discuss your project and bring your vision to life</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-
-                    <div class="info-card">
-                        <i class="fas fa-envelope"></i>
-                        <h4>Email</h4>
-                        <p style="margin-bottom: 20px;">blocksizedx@gmail.com</p>
-                        <a href="mailto:blocksizedx@gmail.com" class="btn-secondary">Mail Me</a>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fab fa-whatsapp"></i>
-                        <h4>Whatsapp</h4>
-                        <p style="margin-bottom: 20px;">+91 9961550562</p>
-                        <a href="https://wa.me/9961550562" class="btn-secondary">Chat With Me</a>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fab fa-instagram"></i>
-                        <h4>Instagram</h4>
-                        <p style="margin-bottom: 20px;">@blocksizedx</p>
-                        <a href="https://www.instagram.com/blocksizedx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-secondary">DM With me</a>
-                    </div>
-
-                    <div class="info-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h4>Location</h4>
-                        <p>Worldwide via online</p>
-                    </div>
-                    
-                </div>
-                <form class="contact-form" onsubmit="sendMail(event)">
-
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Your Email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="subject" placeholder="Subject" required>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">
-                        Send Message
-                    </button>
-
-                </form>
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <a href="https://blocksizedx.github.io" class="logo">
-                        <img style="width: 240px;" src="assets/logo_beside_text_transparent.png" alt="BlockSizedX logo">
-                    </a>
-                    <p>Creating digital experiences that make a difference. Professional web design and premium templates.</p>
-                    <div class="social-links">
-                        <a href="https://www.github.com/BlockSizedX/" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://wa.me/9961005062" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/blocksizedx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#works">Works</a></li>
-                        <li><a href="#templates">Templates</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Frontend Development</a></li>
-                        <li><a href="#">Template Development</a></li>
-                        <li><a href="#">Website Maintenance</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe for updates and new template releases</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p><span class="footer-bottom-span"> <a href="pages/terms-and-conditions.html" target="_blank">Terms and Conditions</a> | <a href="pages/privacy-policy.html" target="_blank">Privacy Policy</a> | <a href="pages/terms-and-conditions.html#refund-policy" target="_blank">Refund Policy</a></span><br>
-                    &copy; <span id="currentYear"></span> BlockSizedX. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-        <div id="legal-consent-bar">
-    <p>
-        By continuing to use this website or any services provided by BlockSizedX,
-        you acknowledge and agree to our
-        <a href="pages/terms-and-conditions.html" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
-        and
-        <a href="pages/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-    </p>
-    <button id="consent-close" aria-label="Close">✕</button>
+      </div>
     </div>
+  </div>
+</nav>
 
-    <style>
-    #legal-consent-bar {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        border-top: 1px solid #e5e7eb;
-        box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-        padding: 12px 18px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-        z-index: 9999;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#works">Works</a>
+  <a href="#get-website">Get a Site</a>
+  <a href="#contact">Contact</a>
+</div>
 
-    #legal-consent-bar p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: #374151;
-    }
+<!-- ══ HERO ════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal">
+          <span class="hero-eyebrow-dot"></span>
+          Available for new projects
+        </div>
+        <h1 class="hero-title reveal">
+          Website
+          <span class="highlight">Design</span>
+          <span>and</span>
+          <span class="highlight">Development</span>
+        </h1>
+        <p class="hero-subtitle reveal">
+          BlockSizedX crafts high-performance responsive websites and web apps that blend for your needs.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#get-website" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            Start Your Project
+          </a>
+          <a href="#works" class="btn btn-outline">View Works</a>
+        </div>
+      </div>
+      <div class="hero-card reveal-right">
+        <div class="hero-card-label">At a glance</div>
+        
+        <div class="hero-card-stack">
+          <div class="hero-card-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Performance-first builds
+          </div>
+          <div class="hero-card-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            All devices compatible websites
+          </div>
+          <div class="hero-card-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Search engine optimisation
+          </div>
+          <div class="hero-card-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.11 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.56-.56a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Direct communication
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    #legal-consent-bar a {
-        color: #2563eb;
-        text-decoration: none;
-        font-weight: 500;
-    }
+<!-- ══ ABOUT ════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label reveal">About</div>
+        <h2 class="section-title reveal">The person<br>behind the<br><span>pixels.</span></h2>
+        <p class="reveal">
+          BlockSizedX is the personal brand of <strong>Muhammed Nazal Naufal</strong>, a freelance web designer and developer based in Kerala, India. The mission is simple: build websites that are fast, beautiful, and genuinely useful — not just pretty mockups.
+        </p>
+        <p class="reveal">
+          I will built you websites that fits your needs. For your business, company, portfolio, personal, blog, etc. I use HTML/CSS/JS , node.js, react etc. for builting website and use e-commerce platforms for e-commerce handling. <a style="font-weight: bold;" href="#get-website">Get your Website</a>.
+        </p>
+        <div class="about-skills stagger reveal">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Frontend</span>
+          <span class="tag">UI/UX Design</span>
+          <span class="tag">Backend</span>
+          <span class="tag">Responsive</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Perfomance</span>
+        </div>
+      </div>
+      <div class="about-card reveal-right">
+        <div class="about-flexer">
+          <div class="about-avatar"><img src="assets/nazal.png" alt="Muhammed Nazal Naufal image"></div>
+          <div class="about-flexer-grouper">
+            <div class="about-card-name">Muh'd Nazal Naufal</div>
+            <div class="about-card-role">Freelancer Website Developer</div>
+            <div class="about-card-sub">Founder @ BlockSizedX</div>
+          </div>
+        </div>
+        <div class="about-card-divider"></div>
+        <div class="about-card-info">
+          <div class="about-card-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Kannur, Kerala, India
+          </div>
+          <div class="about-card-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Available for freelance projects
+          </div>
+          <div class="about-card-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            blocksizedx@gmail.com
+          </div>
+          <div class="about-card-divider"></div>
+          <div class="about-card-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            UI/UX and Website Designer
+          </div>
+          <div class="about-card-info-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Frontend and Backend Developer
+          </div>
+        </div>
+        <div class="about-card-divider"></div>
+        <div class="about-card-socials">
+          <a href="https://instagram.com/blocksizedx" target="_blank" rel="noopener" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/919961550562" target="_blank" rel="noopener" title="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a href="mailto:blocksizedx@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
 
-    #legal-consent-bar a:hover {
-        text-decoration: underline;
-    }
+          
+      </div>
+    </div>
+  </div>
+</section>
 
-    #consent-close {
-        background: none;
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        color: #6b7280;
-        padding: 5px 8px;
-    }
+<!-- ══ WORKS ════════════════════════════════════ -->
+<section id="works">
+  <div class="container">
+    <div class="works-header">
+      <div>
+        <div class="section-label reveal">Works</div>
+        <h2 class="section-title reveal">My <span>Portfolio.</span></h2>
+      </div>
+      <a href="works/" class="btn btn-outline reveal">View all works →</a>
+    </div>
+    <div class="works-grid stagger" id="works-grid">
+      <!-- Loaded via JS from works.json -->
+      <div class="work-card-mini" style="grid-column:1/-1;padding:40px;text-align:center;color:var(--text-3);font-size:14px;">Loading works…</div>
+    </div>
+    <div class="works-footer reveal">
+      <a href="works/" class="btn btn-primary">View All Works →</a>
+    </div>
+  </div>
+</section>
 
-    #consent-close:hover {
-        color: #111827;
-    }
+<!-- ══ GET YOUR WEBSITE ═══════════════════════ -->
+<section id="get-website">
+  <div class="container">
+    <div class="get-grid">
+      <div>
+        <div class="section-label reveal">Get Your Website</div>
+        <h2 class="section-title reveal">Let's build<br>something<br><span>great together.</span></h2>
+        <p style="margin-top:18px;color:var(--text-2);font-size:16px;line-height:1.75;" class="reveal">
+          From a simple landing page to a full web app — fill out the form and I'll get back to you within 24 hours with a quote and timeline.
+        </p>
+        <div class="get-features">
+          <div class="get-feature-item reveal">
+            <div class="get-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="get-feature-text">
+              <h4>Performance Optimized</h4>
+              <p>Every site is built for speed — 90+ Lighthouse score guaranteed.</p>
+            </div>
+          </div>
+          <div class="get-feature-item reveal">
+            <div class="get-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <div class="get-feature-text">
+              <h4>Fully Responsive</h4>
+              <p>Pixel-perfect on every screen — desktop, tablet, and mobile.</p>
+            </div>
+          </div>
+          <div class="get-feature-item reveal">
+            <div class="get-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="get-feature-text">
+              <h4>SEO & Security</h4>
+              <p>On-page SEO, HTTPS, and best practices baked in from day one.</p>
+            </div>
+          </div>
+          <div class="get-feature-item reveal">
+            <div class="get-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </div>
+            <div class="get-feature-text">
+              <h4>Post-launch Support</h4>
+              <p>Free 30-day support after launch — no surprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card reveal-right">
+        <div class="form-title">Request a Website</div>
+        <div class="form-subtitle">Fill in your details — I'll reach out within 24 hrs.</div>
+        <form id="request-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="req-name">Full Name *</label>
+              <input type="text" id="req-name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="req-email">Email Address *</label>
+              <input type="email" id="req-email" placeholder="you@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="req-company">Company / Brand Name</label>
+            <input type="text" id="req-company" placeholder="Your company or brand (optional)">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="req-type">Website Type *</label>
+              <select id="req-type" required>
+                <option value="" disabled selected>Select type</option>
+                <option>Landing Page</option>
+                <option>Portfolio</option>
+                <option>E-Commerce</option>
+                <option>Business Website</option>
+                <option>SaaS / Web App</option>
+                <option>Blog</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="req-budget">Budget Range *</label>
+              <select id="req-budget" required>
+                <option value="" disabled selected>Select range</option>
+                <option>Under ₹10,000</option>
+                <option>₹10,000 – ₹25,000</option>
+                <option>₹25,000 – ₹50,000</option>
+                <option>₹50,000 – ₹1,00,000</option>
+                <option>Above ₹1,00,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="req-deadline">Expected Deadline</label>
+            <input type="date" id="req-deadline">
+          </div>
+          <div class="form-group">
+            <label for="req-desc">Project Description *</label>
+            <textarea id="req-desc" placeholder="Describe what you need — features, inspiration, references, goals…" required></textarea>
+          </div>
+          <p class="form-note">By submitting, you agree to our <a href="terms-and-conditions.html" target="_blank">Terms</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a>. Submitting will open your mail app to send the details.</p>
+          <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-    @media (max-width: 600px) {
-        #legal-consent-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        }
+<!-- ══ CONTACT ══════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label reveal">Contact</div>
+        <h2 class="section-title reveal">Let's talk<br><span>directly.</span></h2>
+        <p style="margin-top:16px;color:var(--text-2);font-size:15px;line-height:1.75;max-width:380px;" class="reveal">
+          Prefer a quick message? Reach out on any of these channels and I'll get back to you as soon as possible.
+        </p>
+        <div class="contact-methods stagger reveal">
+          <a href="https://wa.me/9961550562" target="_blank" rel="noopener" class="contact-card contact-guard">
+            <div class="contact-card-icon icon-wa">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div class="contact-card-label">WhatsApp</div>
+            <div class="contact-card-value">Chat on WhatsApp</div>
+          </a>
+          <a href="https://instagram.com/blocksizedx" target="_blank" rel="noopener" class="contact-card contact-guard">
+            <div class="contact-card-icon icon-ig">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div class="contact-card-label">Instagram</div>
+            <div class="contact-card-value">@blocksizedx</div>
+          </a>
+          <a href="#contact" class="contact-card contact-guard">
+            <div class="contact-card-icon icon-call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.11 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.56-.56a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-card-label">Call</div>
+            <div class="contact-card-value"><em>Not available now</em></div>
+          </a>
+          <a href="mailto:hello@blocksizedx.com" class="contact-card contact-guard">
+            <div class="contact-card-icon icon-mail">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value">blocksizedx@gmail.com</div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right reveal-right">
+        <div class="contact-info-box">
+          <h3>Working Hours</h3>
+          <p>Based in Kerala (IST). I typically respond within a few hours during working hours.</p>
+          <div class="contact-hours">
+            <div class="contact-hours-row">
+              <span class="contact-hours-day">Monday – Friday</span>
+              <span class="contact-hours-time">9:00 AM – 8:00 PM IST</span>
+            </div>
+            <div class="contact-hours-row">
+              <span class="contact-hours-day">Saturday</span>
+              <span class="contact-hours-time">10:00 AM – 5:00 PM IST</span>
+            </div>
+            <div class="contact-hours-row">
+              <span class="contact-hours-day">Sunday</span>
+              <span class="contact-hours-time">Closed (async only)</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:14px;color:var(--text-2);line-height:1.7;">
+          <strong style="font-family:var(--font-display);font-size:13px;color:var(--text);">💡 Pro Tip</strong><br>
+          For project inquiries, using the <a href="#get-website" style="color:var(--accent-2);">Request Form</a> helps me respond faster as all the project details come ready.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        #consent-close {
-        align-self: flex-end;
-        }
-    }
-    </style>
+<!-- ══ FOOTER ═══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Block<span>Sized</span>X</div>
+        <div class="footer-tagline">Crafting high-performance websites for brands that mean business.</div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/blocksizedx" target="_blank" rel="noopener" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/919961550562" target="_blank" rel="noopener" title="WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a href="mailto:blocksizedx@gmail.com" title="Email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://github.com/BlockSizedX/" title="Email" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 2.5 8.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="works/">All Projects</a></li>
+          <li><a href="#get-website">Get a Website</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#get-website">Landing Pages</a></li>
+          <li><a href="#get-website">Web Apps</a></li>
+          <li><a href="#get-website">E-Commerce</a></li>
+          <li><a href="#get-website">UI/UX Design</a></li>
+          <li><a href="#get-website">Portfolio website</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-and-conditions.html" target="_blank">Terms & Conditions</a></li>
+          <li><a href="privacy-policy.html" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 BlockSizedX · Made by <a href="#about">Muhammed Nazal Naufal</a></div>
+      <div class="footer-legal">
+        <a href="terms-and-conditions.html" target="_blank">Terms</a>
+        <a href="privacy-policy.html" target="_blank">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <script>
-    const consentBar = document.getElementById("legal-consent-bar");
-    const closeBtn = document.getElementById("consent-close");
+<!-- ══ CONSENT BAR ══════════════════════════════ -->
+<div id="consent-bar">
+  <div class="consent-text">
+    🍪 This website uses local storage and third-party services such as Google Analytics to enhance user experience and analyze usage. By continuing to use this site, you consent to the use of these technologies as described in our <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and <a href="terms-and-conditions.html" target="_blank">Terms of Service</a>.
+  </div>
+  <div class="consent-actions">
+    <button class="consent-accept" id="consent-accept">Got it</button>
+    <button class="consent-close" id="consent-close" aria-label="Close">×</button>
+  </div>
+</div>
 
-    // Check if already accepted
-    if (localStorage.getItem("blocksizedxConsent") === "true") {
-        consentBar.style.display = "none";
-    }
+<!-- ══ AUTH MODAL ═══════════════════════════════ -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">×</button>
+    <h2 class="modal-title"><span class="modal-title-span">BlockSizedX</span> - Sign in to submit requests, contact, and get updates.</h2>
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="login">Sign In</button>
+      <button class="modal-tab" data-tab="register">Create Account</button>
+    </div>
+    <!-- Login Panel -->
+    <div class="modal-panel" data-panel="login" style="display:flex;flex-direction:column;gap:0;">
+      <div class="modal-error" id="login-error"></div>
+      <div class="modal-success" id="login-success"></div>
+      <form class="modal-form" id="login-form" novalidate>
+        <div class="modal-form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" placeholder="Your username" required autocomplete="username">
+        </div>
+        <div class="modal-form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Your password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="modal-submit">Sign In →</button>
+      </form>
+    </div>
+    <!-- Register Panel -->
+    <div class="modal-panel" data-panel="register" style="display:none;flex-direction:column;gap:0;">
+      <div class="modal-error" id="register-error"></div>
+      <div class="modal-success" id="register-success"></div>
+      <form class="modal-form" id="register-form" novalidate>
+        <div class="modal-form-group">
+          <label for="reg-username">Username</label>
+          <input type="text" id="reg-username" placeholder="Choose a username" required autocomplete="username">
+        </div>
+        <div class="modal-form-group">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" placeholder="you@email.com" required autocomplete="email">
+        </div>
+        <div class="modal-form-group">
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" placeholder="At least 6 characters" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="modal-submit">Create Account →</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-    closeBtn.addEventListener("click", () => {
-        consentBar.style.display = "none";
-        localStorage.setItem("blocksizedxConsent", "true");
-    });
-    </script>
-    <script src="script.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+  import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDlQD-hlNH9wuSDys7Tz4a1avzYs56WGLY",
+    authDomain: "blocksizedx-sign-up.firebaseapp.com",
+    projectId: "blocksizedx-sign-up",
+    storageBucket: "blocksizedx-sign-up.firebasestorage.app",
+    messagingSenderId: "39068339463",
+    appId: "1:39068339463:web:d4424d30ee96d48252c9a2",
+    measurementId: "G-00WSDSY7JS"
+  };
+
+  // ✅ FIRST initialize
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  // ✅ THEN use app
+  window.auth = getAuth(app);
+  window.db = getFirestore(app);
+
+  // ✅ expose functions
+  window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+  window.setDoc = setDoc;
+  window.doc = doc;
+</script>
+<script src="script.js"></script>
 </body>
 </html>

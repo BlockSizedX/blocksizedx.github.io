@@ -1,34 +1,28 @@
 [
   {
-    "id": 1,
-    "name": "Stylo Footwear E-commerce",
-    "description": "A sustainable e-commerce platform with modern UI and seamless shopping experience.",
-    "shortDescription": "Sustainable e-commerce platform",
-    "category": "ecommerce",
-    "date": "Nov 2025",
-    "duration": "1 week",
-    "tags": ["E-commerce", "html", "css", "JavaScript", "Responsive"],
-    "color1": "#0077b6",
-    "color2": "#00b4d8",
-    "icon": "fas fa-shopping-cart",
+    "id": "bsx-001",
+    "name": "Stylo Footwear",
+    "description": "A modern E-commerce website for footwear shop. Frentend only website. including form, contact, product listing etc.",
+    "tags": ["E-Commerce", "UI/UX", "Frentend"],
+    "date": "2025-9-15",
     "liveDemo": "https://blocksizedx.github.io/stylofootwear.github.io",
-    "github": "https://github.com/BlockSizedX/stylofootwear.github.io",
-    "images": ["assets/work-stylo.png"]
+    "code": null,
+    "icon": "assets/work-images/work-stylo.png",
+    "images": [
+      "assets/work-images/work-stylo.png"
+    ]
   },
   {
-    "id": 2,
-    "name": "Fruzo Cafe - Cafe Website",
-    "description": "A sustainable Cafe Landing page with menu and seamless experience.",
-    "shortDescription": "Sustainable Cafe Website",
-    "category": "cafe",
-    "date": "Dec 2025",
-    "duration": "2 week",
-    "tags": ["landing pages", "html", "css", "JavaScript", "Cafe"],
-    "color1": "#0077b6",
-    "color2": "#00b4d8",
-    "icon": "fas fa-shopping-cart",
+    "id": "bsx-002",
+    "name": "Fruzo Cafe",
+    "description": "Frontend only website for a cafe with included menu, sorting, filtering and branch selection. Modern light themed, responsive and included form.",
+    "tags": ["Frentend", "Cafe", "HTML/CSS/JS"],
+    "date": "2024-09-02",
     "liveDemo": "https://blocksizedx.github.io/FruzoCafeOfficial.github.io",
-    "github": "https://github.com/BlockSizedX/FruzoCafeOfficial.github.io",
-    "images": ["assets/work-fruzo.png"]
+    "code": "https://github.com/BlockSizedX/FruzoCafeOfficial.github.io",
+    "icon": "assets/work-images/work-fruzo.png",
+    "images": [
+      "assets/work-images/work-fruzo.png"
+    ]
   }
 ]

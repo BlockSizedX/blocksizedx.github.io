@@ -1,248 +1,360 @@
-// Main JavaScript for BlockSizedX Portfolio
+/* ============================================
+   BlockSizedX — script.js
+   ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-    
-    // Mobile Navigation Toggle
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-    }
-    
-    // Active Navigation Link on Scroll
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    function updateActiveNavLink() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', updateActiveNavLink);
-    
-    // Navbar background visibility on scroll
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
-    // Load Works from JSON
-    loadWorks();
-    
-    // Load Templates from JSON
-    loadTemplates();
-    
-    // Contact Form Submission
-    function sendMail(e) {
-        e.preventDefault();
+// ── Helpers ──────────────────────────────────
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+const store = {
+  get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  remove: k => { try { localStorage.removeItem(k); } catch {} }
+};
 
-        const nameInput = document.getElementById("name");
-        const emailInput = document.getElementById("email");
-        const subjectInput = document.getElementById("subject");
-        const messageInput = document.getElementById("message");
+// ── Navbar scroll effect ──────────────────────
+const navbar = $('#navbar');
+window.addEventListener('scroll', () => {
+  navbar?.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
 
-        // Validate all fields have values
-        if (!nameInput.value.trim() || !emailInput.value.trim() || !subjectInput.value.trim() || !messageInput.value.trim()) {
-            alert("Please fill in all fields");
-            return;
-        }
-
-        const name = encodeURIComponent(nameInput.value.trim());
-        const email = encodeURIComponent(emailInput.value.trim());
-        const subject = encodeURIComponent(subjectInput.value.trim());
-        const message = encodeURIComponent(messageInput.value.trim());
-
-        const body =
-            `Name: ${name}%0D%0A` +
-            `Email: ${email}%0D%0A%0D%0A` +
-            `${message}`;
-
-        const mailtoLink = `mailto:blocksizedx@gmail.com?subject=${subject}&body=${body}`;
-        window.location.href = mailtoLink;
-    }
-
-    // Attach sendMail to contact form if it exists
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', sendMail);
-    }
-
-
-
-
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            if (this.getAttribute('href') !== '#') {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#home') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            }
-        });
-    });
-    
-    // Newsletter Form Submission
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            if (email) {
-                alert(`Thank you for subscribing with ${email}! You'll receive updates about new templates.`);
-                this.reset();
-            }
-        });
-    }
-    
-    // Add fade-in animation to elements on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all sections
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+// ── Mobile nav ────────────────────────────────
+const hamburger = $('#hamburger');
+const mobileNav = $('#mobile-nav');
+hamburger?.addEventListener('click', () => {
+  mobileNav?.classList.toggle('open');
+});
+mobileNav?.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileNav.classList.remove('open'));
 });
 
-// Load Works from JSON
-async function loadWorks() {
-    const worksGrid = document.getElementById('worksGrid');
-    if (!worksGrid) return;
-    
-    try {
-        const response = await fetch('works.json');
-        const works = await response.json();
-        
-        // Display first 6 works on homepage
-        const featuredWorks = works.slice(0, 4);
-        
-        worksGrid.innerHTML = featuredWorks.map(work => `
-            <div class="work-card fade-in">
-                <div class="work-image" ${work.images && work.images.length > 0 ? '' : `style="background: linear-gradient(135deg, ${work.color1 || '#0077b6'}, ${work.color2 || '#00b4d8'});"`}>
-                    ${work.images && work.images.length > 0 ? `<img src="${work.images[0]}" alt="${work.name}">` : `<i class="${work.icon || 'fas fa-laptop-code'}"></i>`}
-                </div>
-                <div class="work-content">
-                    <h3>${work.name}</h3>
-                    <p>${work.description}</p>
-                    <div class="work-tags">
-                        ${work.tags.map(tag => `<span class="work-tag">${tag}</span>`).join('')}
-                    </div>
-                    <div class="work-actions">
-                        <a href="${work.liveDemo}" target="_blank" class="btn btn-primary" style="padding: 10px 20px;">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
-                        <a href="works.html#work-${work.id}" class="btn btn-outline" style="padding: 10px 20px;">
-                            View Details
-                        </a>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    } catch (error) {
-        console.error('Error loading works:', error);
-        worksGrid.innerHTML = `
-            <div class="text-center" style="grid-column: 1 / -1;">
-                <p>Unable to load works. Please check your internet connection.</p>
-            </div>
-        `;
+// ── Active nav link ───────────────────────────
+function updateActiveNav() {
+  const sections = $$('section[id]');
+  const scrollY = window.scrollY + 100;
+  sections.forEach(sec => {
+    const top = sec.offsetTop;
+    const bottom = top + sec.offsetHeight;
+    const id = sec.id;
+    $$(`a[href="#${id}"]`).forEach(a => {
+      a.classList.toggle('active', scrollY >= top && scrollY < bottom);
+    });
+  });
+}
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+// ── Scroll reveal ─────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
     }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+function initReveal() {
+  $$('.reveal, .reveal-left, .reveal-right, .stagger').forEach(el => {
+    revealObserver.observe(el);
+  });
 }
 
-// Load Templates from JSON
-async function loadTemplates() {
-    const templatesGrid = document.getElementById('templatesGrid');
-    if (!templatesGrid) return;
-    
-    try {
-        const response = await fetch('templates.json');
-        const templates = await response.json();
-        
-        // Display first 5 templates on homepage
-        const featuredTemplates = templates.slice(0, 5);
-        
-        templatesGrid.innerHTML = featuredTemplates.map(template => `
-            <div class="template-card fade-in">
-                <div class="template-image" ${template.previewImages && template.previewImages.length > 0 ? '' : `style="background: linear-gradient(135deg, ${template.color1 || '#00b4d8'}, ${template.color2 || '#90e0ef'});"`}>
-                    ${template.previewImages && template.previewImages.length > 0 ? `<img src="${template.previewImages[0]}" alt="${template.name}" data-template-id="${template.id}">` : `<i class="${template.icon || 'fas fa-palette'}"></i>`}
-                    ${template.isPremium ? '<span class="template-badge">Premium</span>' : ''}
-                </div>
-                <div class="template-content">
-                    <h3>${template.name}</h3>
-                    <p>${template.shortDescription}</p>
-                    <div class="template-price">
-                        <span class="price">$${template.price}</span>
-                        <span class="category">${template.category}</span>
-                    </div>
-                    <ul class="template-features">
-                        ${template.features.slice(0, 3).map(feature => `
-                            <li><i class="fas fa-check"></i> ${feature}</li>
-                        `).join('')}
-                    </ul>
-                    <a href="buynow.html?template=${template.id}" class="btn btn-primary" style="width: 100%;">
-                        <i class="fas fa-shopping-cart"></i> Buy Now
-                    </a>
-                </div>
-            </div>
-        `).join('');
-    } catch (error) {
-        console.error('Error loading templates:', error);
-        templatesGrid.innerHTML = `
-            <div class="text-center" style="grid-column: 1 / -1;">
-                <p>Unable to load templates. Please check your internet connection.</p>
-            </div>
-        `;
-    }
+// ── Consent Bar ───────────────────────────────
+function initConsent() {
+  const bar = $('#consent-bar');
+  if (!bar) return;
+  if (store.get('bsx_consent_closed')) {
+    bar.classList.add('hidden');
+    return;
+  }
+  $('#consent-close')?.addEventListener('click', () => {
+    bar.classList.add('hidden');
+    store.set('bsx_consent_closed', true);
+  });
+  $('#consent-accept')?.addEventListener('click', () => {
+    bar.classList.add('hidden');
+    store.set('bsx_consent_closed', true);
+  });
 }
+
+// ── Auth System ───────────────────────────────
+const AUTH_KEY = 'bsx_users';
+const SESSION_KEY = 'bsx_session';
+
+function getUsers() {
+  return store.get(AUTH_KEY) || {};
+}
+function saveUsers(users) {
+  store.set(AUTH_KEY, users);
+}
+function getCurrentUser() {
+  return store.get(SESSION_KEY);
+}
+function setSession(username) {
+  store.set(SESSION_KEY, { username, loginAt: Date.now() });
+}
+function clearSession() {
+  store.remove(SESSION_KEY);
+}
+
+function getInitials(username) {
+  return username.slice(0, 2).toUpperCase();
+}
+
+function renderAuthButton() {
+  const btn = $('#nav-auth-btn');
+  if (!btn) return;
+  const user = getCurrentUser();
+  if (user) {
+    btn.outerHTML = `
+      <div class="nav-account-pill" id="nav-account-pill" title="Account: ${user.username}">
+        <div class="nav-avatar">${getInitials(user.username)}</div>
+        <span class="nav-account-name">${user.username}</span>
+      </div>`;
+    setTimeout(() => {
+      $('#nav-account-pill')?.addEventListener('click', () => {
+        if (confirm(`Signed in as: ${user.username}\n\nSign out?`)) {
+          clearSession();
+          location.reload();
+        }
+      });
+    }, 0);
+  } else {
+    if (!$('#nav-auth-btn')) {
+      // Already a pill, skip
+    }
+    btn?.addEventListener('click', () => openModal('login'));
+  }
+}
+
+
+
+// ── Modal ─────────────────────────────────────
+let _modalReason = null;
+
+function openModal(tab = 'login', reason = null) {
+  _modalReason = reason;
+  const overlay = $('#auth-modal');
+  if (!overlay) return;
+  overlay.classList.add('open');
+  switchTab(tab);
+}
+
+function closeModal() {
+  $('#auth-modal')?.classList.remove('open');
+  _modalReason = null;
+}
+
+function switchTab(tab) {
+  $$('.modal-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  $$('.modal-panel').forEach(p => p.style.display = p.dataset.panel === tab ? 'flex' : 'none');
+  clearModalMessages();
+}
+
+function clearModalMessages() {
+  $$('.modal-error, .modal-success').forEach(el => el.classList.remove('show'));
+}
+
+function initModal() {
+  const overlay = $('#auth-modal');
+  if (!overlay) return;
+
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  $('#modal-close')?.addEventListener('click', closeModal);
+  $$('.modal-tab').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+
+  // Login
+  $('#login-form')?.addEventListener('submit', e => {
+    e.preventDefault();
+    const username = $('#login-username').value.trim();
+    const password = $('#login-password').value;
+    const users = getUsers();
+    if (!users[username]) {
+      showModalError('login-error', 'No account found with that username.');
+      return;
+    }
+    if (users[username].password !== btoa(password)) {
+      showModalError('login-error', 'Incorrect password.');
+      return;
+    }
+    setSession(username);
+    showModalSuccess('login-success', `Welcome back, ${username}!`);
+    setTimeout(() => { closeModal(); location.reload(); }, 900);
+  });
+
+  // Register
+  $('#register-form')?.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const username = $('#reg-username').value.trim();
+    const email = $('#reg-email').value.trim();
+    const password = $('#reg-password').value;
+
+    if (password.length < 6) {
+      showModalError('register-error', 'Password must be at least 6 characters.');
+      return;
+    }
+
+    const users = getUsers();
+    if (users[username]) {
+      showModalError('register-error', 'Username already taken.');
+      return;
+    }
+
+    try {
+      // 🔥 CREATE USER IN FIREBASE AUTH
+      const userCredential = await window.createUserWithEmailAndPassword(window.auth, email, password);
+      const user = userCredential.user;
+
+      // 🔥 SAVE USERNAME + EMAIL IN DATABASE
+      await window.setDoc(window.doc(window.db, "users", user.uid), {
+        username: username,
+        email: email,
+        createdAt: Date.now()
+      });
+
+      // ✅ your existing system
+      users[username] = { email, password: btoa(password), createdAt: Date.now() };
+      saveUsers(users);
+      setSession(username);
+
+      showModalSuccess('register-success', `Account created! Welcome, ${username}!`);
+
+      setTimeout(() => { closeModal(); location.reload(); }, 900);
+
+    } catch (error) {
+      showModalError('register-error', error.message);
+    }
+  });
+}
+
+function showModalError(id, msg) {
+  const el = $(`#${id}`);
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function showModalSuccess(id, msg) {
+  const el = $(`#${id}`);
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+// ── Guard: require login before action ────────
+function requireLogin(action, prompt = 'Please sign in to continue.') {
+  if (getCurrentUser()) { action(); return; }
+  openModal('login', prompt);
+  // After login, action will need to be re-triggered by user
+}
+
+// ── Works loader (index.html) ─────────────────
+async function loadWorksPreview() {
+  const grid = $('#works-grid');
+  if (!grid) return;
+  try {
+    const res = await fetch('works.json');
+    const works = await res.json();
+    const preview = works.slice(0, 2);
+    grid.innerHTML = preview.map(w => `
+      <div class="work-card-mini reveal">
+        <div class="work-card-mini-cover">
+          <img src="${w.icon}" alt="${w.name}" loading="lazy">
+        </div>
+        <div class="work-card-mini-name">${w.name}</div>
+        <div class="work-card-mini-tags">${w.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="work-card-mini-actions">
+          ${w.liveDemo ? `<a href="${w.liveDemo}" target="_blank" rel="noopener" class="btn-demo">Live Demo ↗</a>` : ''}
+          <a href="works/#${w.id}" class="btn-more">See More</a>
+        </div>
+      </div>
+    `).join('');
+    // Re-observe new elements
+    $$('#works-grid .reveal').forEach(el => revealObserver.observe(el));
+  } catch (err) {
+    grid.innerHTML = '<p style="color:var(--text-3);font-size:14px;">Could not load works.</p>';
+  }
+}
+
+// ── Contact guards ────────────────────────────
+function initContactGuards() {
+  $$('.contact-guard').forEach(el => {
+    el.addEventListener('click', function(e) {
+      if (!getCurrentUser()) {
+        e.preventDefault();
+        openModal('login', 'Sign in to get contact details.');
+      }
+    });
+  });
+}
+
+// ── Request form ──────────────────────────────
+function initRequestForm() {
+  const form = $('#request-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!getCurrentUser()) {
+      openModal('login', 'Please sign in before submitting your request.');
+      return;
+    }
+    const name = $('#req-name').value.trim();
+    const email = $('#req-email').value.trim();
+    const company = $('#req-company').value.trim();
+    const type = $('#req-type').value;
+    const budget = $('#req-budget').value;
+    const desc = $('#req-desc').value.trim();
+    const deadline = $('#req-deadline').value;
+
+    const subject = encodeURIComponent(`Website Request from ${name} — BlockSizedX`);
+    const body = encodeURIComponent(
+`New Website Request via BlockSizedX Portfolio
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+CLIENT DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${name}
+Email: ${email}
+Company/Brand: ${company || 'N/A'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━
+Website Type: ${type}
+Budget Range: ${budget}
+Deadline: ${deadline || 'Flexible'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+DESCRIPTION
+━━━━━━━━━━━━━━━━━━━━━━━━
+${desc}
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+Sent from BlockSizedX Portfolio
+`);
+    window.location.href = `mailto:hello@blocksizedx.com?subject=${subject}&body=${body}`;
+  });
+}
+
+// ── Init ──────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initReveal();
+  initConsent();
+  initModal();
+  renderAuthButton();
+  loadWorksPreview();
+  initContactGuards();
+  initRequestForm();
+
+  // Smooth scroll for anchor links
+  $$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
