@@ -1,15 +1,22 @@
 /* ============================================
    BlockSizedX — script.js
+   Firebase Auth + Firestore — full rewrite
    ============================================ */
 
 // ── Helpers ──────────────────────────────────
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-const store = {
-  get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
-  set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
-  remove: k => { try { localStorage.removeItem(k); } catch {} }
-};
+
+// Only ONE localStorage key — stores username string after successful sign-in
+// so we can display it instantly before Firebase resolves onAuthStateChanged.
+const SESSION_KEY = 'bsx_session_user';
+
+// ── Format date as "dd-Mon-yyyy" ─────────────────────────────────────────────
+function formatDate(date) {
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const d = date instanceof Date ? date : new Date(date);
+  return `${String(d.getDate()).padStart(2,'0')}-${months[d.getMonth()]}-${d.getFullYear()}`;
+}
 
 // ── Navbar scroll effect ──────────────────────
 const navbar = $('#navbar');
@@ -62,77 +69,111 @@ function initReveal() {
 function initConsent() {
   const bar = $('#consent-bar');
   if (!bar) return;
-  if (store.get('bsx_consent_closed')) {
+  if (localStorage.getItem('bsx_consent_closed') === '1') {
     bar.classList.add('hidden');
     return;
   }
-  $('#consent-close')?.addEventListener('click', () => {
+  const close = () => {
     bar.classList.add('hidden');
-    store.set('bsx_consent_closed', true);
-  });
-  $('#consent-accept')?.addEventListener('click', () => {
-    bar.classList.add('hidden');
-    store.set('bsx_consent_closed', true);
-  });
+    localStorage.setItem('bsx_consent_closed', '1');
+  };
+  $('#consent-close')?.addEventListener('click', close);
+  $('#consent-accept')?.addEventListener('click', close);
 }
 
-// ── Auth System ───────────────────────────────
-const AUTH_KEY = 'bsx_users';
-const SESSION_KEY = 'bsx_session';
-
-function getUsers() {
-  return store.get(AUTH_KEY) || {};
-}
-function saveUsers(users) {
-  store.set(AUTH_KEY, users);
-}
-function getCurrentUser() {
-  return store.get(SESSION_KEY);
-}
-function setSession(username) {
-  store.set(SESSION_KEY, { username, loginAt: Date.now() });
-}
-function clearSession() {
-  store.remove(SESSION_KEY);
-}
-
+// ── Auth helpers ──────────────────────────────
 function getInitials(username) {
-  return username.slice(0, 2).toUpperCase();
+  return (username || '?').slice(0, 2).toUpperCase();
 }
 
-function renderAuthButton() {
-  const btn = $('#nav-auth-btn');
-  if (!btn) return;
-  const user = getCurrentUser();
-  if (user) {
-    btn.outerHTML = `
-      <div class="nav-account-pill" id="nav-account-pill" title="Account: ${user.username}">
-        <div class="nav-avatar">${getInitials(user.username)}</div>
-        <span class="nav-account-name">${user.username}</span>
-      </div>`;
-    setTimeout(() => {
-      $('#nav-account-pill')?.addEventListener('click', () => {
-        if (confirm(`Signed in as: ${user.username}\n\nSign out?`)) {
-          clearSession();
-          location.reload();
-        }
-      });
-    }, 0);
-  } else {
-    if (!$('#nav-auth-btn')) {
-      // Already a pill, skip
-    }
-    btn?.addEventListener('click', () => openModal('login'));
+function getCachedUsername() {
+  return localStorage.getItem(SESSION_KEY) || null;
+}
+
+function cacheUsername(username) {
+  if (username) localStorage.setItem(SESSION_KEY, username);
+  else localStorage.removeItem(SESSION_KEY);
+}
+
+async function fetchUsername(uid) {
+  try {
+    const { firebaseDb, firebaseFns } = window;
+    const { getDoc, doc } = firebaseFns;
+    const snap = await getDoc(doc(firebaseDb, 'users', uid));
+    return snap.exists() ? (snap.data().username || null) : null;
+  } catch {
+    return null;
   }
 }
 
+// ── Render nav auth button / account pill ─────
+function renderAuthButton(username) {
+  const btn = $('#nav-auth-btn');
+  const existingPill = $('#nav-account-pill');
 
+  if (username) {
+    const target = btn || existingPill;
+    if (!target) return;
+    target.outerHTML = `
+      <div class="nav-account-pill" id="nav-account-pill" title="Signed in as ${username}" style="cursor:pointer;">
+        <div class="nav-avatar">${getInitials(username)}</div>
+        <span class="nav-account-name">${username}</span>
+      </div>`;
+    setTimeout(() => {
+      $('#nav-account-pill')?.addEventListener('click', handleSignOut);
+    }, 0);
+  } else {
+    if (existingPill) {
+      existingPill.outerHTML = `
+        <button id="nav-auth-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Sign In
+        </button>`;
+      setTimeout(() => {
+        $('#nav-auth-btn')?.addEventListener('click', () => openModal('login'));
+      }, 0);
+    } else {
+      btn?.addEventListener('click', () => openModal('login'));
+    }
+  }
+}
+
+// ── Sign out ──────────────────────────────────
+async function handleSignOut() {
+  const { firebaseAuth, firebaseFns } = window;
+  const { signOut } = firebaseFns;
+  if (!confirm(`Signed in as: ${getCachedUsername()}\n\nSign out?`)) return;
+  try { await signOut(firebaseAuth); } catch {}
+  cacheUsername(null);
+  location.reload();
+}
+
+// ── onAuthStateChanged listener ───────────────
+function setupAuthListener() {
+  const { firebaseAuth, firebaseFns } = window;
+  const { onAuthStateChanged } = firebaseFns;
+
+  // Optimistic render from cache so nav shows instantly
+  const cached = getCachedUsername();
+  if (cached) renderAuthButton(cached);
+
+  onAuthStateChanged(firebaseAuth, async (fbUser) => {
+    if (fbUser) {
+      let username = getCachedUsername();
+      if (!username) {
+        username = await fetchUsername(fbUser.uid);
+        cacheUsername(username);
+      }
+      renderAuthButton(username || fbUser.email);
+    } else {
+      cacheUsername(null);
+      renderAuthButton(null);
+    }
+  });
+}
 
 // ── Modal ─────────────────────────────────────
-let _modalReason = null;
-
 function openModal(tab = 'login', reason = null) {
-  _modalReason = reason;
   const overlay = $('#auth-modal');
   if (!overlay) return;
   overlay.classList.add('open');
@@ -141,7 +182,6 @@ function openModal(tab = 'login', reason = null) {
 
 function closeModal() {
   $('#auth-modal')?.classList.remove('open');
-  _modalReason = null;
 }
 
 function switchTab(tab) {
@@ -154,6 +194,47 @@ function clearModalMessages() {
   $$('.modal-error, .modal-success').forEach(el => el.classList.remove('show'));
 }
 
+function showModalError(id, msg) {
+  const el = $(`#${id}`);
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function showModalSuccess(id, msg) {
+  const el = $(`#${id}`);
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function setFormLoading(formId, loading) {
+  const form = $(`#${formId}`);
+  if (!form) return;
+  const btn = form.querySelector('button[type="submit"]');
+  if (btn) {
+    btn.disabled = loading;
+    btn.textContent = loading ? 'Please wait…'
+      : formId === 'login-form' ? 'Sign In →' : 'Create Account →';
+  }
+}
+
+// ── Friendly Firebase error messages ──────────
+function firebaseErrorMessage(code) {
+  switch (code) {
+    case 'auth/email-already-in-use':   return 'That email is already registered.';
+    case 'auth/invalid-email':          return 'Please enter a valid email address.';
+    case 'auth/weak-password':          return 'Password must be at least 6 characters.';
+    case 'auth/user-not-found':         return 'No account found with those credentials.';
+    case 'auth/wrong-password':         return 'Incorrect password. Please try again.';
+    case 'auth/invalid-credential':     return 'Incorrect username or password.';
+    case 'auth/too-many-requests':      return 'Too many attempts. Please try again later.';
+    case 'auth/network-request-failed': return 'Network error. Check your connection.';
+    default:                            return 'Something went wrong. Please try again.';
+  }
+}
+
+// ── Modal init ────────────────────────────────
 function initModal() {
   const overlay = $('#auth-modal');
   if (!overlay) return;
@@ -164,92 +245,152 @@ function initModal() {
     btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });
 
-  // Login
-  $('#login-form')?.addEventListener('submit', e => {
+  // Sign In
+  $('#login-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const username = $('#login-username').value.trim();
+    clearModalMessages();
+
+    const usernameInput = $('#login-username').value.trim();
     const password = $('#login-password').value;
-    const users = getUsers();
-    if (!users[username]) {
-      showModalError('login-error', 'No account found with that username.');
+
+    if (!usernameInput || !password) {
+      showModalError('login-error', 'Please fill in all fields.');
       return;
     }
-    if (users[username].password !== btoa(password)) {
-      showModalError('login-error', 'Incorrect password.');
-      return;
+
+    setFormLoading('login-form', true);
+
+    try {
+      const { firebaseDb, firebaseAuth, firebaseFns } = window;
+      const { query, collection, where, getDocs, signInWithEmailAndPassword } = firebaseFns;
+
+      // Find email by username
+      const q = query(collection(firebaseDb, 'users'), where('username', '==', usernameInput));
+      const snap = await getDocs(q);
+
+      if (snap.empty) {
+        showModalError('login-error', 'No account found with that username.');
+        setFormLoading('login-form', false);
+        return;
+      }
+
+      const email = snap.docs[0].data().email;
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+
+      cacheUsername(usernameInput);
+      showModalSuccess('login-success', `Welcome back, ${usernameInput}!`);
+      setTimeout(() => { closeModal(); location.reload(); }, 900);
+
+    } catch (err) {
+      console.error("🔥 Firebase Register Error:", err);
+
+      let message = "";
+
+      switch (err.code) {
+        case 'auth/email-already-in-use':
+          message = "This email is already registered. Try logging in instead.";
+          break;
+
+        case 'auth/invalid-email':
+          message = "That email looks fake | Enter a valid one.";
+          break;
+
+        case 'auth/weak-password':
+          message = "Password too weak bro | Minimum 6 characters.";
+          break;
+
+        case 'auth/network-request-failed':
+          message = "Network issue | Check your internet.";
+          break;
+
+        case 'permission-denied':
+          message = "Database blocked 🚫 Fix Firestore rules.";
+          break;
+
+        case 'auth/app-not-authorized':
+          message = "Firebase config mismatch ⚠️ Wrong project or API key.";
+          break;
+
+        default:
+          message = err.message || "Unknown error ";
+      }
+
+      showModalError('register-error', message);
     }
-    setSession(username);
-    showModalSuccess('login-success', `Welcome back, ${username}!`);
-    setTimeout(() => { closeModal(); location.reload(); }, 900);
   });
 
   // Register
-  $('#register-form')?.addEventListener('submit', async e => {
+  $('#register-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    clearModalMessages();
 
     const username = $('#reg-username').value.trim();
-    const email = $('#reg-email').value.trim();
+    const email    = $('#reg-email').value.trim();
     const password = $('#reg-password').value;
 
+    if (!username || !email || !password) {
+      showModalError('register-error', 'Please fill in all fields.');
+      return;
+    }
+    if (username.length < 3) {
+      showModalError('register-error', 'Username must be at least 3 characters.');
+      return;
+    }
     if (password.length < 6) {
       showModalError('register-error', 'Password must be at least 6 characters.');
       return;
     }
 
-    const users = getUsers();
-    if (users[username]) {
-      showModalError('register-error', 'Username already taken.');
-      return;
-    }
+    setFormLoading('register-form', true);
 
     try {
-      // 🔥 CREATE USER IN FIREBASE AUTH
-      const userCredential = await window.createUserWithEmailAndPassword(window.auth, email, password);
-      const user = userCredential.user;
+      const { firebaseDb, firebaseAuth, firebaseFns } = window;
+      const { query, collection, where, getDocs, createUserWithEmailAndPassword, setDoc, doc } = firebaseFns;
 
-      // 🔥 SAVE USERNAME + EMAIL IN DATABASE
-      await window.setDoc(window.doc(window.db, "users", user.uid), {
-        username: username,
-        email: email,
+      // Check username uniqueness
+      const q = query(collection(firebaseDb, 'users'), where('username', '==', username));
+      const snap = await getDocs(q);
+      if (!snap.empty) {
+        showModalError('register-error', 'Username already taken. Choose another.');
+        setFormLoading('register-form', false);
+        return;
+      }
+
+      // Create Firebase Auth user (password stored securely in Firebase, never here)
+      const credential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+
+      // wait until auth is fully ready
+      const user = credential.user;
+
+      await user.reload(); // 🔥 force sync
+
+      const uid = user.uid;
+
+      await setDoc(doc(firebaseDb, 'users', uid), {
+        username:  username,
+        email:     email,
+        joined:    formatDate(new Date()),  // "07-Apr-2026"
         createdAt: Date.now()
       });
 
-      // ✅ your existing system
-      users[username] = { email, password: btoa(password), createdAt: Date.now() };
-      saveUsers(users);
-      setSession(username);
-
+      cacheUsername(username);
       showModalSuccess('register-success', `Account created! Welcome, ${username}!`);
-
       setTimeout(() => { closeModal(); location.reload(); }, 900);
 
-    } catch (error) {
-      showModalError('register-error', error.message);
+    } catch (err) {
+      showModalError('register-error', firebaseErrorMessage(err.code));
+      setFormLoading('register-form', false);
     }
   });
 }
 
-function showModalError(id, msg) {
-  const el = $(`#${id}`);
-  if (!el) return;
-  el.textContent = msg;
-  el.classList.add('show');
-}
-function showModalSuccess(id, msg) {
-  const el = $(`#${id}`);
-  if (!el) return;
-  el.textContent = msg;
-  el.classList.add('show');
-}
-
 // ── Guard: require login before action ────────
 function requireLogin(action, prompt = 'Please sign in to continue.') {
-  if (getCurrentUser()) { action(); return; }
+  if (getCachedUsername()) { action(); return; }
   openModal('login', prompt);
-  // After login, action will need to be re-triggered by user
 }
 
-// ── Works loader (index.html) ─────────────────
+// ── Works loader ──────────────────────────────
 async function loadWorksPreview() {
   const grid = $('#works-grid');
   if (!grid) return;
@@ -270,9 +411,8 @@ async function loadWorksPreview() {
         </div>
       </div>
     `).join('');
-    // Re-observe new elements
     $$('#works-grid .reveal').forEach(el => revealObserver.observe(el));
-  } catch (err) {
+  } catch {
     grid.innerHTML = '<p style="color:var(--text-3);font-size:14px;">Could not load works.</p>';
   }
 }
@@ -281,7 +421,7 @@ async function loadWorksPreview() {
 function initContactGuards() {
   $$('.contact-guard').forEach(el => {
     el.addEventListener('click', function(e) {
-      if (!getCurrentUser()) {
+      if (!getCachedUsername()) {
         e.preventDefault();
         openModal('login', 'Sign in to get contact details.');
       }
@@ -295,16 +435,16 @@ function initRequestForm() {
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    if (!getCurrentUser()) {
+    if (!getCachedUsername()) {
       openModal('login', 'Please sign in before submitting your request.');
       return;
     }
-    const name = $('#req-name').value.trim();
-    const email = $('#req-email').value.trim();
-    const company = $('#req-company').value.trim();
-    const type = $('#req-type').value;
-    const budget = $('#req-budget').value;
-    const desc = $('#req-desc').value.trim();
+    const name     = $('#req-name').value.trim();
+    const email    = $('#req-email').value.trim();
+    const company  = $('#req-company').value.trim();
+    const type     = $('#req-type').value;
+    const budget   = $('#req-budget').value;
+    const desc     = $('#req-desc').value.trim();
     const deadline = $('#req-deadline').value;
 
     const subject = encodeURIComponent(`Website Request from ${name} — BlockSizedX`);
@@ -342,12 +482,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initConsent();
   initModal();
-  renderAuthButton();
+  // setupAuthListener() is called from the Firebase module in index.html
+  // after Firebase is initialised, so window.firebaseAuth etc. are ready.
   loadWorksPreview();
   initContactGuards();
   initRequestForm();
 
-  // Smooth scroll for anchor links
+  // Smooth scroll
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
