@@ -454,15 +454,10 @@ async function trackFromSource() {
     const source = params.get('from');
     if (!source) return;
 
-    // Wait for Firebase to be available
-    const waitForFirebase = () => new Promise((resolve) => {
-      const check = () => {
-        if (window.firebaseDb && window.firebaseFns && window.firebaseFns.increment) resolve();
-        else setTimeout(check, 200);
-      };
-      check();
-    });
-    await waitForFirebase();
+    // Wait until Firebase is ready (important)
+    while (!window.firebaseDb || !window.firebaseFns) {
+      await new Promise(r => setTimeout(r, 100));
+    }
 
     const { firebaseDb, firebaseFns } = window;
     const { doc, setDoc, increment } = firebaseFns;
@@ -476,8 +471,11 @@ async function trackFromSource() {
       },
       { merge: true }
     );
-  } catch {
-    // Silently fail — analytics should never break the page
+
+    console.log("Tracked:", source); // 👈 debug log
+
+  } catch (err) {
+    console.log("Tracking error:", err);
   }
 }
 
