@@ -123,7 +123,7 @@ function renderAuthButton(username) {
     setTimeout(() => {
       // Redirect to account page when logged in
       $('#nav-account-pill')?.addEventListener('click', () => {
-        window.location.href = '/account/index.html';
+        window.location.href = '/account/';
       });
     }, 0);
   } else {

@@ -14,6 +14,18 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://blocksizedx.github.io/login/</loc>
+    <lastmod>2026-04-3</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://blocksizedx.github.io/account/</loc>
+    <lastmod>2026-04-3</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <url>
     <loc>https://blocksizedx.github.io/terms-and-conditions.html</loc>
