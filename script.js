@@ -8,7 +8,6 @@ const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 // Only ONE localStorage key — stores username string after successful sign-in
-// so we can display it instantly before Firebase resolves onAuthStateChanged.
 const SESSION_KEY = 'bsx_session_user';
 
 // ── Format date as "dd-Mon-yyyy" ─────────────────────────────────────────────
@@ -107,6 +106,8 @@ async function fetchUsername(uid) {
 }
 
 // ── Render nav auth button / account pill ─────
+// Task 1: clicking pill when logged in → go to /account/index.html
+//         clicking button when logged out → open modal
 function renderAuthButton(username) {
   const btn = $('#nav-auth-btn');
   const existingPill = $('#nav-account-pill');
@@ -120,7 +121,10 @@ function renderAuthButton(username) {
         <span class="nav-account-name">${username}</span>
       </div>`;
     setTimeout(() => {
-      $('#nav-account-pill')?.addEventListener('click', handleSignOut);
+      // Redirect to account page when logged in
+      $('#nav-account-pill')?.addEventListener('click', () => {
+        window.location.href = '/account/index.html';
+      });
     }, 0);
   } else {
     if (existingPill) {
@@ -136,16 +140,6 @@ function renderAuthButton(username) {
       btn?.addEventListener('click', () => openModal('login'));
     }
   }
-}
-
-// ── Sign out ──────────────────────────────────
-async function handleSignOut() {
-  const { firebaseAuth, firebaseFns } = window;
-  const { signOut } = firebaseFns;
-  if (!confirm(`Signed in as: ${getCachedUsername()}\n\nSign out?`)) return;
-  try { await signOut(firebaseAuth); } catch {}
-  cacheUsername(null);
-  location.reload();
 }
 
 // ── onAuthStateChanged listener ───────────────
@@ -173,7 +167,7 @@ function setupAuthListener() {
 }
 
 // ── Modal ─────────────────────────────────────
-function openModal(tab = 'login', reason = null) {
+function openModal(tab = 'login') {
   const overlay = $('#auth-modal');
   if (!overlay) return;
   overlay.classList.add('open');
@@ -282,40 +276,8 @@ function initModal() {
       setTimeout(() => { closeModal(); location.reload(); }, 900);
 
     } catch (err) {
-      console.error("🔥 Firebase Register Error:", err);
-
-      let message = "";
-
-      switch (err.code) {
-        case 'auth/email-already-in-use':
-          message = "This email is already registered. Try logging in instead.";
-          break;
-
-        case 'auth/invalid-email':
-          message = "That email looks fake | Enter a valid one.";
-          break;
-
-        case 'auth/weak-password':
-          message = "Password too weak bro | Minimum 6 characters.";
-          break;
-
-        case 'auth/network-request-failed':
-          message = "Network issue | Check your internet.";
-          break;
-
-        case 'permission-denied':
-          message = "Database blocked 🚫 Fix Firestore rules.";
-          break;
-
-        case 'auth/app-not-authorized':
-          message = "Firebase config mismatch ⚠️ Wrong project or API key.";
-          break;
-
-        default:
-          message = err.message || "Unknown error ";
-      }
-
-      showModalError('register-error', message);
+      showModalError('login-error', firebaseErrorMessage(err.code));
+      setFormLoading('login-form', false);
     }
   });
 
@@ -356,20 +318,16 @@ function initModal() {
         return;
       }
 
-      // Create Firebase Auth user (password stored securely in Firebase, never here)
+      // Create Firebase Auth user
       const credential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-
-      // wait until auth is fully ready
       const user = credential.user;
-
-      await user.reload(); // 🔥 force sync
-
+      await user.reload();
       const uid = user.uid;
 
       await setDoc(doc(firebaseDb, 'users', uid), {
         username:  username,
         email:     email,
-        joined:    formatDate(new Date()),  // "07-Apr-2026"
+        joined:    formatDate(new Date()),
         createdAt: Date.now()
       });
 
@@ -385,9 +343,9 @@ function initModal() {
 }
 
 // ── Guard: require login before action ────────
-function requireLogin(action, prompt = 'Please sign in to continue.') {
+function requireLogin(action) {
   if (getCachedUsername()) { action(); return; }
-  openModal('login', prompt);
+  openModal('login');
 }
 
 // ── Works loader ──────────────────────────────
@@ -423,7 +381,7 @@ function initContactGuards() {
     el.addEventListener('click', function(e) {
       if (!getCachedUsername()) {
         e.preventDefault();
-        openModal('login', 'Sign in to get contact details.');
+        openModal('login');
       }
     });
   });
@@ -436,7 +394,7 @@ function initRequestForm() {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     if (!getCachedUsername()) {
-      openModal('login', 'Please sign in before submitting your request.');
+      openModal('login');
       return;
     }
     const name     = $('#req-name').value.trim();
@@ -473,8 +431,54 @@ ${desc}
 ━━━━━━━━━━━━━━━━━━━━━━━━
 Sent from BlockSizedX Portfolio
 `);
-    window.location.href = `mailto:hello@blocksizedx.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:blocksizedx@gmail.com?subject=${subject}&body=${body}`;
   });
+}
+
+// ── Task 3: Handle ?openLogin=true URL param ──
+function handleOpenLoginParam() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('openLogin') === 'true') {
+    // Clean URL immediately
+    const cleanUrl = window.location.pathname + (params.toString().replace(/openLogin=true&?/, '').replace(/^&/, '') ? '?' + params.toString().replace(/openLogin=true&?/, '').replace(/^&/, '') : '');
+    history.replaceState(null, '', cleanUrl || window.location.pathname);
+    // Open modal after a brief delay to ensure DOM is ready
+    setTimeout(() => openModal('login'), 100);
+  }
+}
+
+// ── Task 10: Track ?from= analytics source ────
+async function trackFromSource() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const source = params.get('from');
+    if (!source) return;
+
+    // Wait for Firebase to be available
+    const waitForFirebase = () => new Promise((resolve) => {
+      const check = () => {
+        if (window.firebaseDb && window.firebaseFns && window.firebaseFns.increment) resolve();
+        else setTimeout(check, 200);
+      };
+      check();
+    });
+    await waitForFirebase();
+
+    const { firebaseDb, firebaseFns } = window;
+    const { doc, setDoc, increment } = firebaseFns;
+
+    await setDoc(
+      doc(firebaseDb, 'analytics_sources', source),
+      {
+        source: source,
+        count: increment(1),
+        lastVisit: Date.now()
+      },
+      { merge: true }
+    );
+  } catch {
+    // Silently fail — analytics should never break the page
+  }
 }
 
 // ── Init ──────────────────────────────────────
@@ -482,8 +486,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initConsent();
   initModal();
+  handleOpenLoginParam();
   // setupAuthListener() is called from the Firebase module in index.html
-  // after Firebase is initialised, so window.firebaseAuth etc. are ready.
   loadWorksPreview();
   initContactGuards();
   initRequestForm();
