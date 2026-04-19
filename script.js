@@ -355,7 +355,7 @@ async function loadWorksPreview() {
   try {
     const res = await fetch('works.json');
     const works = await res.json();
-    const preview = works.slice(0, 2);
+    const preview = works.slice(0, 4);
     grid.innerHTML = preview.map(w => `
       <div class="work-card-mini reveal">
         <div class="work-card-mini-cover">
