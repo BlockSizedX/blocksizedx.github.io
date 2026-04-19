@@ -29,12 +29,24 @@
     "id": "bsx-003",
     "name": "Machines Brochures showcase",
     "description": "Frontend only website for showcasing brochures, applications, etc. for a company.",
-    "tags": ["Frontend", "Showcase", "HTML/CSS/JS", "Authentication"],
+    "tags": ["Frontend", "Showcase", "Authentication"],
     "date": "2026-04-18",
     "liveDemo": "https://blocksizedx.github.io/shimadzu.github.io",
     "icon": "assets/work-images/work-shim.png",
     "images": [
       "assets/work-images/work-shim.png"
+    ]
+  },
+  {
+    "id": "bsx-004",
+    "name": "Who Are You? Entertainment Web",
+    "description": "Who Are You, Really?",
+    "tags": ["Frontend", "Entertainment", "HTML/CSS/JS"],
+    "date": "2026-04-19",
+    "liveDemo": "https://blocksizedx.github.io/who-are-you.github.io/",
+    "icon": "assets/work-images/work-wh.png",
+    "images": [
+      "assets/work-images/work-wh.png"
     ]
   }
 ]
