@@ -4,16 +4,691 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In — BlockSizedX</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f5f2">
+
+  <link rel="shortcut icon" href="../assets/work-images/logo-with-bg.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Login page layout ── */
+    html, body { height: 100%; }
+
+    .login-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    /* Subtle background matching main site hero */
+    .login-page::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 75% 35%, rgba(200,96,58,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(45,106,79,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .login-page::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(26,24,21,0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26,24,21,0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Back link */
+    .login-back {
+      position: fixed;
+      top: 22px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-2);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      z-index: 10;
+      box-shadow: var(--shadow);
+    }
+    .login-back:hover { color: var(--text); border-color: var(--text); }
+    .login-back svg { width: 14px; height: 14px; }
+
+    /* Card */
+    .login-card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 44px 40px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: var(--shadow-lg);
+      animation: cardIn 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.98); }
+      to   { opacity: 1; transform: none; }
+    }
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-2), var(--green));
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    /* Logo / brand */
+    .login-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 28px;
+    }
+    .login-brand-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .login-brand-logo span { color: var(--accent-2); }
+    .login-brand-sep {
+      width: 1px;
+      height: 18px;
+      background: var(--border);
+    }
+    .login-brand-sub {
+      font-size: 13px;
+      color: var(--text-3);
+      font-family: var(--font-body);
+    }
+
+    /* Heading */
+    .login-heading {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+    .login-subheading {
+      font-size: 14px;
+      color: var(--text-3);
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    /* Tabs */
+    .login-tabs {
+      display: flex;
+      background: var(--bg-alt);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 26px;
+      gap: 0;
+    }
+    .login-tab {
+      flex: 1;
+      padding: 9px;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-2);
+      border: none;
+      background: none;
+    }
+    .login-tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    /* Panels */
+    .login-panel { display: none; flex-direction: column; gap: 0; }
+    .login-panel.active { display: flex; }
+
+    /* Messages */
+    .login-error {
+      font-size: 13px;
+      color: #d44;
+      padding: 10px 14px;
+      background: #ffeaea;
+      border-radius: var(--radius-sm);
+      border: 1px solid #f5cccc;
+      display: none;
+      margin-bottom: 14px;
+    }
+    .login-error.show { display: block; }
+    .login-success {
+      font-size: 13px;
+      color: var(--green);
+      padding: 10px 14px;
+      background: #edf8f2;
+      border-radius: var(--radius-sm);
+      border: 1px solid #c3e8d4;
+      display: none;
+      margin-bottom: 14px;
+    }
+    .login-success.show { display: block; }
+
+    /* Form */
+    .login-form { display: flex; flex-direction: column; gap: 14px; }
+    .login-form-group { display: flex; flex-direction: column; gap: 6px; }
+    .login-form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--text);
+    }
+    .login-form-group input {
+      padding: 12px 15px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    .login-form-group input:focus {
+      border-color: var(--text);
+      background: var(--surface);
+    }
+    .login-submit {
+      margin-top: 6px;
+      padding: 13px;
+      border-radius: 100px;
+      background: var(--text);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      width: 100%;
+    }
+    .login-submit:hover { background: var(--accent-2); }
+    .login-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Already logged in state */
+    .login-logged-in {
+      text-align: center;
+      padding: 10px 0 6px;
+    }
+    .login-logged-in .login-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--text);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 auto 16px;
+    }
+    .login-logged-in h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .login-logged-in p {
+      font-size: 14px;
+      color: var(--text-3);
+      margin-bottom: 22px;
+    }
+    .login-logged-in-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .login-btn-home {
+      padding: 13px;
+      border-radius: 100px;
+      background: var(--text);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+    }
+    .login-btn-home:hover { background: var(--accent-2); }
+    .login-btn-signout {
+      padding: 11px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      color: var(--text-2);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      background: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .login-btn-signout:hover { border-color: var(--text); color: var(--text); }
+
+    /* Loading spinner */
+    .login-loading {
+      text-align: center;
+      padding: 20px 0;
+      color: var(--text-3);
+      font-size: 14px;
+    }
+
+    /* Footer note */
+    .login-footer-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      font-size: 12.5px;
+      color: var(--text-3);
+      text-align: center;
+    }
+    .login-footer-note a { color: var(--accent-2); text-decoration: none; }
+    .login-footer-note a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .login-card { padding: 32px 22px 28px; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Back to home -->
+  <a href="/" class="login-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Home
+  </a>
+
+  <div class="login-page">
+
+    <div class="login-card" id="login-card">
+
+      <!-- Brand -->
+      <div class="login-brand">
+        <a href="/" class="login-brand-logo">Block<span>Sized</span>X</a>
+        <div class="login-brand-sep"></div>
+        <span class="login-brand-sub">Account</span>
+      </div>
+
+      <!-- Loading state (shown while Firebase checks auth) -->
+      <div id="state-loading" class="login-loading">Checking session…</div>
+
+      <!-- Auth forms (hidden until Firebase ready) -->
+      <div id="state-auth" style="display:none;">
+        <div class="login-heading">Welcome back</div>
+        <div class="login-subheading">Sign in or create an account to submit requests, contact, and get updates.</div>
+
+        <div class="login-tabs">
+          <button class="login-tab active" data-tab="signin">Sign In</button>
+          <button class="login-tab" data-tab="register">Create Account</button>
+        </div>
+
+        <!-- Sign In Panel -->
+        <div class="login-panel active" id="panel-signin">
+          <div class="login-error" id="signin-error"></div>
+          <div class="login-success" id="signin-success"></div>
+          <form class="login-form" id="signin-form" novalidate>
+            <div class="login-form-group">
+              <label for="signin-username">Username</label>
+              <input type="text" id="signin-username" placeholder="Your username" required autocomplete="username">
+            </div>
+            <div class="login-form-group">
+              <label for="signin-password">Password</label>
+              <input type="password" id="signin-password" placeholder="Your password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="login-submit" id="signin-btn">Sign In →</button>
+          </form>
+        </div>
+
+        <!-- Register Panel -->
+        <div class="login-panel" id="panel-register">
+          <div class="login-error" id="register-error"></div>
+          <div class="login-success" id="register-success"></div>
+          <form class="login-form" id="register-form" novalidate>
+            <div class="login-form-group">
+              <label for="reg-username">Username</label>
+              <input type="text" id="reg-username" placeholder="Choose a username" required autocomplete="username">
+            </div>
+            <div class="login-form-group">
+              <label for="reg-email">Email</label>
+              <input type="email" id="reg-email" placeholder="you@email.com" required autocomplete="email">
+            </div>
+            <div class="login-form-group">
+              <label for="reg-password">Password</label>
+              <input type="password" id="reg-password" placeholder="At least 6 characters" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="login-submit" id="register-btn">Create Account →</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Logged-in state -->
+      <div id="state-loggedin" style="display:none;">
+        <div class="login-logged-in">
+          <div class="login-avatar" id="li-avatar">?</div>
+          <h3 id="li-name">Hello!</h3>
+          <p>You're already signed in.</p>
+          <div class="login-logged-in-actions">
+            <a href="/" class="login-btn-home">Go to Home →</a>
+            <button class="login-btn-signout" id="signout-btn">Sign Out</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="login-footer-note">
+      By continuing, you agree to our
+      <a href="/terms-and-conditions.html" target="_blank">Terms</a> &amp;
+      <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>.
+    </div>
+
+  </div>
+
 <script type="module">
-  // /login/index.html — always redirect to homepage with modal trigger
-  // regardless of auth state, to prevent 404 abuse
-  // Accessible at: blocksizedx.github.io/login
-  window.location.replace('/index.html?openLogin=true');
+  import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics }     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getFirestore,
+    setDoc, getDoc, getDocs, deleteDoc,
+    doc, collection, query, where,
+    increment, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDlQD-hlNH9wuSDys7Tz4a1avzYs56WGLY",
+    authDomain: "blocksizedx-sign-up.firebaseapp.com",
+    projectId: "blocksizedx-sign-up",
+    storageBucket: "blocksizedx-sign-up.firebasestorage.app",
+    messagingSenderId: "39068339463",
+    appId: "1:39068339463:web:d4424d30ee96d48252c9a2",
+    measurementId: "G-00WSDSY7JS"
+  };
+
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+  getAnalytics(app);
+
+  // ── Shared session key (same as script.js) ──
+  const SESSION_KEY = 'bsx_session_user';
+
+  function getCachedUsername() {
+    return localStorage.getItem(SESSION_KEY) || null;
+  }
+  function cacheUsername(username) {
+    if (username) localStorage.setItem(SESSION_KEY, username);
+    else localStorage.removeItem(SESSION_KEY);
+  }
+  function getInitials(username) {
+    return (username || '?').slice(0, 2).toUpperCase();
+  }
+  function formatDate(date) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const d = date instanceof Date ? date : new Date(date);
+    return `${String(d.getDate()).padStart(2,'0')}-${months[d.getMonth()]}-${d.getFullYear()}`;
+  }
+
+  // ── Firebase error messages (same as script.js) ──
+  function firebaseErrorMessage(code) {
+    switch (code) {
+      case 'auth/email-already-in-use':   return 'That email is already registered.';
+      case 'auth/invalid-email':          return 'Please enter a valid email address.';
+      case 'auth/weak-password':          return 'Password must be at least 6 characters.';
+      case 'auth/user-not-found':         return 'No account found with those credentials.';
+      case 'auth/wrong-password':         return 'Incorrect password. Please try again.';
+      case 'auth/invalid-credential':     return 'Incorrect username or password.';
+      case 'auth/too-many-requests':      return 'Too many attempts. Please try again later.';
+      case 'auth/network-request-failed': return 'Network error. Check your connection.';
+      default:                            return 'Something went wrong. Please try again.';
+    }
+  }
+
+  // ── Show / hide states ──
+  const stateLoading  = document.getElementById('state-loading');
+  const stateAuth     = document.getElementById('state-auth');
+  const stateLoggedIn = document.getElementById('state-loggedin');
+
+  function showState(state) {
+    stateLoading.style.display  = state === 'loading'   ? 'block' : 'none';
+    stateAuth.style.display     = state === 'auth'      ? 'block' : 'none';
+    stateLoggedIn.style.display = state === 'loggedin'  ? 'block' : 'none';
+  }
+
+  // Optimistic: if we have a cached user, skip loading flicker
+  const cached = getCachedUsername();
+  if (cached) {
+    document.getElementById('li-avatar').textContent = getInitials(cached);
+    document.getElementById('li-name').textContent   = `Hello, ${cached}!`;
+    showState('loggedin');
+  } else {
+    showState('loading');
+  }
+
+  // ── Tabs ──
+  document.querySelectorAll('.login-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('.login-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+      document.querySelectorAll('.login-panel').forEach(p => p.classList.toggle('active', p.id === `panel-${tab}`));
+      clearMessages();
+    });
+  });
+
+  function clearMessages() {
+    document.querySelectorAll('.login-error, .login-success').forEach(el => {
+      el.classList.remove('show');
+      el.textContent = '';
+    });
+  }
+  function showError(id, msg) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+  function showSuccess(id, msg) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+
+  // ── Where to redirect after login ──
+  // Respect ?redirect= param, default to '/'
+  function getRedirectTarget() {
+    const params = new URLSearchParams(window.location.search);
+    const redir  = params.get('redirect');
+    // Safety: only allow relative paths or same-origin
+    if (redir && redir.startsWith('/') && !redir.startsWith('//')) return redir;
+    return '/';
+  }
+
+  // ── Sign In ──
+  document.getElementById('signin-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearMessages();
+
+    const usernameInput = document.getElementById('signin-username').value.trim();
+    const password      = document.getElementById('signin-password').value;
+
+    if (!usernameInput || !password) {
+      showError('signin-error', 'Please fill in all fields.');
+      return;
+    }
+
+    const btn = document.getElementById('signin-btn');
+    btn.disabled    = true;
+    btn.textContent = 'Signing in…';
+
+    try {
+      // Find email by username
+      const q    = query(collection(db, 'users'), where('username', '==', usernameInput));
+      const snap = await getDocs(q);
+
+      if (snap.empty) {
+        showError('signin-error', 'No account found with that username.');
+        btn.disabled    = false;
+        btn.textContent = 'Sign In →';
+        return;
+      }
+
+      const email = snap.docs[0].data().email;
+      await signInWithEmailAndPassword(auth, email, password);
+
+      cacheUsername(usernameInput);
+      showSuccess('signin-success', `Welcome back, ${usernameInput}! Redirecting…`);
+
+      // Redirect to home (or redirect param) after short delay
+      setTimeout(() => {
+        window.location.replace(getRedirectTarget());
+      }, 900);
+
+    } catch (err) {
+      showError('signin-error', firebaseErrorMessage(err.code));
+      btn.disabled    = false;
+      btn.textContent = 'Sign In →';
+    }
+  });
+
+  // ── Register ──
+  document.getElementById('register-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearMessages();
+
+    const username = document.getElementById('reg-username').value.trim();
+    const email    = document.getElementById('reg-email').value.trim();
+    const password = document.getElementById('reg-password').value;
+
+    if (!username || !email || !password) {
+      showError('register-error', 'Please fill in all fields.');
+      return;
+    }
+    if (username.length < 3) {
+      showError('register-error', 'Username must be at least 3 characters.');
+      return;
+    }
+    if (password.length < 6) {
+      showError('register-error', 'Password must be at least 6 characters.');
+      return;
+    }
+
+    const btn = document.getElementById('register-btn');
+    btn.disabled    = true;
+    btn.textContent = 'Creating account…';
+
+    try {
+      // Check username uniqueness
+      const q    = query(collection(db, 'users'), where('username', '==', username));
+      const snap = await getDocs(q);
+      if (!snap.empty) {
+        showError('register-error', 'Username already taken. Choose another.');
+        btn.disabled    = false;
+        btn.textContent = 'Create Account →';
+        return;
+      }
+
+      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      const user       = credential.user;
+      await user.reload();
+
+      await setDoc(doc(db, 'users', user.uid), {
+        username:  username,
+        email:     email,
+        joined:    formatDate(new Date()),
+        createdAt: Date.now()
+      });
+
+      cacheUsername(username);
+      showSuccess('register-success', `Account created! Welcome, ${username}! Redirecting…`);
+
+      setTimeout(() => {
+        window.location.replace(getRedirectTarget());
+      }, 900);
+
+    } catch (err) {
+      showError('register-error', firebaseErrorMessage(err.code));
+      btn.disabled    = false;
+      btn.textContent = 'Create Account →';
+    }
+  });
+
+  // ── Sign Out ──
+  document.getElementById('signout-btn').addEventListener('click', async () => {
+    try {
+      await signOut(auth);
+      cacheUsername(null);
+      showState('auth');
+    } catch (err) {
+      console.error('Sign out error:', err);
+    }
+  });
+
+  // ── Auth state listener ──
+  onAuthStateChanged(auth, async (fbUser) => {
+    if (fbUser) {
+      let username = getCachedUsername();
+      if (!username) {
+        try {
+          const snap = await getDoc(doc(db, 'users', fbUser.uid));
+          username = snap.exists() ? (snap.data().username || null) : null;
+          cacheUsername(username);
+        } catch { /* silently fail */ }
+      }
+      const display = username || fbUser.email;
+      document.getElementById('li-avatar').textContent = getInitials(display);
+      document.getElementById('li-name').textContent   = `Hello, ${display}!`;
+      showState('loggedin');
+    } else {
+      cacheUsername(null);
+      showState('auth');
+    }
+  });
 </script>
-<noscript>
-  <meta http-equiv="refresh" content="0;url=/index.html?openLogin=true">
-</noscript>
+
 </body>
 </html>

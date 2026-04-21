@@ -106,8 +106,8 @@ async function fetchUsername(uid) {
 }
 
 // ── Render nav auth button / account pill ─────
-// Task 1: clicking pill when logged in → go to /account/index.html
-//         clicking button when logged out → open modal
+// clicking pill when logged in → go to /account/
+// clicking button when logged out → open modal
 function renderAuthButton(username) {
   const btn = $('#nav-auth-btn');
   const existingPill = $('#nav-account-pill');
@@ -121,7 +121,6 @@ function renderAuthButton(username) {
         <span class="nav-account-name">${username}</span>
       </div>`;
     setTimeout(() => {
-      // Redirect to account page when logged in
       $('#nav-account-pill')?.addEventListener('click', () => {
         window.location.href = '/account/';
       });
@@ -273,7 +272,12 @@ function initModal() {
 
       cacheUsername(usernameInput);
       showModalSuccess('login-success', `Welcome back, ${usernameInput}!`);
-      setTimeout(() => { closeModal(); location.reload(); }, 900);
+
+      // Update navbar immediately, then close modal — no page reload needed
+      setTimeout(() => {
+        closeModal();
+        renderAuthButton(usernameInput);
+      }, 900);
 
     } catch (err) {
       showModalError('login-error', firebaseErrorMessage(err.code));
@@ -333,7 +337,12 @@ function initModal() {
 
       cacheUsername(username);
       showModalSuccess('register-success', `Account created! Welcome, ${username}!`);
-      setTimeout(() => { closeModal(); location.reload(); }, 900);
+
+      // Update navbar immediately, then close modal — no page reload needed
+      setTimeout(() => {
+        closeModal();
+        renderAuthButton(username);
+      }, 900);
 
     } catch (err) {
       showModalError('register-error', firebaseErrorMessage(err.code));
@@ -435,26 +444,27 @@ Sent from BlockSizedX Portfolio
   });
 }
 
-// ── Task 3: Handle ?openLogin=true URL param ──
+// ── Handle ?openLogin=true URL param ──────────
 function handleOpenLoginParam() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('openLogin') === 'true') {
     // Clean URL immediately
-    const cleanUrl = window.location.pathname + (params.toString().replace(/openLogin=true&?/, '').replace(/^&/, '') ? '?' + params.toString().replace(/openLogin=true&?/, '').replace(/^&/, '') : '');
+    const remaining = params.toString().replace(/openLogin=true&?/, '').replace(/^&/, '');
+    const cleanUrl = window.location.pathname + (remaining ? '?' + remaining : '');
     history.replaceState(null, '', cleanUrl || window.location.pathname);
     // Open modal after a brief delay to ensure DOM is ready
     setTimeout(() => openModal('login'), 100);
   }
 }
 
-// ── Task 10: Track ?from= analytics source ────
+// ── Track ?from= analytics source ─────────────
 async function trackFromSource() {
   try {
     const params = new URLSearchParams(window.location.search);
     const source = params.get('from');
     if (!source) return;
 
-    // Wait until Firebase is ready (important)
+    // Wait until Firebase is ready
     while (!window.firebaseDb || !window.firebaseFns) {
       await new Promise(r => setTimeout(r, 100));
     }
@@ -472,7 +482,7 @@ async function trackFromSource() {
       { merge: true }
     );
 
-    console.log("Tracked:", source); // 👈 debug log
+    console.log("Tracked:", source);
 
   } catch (err) {
     console.log("Tracking error:", err);
