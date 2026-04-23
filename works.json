@@ -39,6 +39,18 @@
   },
   {
     "id": "bsx-004",
+    "name": "Escape With Excuse",
+    "description": "Dataset based AI powered smart Excuse generator webapp with custom modes",
+    "tags": ["Frontend", "Generator", "AI/Dataset"],
+    "date": "2026-04-18",
+    "liveDemo": "https://escapewithexcuse.pages.dev",
+    "icon": "assets/work-images/work-exc.png",
+    "images": [
+      "assets/work-images/work-exc.png"
+    ]
+  },
+  {
+    "id": "bsx-005",
     "name": "Who Are You? Entertainment Web",
     "description": "Who Are You, Really?",
     "tags": ["Frontend", "Entertainment", "HTML/CSS/JS"],
