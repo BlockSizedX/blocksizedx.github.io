@@ -21,7 +21,6 @@
   <meta property="og:site_name" content="BlockSizedX" />
   <meta property="og:image" content="./assets/work-images/logo-with-bg.png" />
 
-
   <meta name="twitter:card" content="assets/logo_beside_text_fullscreen.png" />
   <meta name="twitter:title" content="BlockSizedX" />
   <meta name="twitter:description" content="BlockSizedX is a web designing and web development freelance brand creating fast, modern, and responsive websites. Specialised in clean UI, smooth UX, and performance-focused web solutions." />
@@ -30,8 +29,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="assets/work-images/logo-with-bg.png" type="image/x-icon"> 
-
-
 
   <script type="application/ld+json">
   {
@@ -60,9 +57,61 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-M5GCHYP4C9');
   </script>
+
+  <style>
+    /* ── Packs promo banner inside get-website section ── */
+    .packs-promo-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 32px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, rgba(202,153,84,0.10) 0%, rgba(45,106,79,0.08) 100%);
+      border: 1px solid rgba(202,153,84,0.30);
+      border-radius: var(--radius);
+      flex-wrap: wrap;
+    }
+    .packs-promo-strip-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .packs-promo-strip-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .packs-promo-strip-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .packs-promo-strip-sub {
+      font-size: 12px;
+      color: var(--text-3);
+    }
+    .packs-promo-strip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 100px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--accent-2);
+      color: #fff;
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .packs-promo-strip-btn:hover { background: #b5502e; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  </style>
 </head>
 <body>
 
@@ -75,6 +124,7 @@
         <a href="#about">About</a>
         <a href="#works">Works</a>
         <a href="#get-website">Get a Site</a>
+        <a href="packs/" id="nav-web-packs-link">Web Packs</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-right">
@@ -96,6 +146,7 @@
   <a href="#about">About</a>
   <a href="#works">Works</a>
   <a href="#get-website">Get a Site</a>
+  <a href="packs/">Web Packs</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -129,7 +180,6 @@
       </div>
       <div class="hero-card reveal-right">
         <div class="hero-card-label">At a glance</div>
-        
         <div class="hero-card-stack">
           <div class="hero-card-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -296,6 +346,21 @@
             </div>
           </div>
         </div>
+
+        <!-- ── Packs Promo Strip ── -->
+        <div class="packs-promo-strip reveal">
+          <div class="packs-promo-strip-text">
+            <div class="packs-promo-strip-icon">📦</div>
+            <div>
+              <div class="packs-promo-strip-label">Explore Web Packs — 6 packs available</div>
+              <div class="packs-promo-strip-sub">Ready-made packages from ₹4,999. Fast delivery, no surprises.</div>
+            </div>
+          </div>
+          <a href="packs/" class="packs-promo-strip-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            See All Packs
+          </a>
+        </div>
       </div>
       <div class="form-card reveal-right">
         <div class="form-title">Request a Website</div>
@@ -357,6 +422,96 @@
         </form>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══ WEBSITE PACKS ═══════════════════════════ -->
+<section id="website-packs">
+  <div class="container">
+    <div class="packs-header">
+      <div class="section-label reveal">Website Packs</div>
+      <h2 class="section-title reveal">Ready-made <span>packages</span><br>for every need.</h2>
+      <p class="reveal">Choose a pack that fits your business stage and budget. Every pack includes professional design, mobile responsiveness, and direct support.</p>
+    </div>
+
+    <div class="packs-grid stagger">
+
+      <!-- Starter Pack -->
+      <div class="pack-card reveal">
+        <div class="pack-name">⚡ Starter Pack</div>
+        <div class="pack-tagline">Best for small shops / personal brands</div>
+        <ul class="pack-features">
+          <li>Up to 4 Pages</li>
+          <li>Mobile Responsive Design</li>
+          <li>Contact Form</li>
+          <li>Basic SEO Setup</li>
+          <li>WhatsApp Chat Button</li>
+          <li>1 Free Revision</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹7,999 – ₹12,999</div>
+        <a href="packs/" class="pack-get-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Starter Pack
+        </a>
+      </div>
+
+      <!-- Standard Pack -->
+      <div class="pack-card featured reveal">
+        <div class="pack-badge">⭐ Most Popular</div>
+        <div class="pack-name">🚀 Standard Pack</div>
+        <div class="pack-tagline">Best for growing businesses</div>
+        <ul class="pack-features">
+          <li>Up to 8 Pages</li>
+          <li>Custom Modern Design</li>
+          <li>Mobile + Tablet Optimized</li>
+          <li>SEO Ready Structure</li>
+          <li>Gallery / Services Section</li>
+          <li>Speed Optimization</li>
+          <li>Admin Panel (optional)</li>
+          <li>3 Revisions</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹15,999 – ₹29,999</div>
+        <a href="packs/" class="pack-get-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Standard Pack
+        </a>
+      </div>
+
+      <!-- Premium Pack -->
+      <div class="pack-card reveal">
+        <div class="pack-name">💎 Premium Pack</div>
+        <div class="pack-tagline">Best for serious businesses</div>
+        <ul class="pack-features">
+          <li>Unlimited / 12+ Pages</li>
+          <li>Fully Custom UI/UX</li>
+          <li>Booking / Dynamic Features</li>
+          <li>Payment Gateway</li>
+          <li>Blog / Dashboard</li>
+          <li>Advanced SEO</li>
+          <li>Analytics Setup</li>
+          <li>Priority Support</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹39,999+</div>
+        <a href="packs/" class="pack-get-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Premium Pack
+        </a>
+      </div>
+
+    </div>
+
+    <!-- View All Packs CTA -->
+    <div class="packs-footer-cta reveal">
+      <a href="packs/" class="btn btn-primary" style="font-size:15px;padding:14px 32px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        View All Packs
+      </a>
+      <p style="margin-top:14px;font-size:13px;color:var(--text-3);">6 packs available · Custom quotes on request</p>
+    </div>
+
   </div>
 </section>
 
@@ -460,6 +615,7 @@
           <li><a href="#works">Works</a></li>
           <li><a href="works/">All Projects</a></li>
           <li><a href="#get-website">Get a Website</a></li>
+          <li><a href="packs/">Web Packs</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -552,6 +708,21 @@
 
 <script src="script.js"></script>
 
+<script>
+  // ── Highlight "Web Packs" nav link when #website-packs is in view ──
+  (function() {
+    const packsLink = document.getElementById('nav-web-packs-link');
+    const packsSection = document.getElementById('website-packs');
+    if (!packsLink || !packsSection) return;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        packsLink.classList.toggle('active', e.isIntersecting);
+      });
+    }, { threshold: 0.20 });
+    obs.observe(packsSection);
+  })();
+</script>
+
 <script type="module">
   import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getAnalytics }     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
@@ -579,7 +750,6 @@
   const db   = getFirestore(app);
   getAnalytics(app);
 
-  // Expose instances + functions to script.js (classic script)
   window.firebaseAuth = auth;
   window.firebaseDb   = db;
   window.firebaseFns  = {
@@ -592,10 +762,8 @@
     increment, serverTimestamp
   };
 
-  // Start auth state listener (defined in script.js)
   function trySetupAuth() {
     if (typeof setupAuthListener === 'function') setupAuthListener();
-    // Track source after Firebase is ready
     if (typeof trackFromSource === 'function') trackFromSource();
   }
   if (document.readyState === 'loading') {

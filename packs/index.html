@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Packs — BlockSizedX</title>
+  <meta name="description" content="Choose from BlockSizedX's ready-made website packs — Launch, Starter, Growth, Standard, Automation, and Premium. Fast delivery, professional design, mobile responsive. Serving Kannur, Kerala and beyond.">
+  <meta name="theme-color" content="#f7f5f2">
+  <meta name="keywords" content="website packs Kerala, web design packages Kannur, affordable website packages India, BlockSizedX packs, starter website pack, premium website pack">
+  <meta name="author" content="BlockSizedX" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Website Packs — BlockSizedX" />
+  <meta property="og:description" content="Ready-made website packages for every business stage and budget. From ₹4,999 to ₹59,999+." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://blocksizedx.github.io/packs/" />
+  <meta property="og:site_name" content="BlockSizedX" />
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="../assets/work-images/logo-with-bg.png" type="image/x-icon">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5GCHYP4C9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M5GCHYP4C9');
+  </script>
+
+  <style>
+    /* ── PACKS PAGE STYLES ── */
+    .packs-page-hero {
+      padding: calc(var(--nav-h) + 70px) 0 64px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .packs-page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(202,153,84,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .packs-page-hero .section-label { display: inline-block; }
+    .packs-page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 14px 0 16px;
+    }
+    .packs-page-hero h1 span { color: var(--accent-2); }
+    .packs-page-hero p {
+      font-size: 16px;
+      color: var(--text-2);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.75;
+    }
+    .packs-page-hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .packs-page-hero-badges .tag { font-size: 13px; padding: 6px 14px; }
+
+    /* ── ALL PACKS GRID ── */
+    .packs-page-section {
+      padding: 80px 0 100px;
+      background: var(--bg-alt);
+    }
+    .packs-section-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .packs-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .all-packs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pack-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .pack-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-2), var(--green));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .pack-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+    .pack-card:hover::before { opacity: 1; }
+    .pack-card.featured { border-color: var(--accent-2); box-shadow: 0 0 0 2px rgba(202,153,84,0.18), var(--shadow-md); }
+    .pack-card.featured::before { opacity: 1; }
+    .pack-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent-2);
+      padding: 4px 11px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+      align-self: flex-start;
+    }
+    .pack-badge.green { background: var(--green); }
+    .pack-badge.blue { background: #2563eb; }
+    .pack-badge.purple { background: #7c3aed; }
+    .pack-name {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 5px;
+      letter-spacing: -0.02em;
+    }
+    .pack-tagline {
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .pack-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .pack-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.45;
+    }
+    .pack-features li::before {
+      content: '✓';
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(45,106,79,0.1);
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pack-divider { height: 1px; background: var(--border); margin: 0 0 20px; }
+    .pack-price {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .pack-get-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 20px;
+      border-radius: 100px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .pack-get-btn:hover { background: var(--accent-2); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .pack-card.featured .pack-get-btn { background: var(--accent-2); }
+    .pack-card.featured .pack-get-btn:hover { background: #b5502e; }
+    .pack-card.blue-featured .pack-get-btn { background: #2563eb; }
+    .pack-card.blue-featured .pack-get-btn:hover { background: #1d4ed8; }
+    .pack-card.purple-featured .pack-get-btn { background: #7c3aed; }
+    .pack-card.purple-featured .pack-get-btn:hover { background: #6d28d9; }
+
+    .packs-group-divider { margin: 52px 0 36px; }
+
+    /* CTA bottom */
+    .packs-cta-bar {
+      background: var(--text);
+      color: #fff;
+      padding: 56px 0;
+      text-align: center;
+    }
+    .packs-cta-bar h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .packs-cta-bar h2 span { color: var(--accent-2); }
+    .packs-cta-bar p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      max-width: 460px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    /* ── LOGIN GATE MODAL (packs page) ── */
+    .pack-login-modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.48);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .pack-login-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .pack-login-modal {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(22px) scale(0.97);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .pack-login-modal-overlay.open .pack-login-modal { transform: none; }
+    .pack-login-modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--text-2);
+      transition: var(--transition);
+    }
+    .pack-login-modal-close:hover { background: var(--text); color: #fff; }
+    .pack-login-modal h2 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .pack-login-modal h2 span { color: var(--accent-2); }
+    .pack-login-modal p {
+      font-size: 14px; color: var(--text-2);
+      line-height: 1.65; margin-bottom: 24px;
+    }
+    .pack-modal-tabs { display: flex; gap: 0; background: var(--bg-alt); border-radius: 10px; padding: 4px; margin-bottom: 24px; }
+    .pack-modal-tab {
+      flex: 1; padding: 9px; text-align: center;
+      font-family: var(--font-display); font-size: 13px; font-weight: 600;
+      border-radius: 8px; cursor: pointer; transition: var(--transition);
+      color: var(--text-2); border: none; background: none;
+    }
+    .pack-modal-tab.active { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+    .pack-modal-panel { display: flex; flex-direction: column; gap: 0; }
+    .pack-modal-panel[hidden] { display: none; }
+    .pack-modal-form { display: flex; flex-direction: column; gap: 14px; }
+    .pack-modal-form-group { display: flex; flex-direction: column; gap: 6px; }
+    .pack-modal-form-group label { font-size: 13px; font-weight: 600; font-family: var(--font-display); }
+    .pack-modal-form-group input {
+      padding: 12px 15px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px; background: var(--bg); color: var(--text);
+      outline: none; transition: var(--transition);
+    }
+    .pack-modal-form-group input:focus { border-color: var(--text); background: var(--surface); }
+    .pack-modal-submit {
+      margin-top: 6px; padding: 13px;
+      border-radius: 100px;
+      background: var(--text); color: #fff;
+      font-family: var(--font-display); font-size: 14px; font-weight: 600;
+      border: none; cursor: pointer; transition: var(--transition); text-align: center;
+    }
+    .pack-modal-submit:hover { background: var(--accent-2); }
+    .pack-modal-error { font-size: 13px; color: #d44; padding: 10px 14px; background: #ffeaea; border-radius: var(--radius-sm); border: 1px solid #f5cccc; display: none; margin-bottom: 8px; }
+    .pack-modal-error.show { display: block; }
+    .pack-modal-success { font-size: 13px; color: var(--green); padding: 10px 14px; background: #edf8f2; border-radius: var(--radius-sm); border: 1px solid #c3e8d4; display: none; margin-bottom: 8px; }
+    .pack-modal-success.show { display: block; }
+
+    @media (max-width: 960px) {
+      .all-packs-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .all-packs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">BlockSizedX</a>
+      <div class="nav-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#works">Works</a>
+        <a href="../index.html#get-website">Get a Site</a>
+        <a href="../packs/" class="active">Web Packs</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <button id="nav-auth-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Sign In
+        </button>
+        <div class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="../index.html">Home</a>
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#works">Works</a>
+  <a href="../index.html#get-website">Get a Site</a>
+  <a href="../packs/">Web Packs</a>
+  <a href="../index.html#contact">Contact</a>
+</div>
+
+<!-- ══ HERO ═══════════════════════════════════ -->
+<section class="packs-page-hero">
+  <div class="container">
+    <div class="section-label reveal">Website Packs</div>
+    <h1 class="reveal">All Packs, One <span>Place.</span></h1>
+    <p class="reveal">From a simple landing page to a fully automated business system — pick the pack that fits your stage and budget. Every pack is delivered with professional design, mobile responsiveness, and personal support.</p>
+    <div class="packs-page-hero-badges reveal">
+      <span class="tag">✓ Mobile Responsive</span>
+      <span class="tag">✓ SEO Included</span>
+      <span class="tag">✓ Direct Support</span>
+      <span class="tag">✓ Fast Delivery</span>
+      <span class="tag">✓ No Hidden Fees</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ALL PACKS ═══════════════════════════════ -->
+<section class="packs-page-section">
+  <div class="container">
+
+    <!-- Starter Tier -->
+    <div class="packs-section-label reveal">Starter Tier — Begin your online presence</div>
+    <div class="all-packs-grid stagger">
+
+      <!-- Launch Pack -->
+      <div class="pack-card reveal">
+        <div class="pack-badge green">🚀 Quick Start</div>
+        <div class="pack-name">🚀 Launch Pack</div>
+        <div class="pack-tagline">For new businesses starting online</div>
+        <ul class="pack-features">
+          <li>1 Landing Page Website</li>
+          <li>Clean Modern Design</li>
+          <li>Mobile Responsive</li>
+          <li>Contact Form</li>
+          <li>WhatsApp Button</li>
+          <li>Google Maps Embed</li>
+          <li>Basic Speed Optimization</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹4,999 – ₹8,999</div>
+        <button class="pack-get-btn"
+          data-pack="Launch Pack"
+          data-price="₹4,999 – ₹8,999"
+          data-details="1 Landing Page Website, Clean Modern Design, Mobile Responsive, Contact Form, WhatsApp Button, Google Maps Embed, Basic Speed Optimization">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Launch Pack
+        </button>
+      </div>
+
+      <!-- Starter Pack -->
+      <div class="pack-card reveal">
+        <div class="pack-name">⚡ Starter Pack</div>
+        <div class="pack-tagline">Best for small shops / personal brands</div>
+        <ul class="pack-features">
+          <li>Up to 4 Pages</li>
+          <li>Mobile Responsive Design</li>
+          <li>Contact Form</li>
+          <li>Basic SEO Setup</li>
+          <li>WhatsApp Chat Button</li>
+          <li>1 Free Revision</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹7,999 – ₹12,999</div>
+        <button class="pack-get-btn"
+          data-pack="Starter Pack"
+          data-price="₹7,999 – ₹12,999"
+          data-details="Up to 4 Pages, Mobile Responsive Design, Contact Form, Basic SEO Setup, WhatsApp Chat Button, 1 Free Revision">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Starter Pack
+        </button>
+      </div>
+
+      <!-- Growth Pack -->
+      <div class="pack-card blue-featured reveal">
+        <div class="pack-badge blue">📈 Growth</div>
+        <div class="pack-name">🔵 Growth Pack</div>
+        <div class="pack-tagline">For businesses wanting more leads</div>
+        <ul class="pack-features">
+          <li>Up to 6 Pages</li>
+          <li>Custom Design</li>
+          <li>Service Pages</li>
+          <li>Testimonials Section</li>
+          <li>SEO Basics</li>
+          <li>Blog Setup</li>
+          <li>Lead Capture Forms</li>
+          <li>Social Media Integration</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹14,999 – ₹24,999</div>
+        <button class="pack-get-btn"
+          data-pack="Growth Pack"
+          data-price="₹14,999 – ₹24,999"
+          data-details="Up to 6 Pages, Custom Design, Service Pages, Testimonials Section, SEO Basics, Blog Setup, Lead Capture Forms, Social Media Integration">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Growth Pack
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Pro Tier -->
+    <div class="packs-group-divider">
+      <div class="packs-section-label reveal">Pro Tier — Scale and automate your business</div>
+    </div>
+    <div class="all-packs-grid stagger">
+
+      <!-- Standard Pack -->
+      <div class="pack-card featured reveal">
+        <div class="pack-badge">⭐ Most Popular</div>
+        <div class="pack-name">🚀 Standard Pack</div>
+        <div class="pack-tagline">Best for growing businesses</div>
+        <ul class="pack-features">
+          <li>Up to 8 Pages</li>
+          <li>Custom Modern Design</li>
+          <li>Mobile + Tablet Optimized</li>
+          <li>SEO Ready Structure</li>
+          <li>Gallery / Services Section</li>
+          <li>Speed Optimization</li>
+          <li>Admin Panel (optional)</li>
+          <li>3 Revisions</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹15,999 – ₹29,999</div>
+        <button class="pack-get-btn"
+          data-pack="Standard Pack"
+          data-price="₹15,999 – ₹29,999"
+          data-details="Up to 8 Pages, Custom Modern Design, Mobile + Tablet Optimized, SEO Ready Structure, Gallery / Services Section, Speed Optimization, Admin Panel (optional), 3 Revisions">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Standard Pack
+        </button>
+      </div>
+
+      <!-- Automation Pack -->
+      <div class="pack-card purple-featured reveal">
+        <div class="pack-badge purple">🤖 Smart</div>
+        <div class="pack-name">🟣 Automation Pack</div>
+        <div class="pack-tagline">For smart businesses wanting systems</div>
+        <ul class="pack-features">
+          <li>Up to 10 Pages</li>
+          <li>Booking System</li>
+          <li>Auto Email Replies</li>
+          <li>CRM / Lead Collection</li>
+          <li>Dashboard Panel</li>
+          <li>Payment Integration</li>
+          <li>Analytics Setup</li>
+          <li>Fast Performance</li>
+          <li>Priority Support</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹34,999 – ₹59,999</div>
+        <button class="pack-get-btn"
+          data-pack="Automation Pack"
+          data-price="₹34,999 – ₹59,999"
+          data-details="Up to 10 Pages, Booking System, Auto Email Replies, CRM / Lead Collection, Dashboard Panel, Payment Integration, Analytics Setup, Fast Performance, Priority Support">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Automation Pack
+        </button>
+      </div>
+
+      <!-- Premium Pack -->
+      <div class="pack-card reveal">
+        <div class="pack-name">💎 Premium Pack</div>
+        <div class="pack-tagline">Best for serious businesses</div>
+        <ul class="pack-features">
+          <li>Unlimited / 12+ Pages</li>
+          <li>Fully Custom UI/UX</li>
+          <li>Booking / Dynamic Features</li>
+          <li>Payment Gateway</li>
+          <li>Blog / Dashboard</li>
+          <li>Advanced SEO</li>
+          <li>Analytics Setup</li>
+          <li>Priority Support</li>
+        </ul>
+        <div class="pack-divider"></div>
+        <div class="pack-price">💰 ₹39,999+</div>
+        <button class="pack-get-btn"
+          data-pack="Premium Pack"
+          data-price="₹39,999+"
+          data-details="Unlimited / 12+ Pages, Fully Custom UI/UX, Booking / Dynamic Features, Payment Gateway, Blog / Dashboard, Advanced SEO, Analytics Setup, Priority Support">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Get Premium Pack
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAR ═════════════════════════════════ -->
+<section class="packs-cta-bar">
+  <div class="container">
+    <h2 class="reveal">Not sure which pack fits? <span>Let's talk.</span></h2>
+    <p class="reveal">Send a quick message and I'll help you pick the right pack or build a custom quote for your project — no obligations.</p>
+    <a href="../index.html#get-website" class="btn btn-accent reveal" style="font-size:15px;padding:14px 32px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      Start Your Project
+    </a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Block<span>Sized</span>X</div>
+        <div class="footer-tagline">Crafting high-performance websites for brands that mean business.</div>
+        <div class="footer-socials">
+          <a href="https://instagram.com/blocksizedx" target="_blank" rel="noopener" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/919961550562" target="_blank" rel="noopener" title="WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a href="mailto:blocksizedx@gmail.com" title="Email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://github.com/BlockSizedX/" title="GitHub" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-8 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 2.5 8.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#works">Works</a></li>
+          <li><a href="../works/">All Projects</a></li>
+          <li><a href="../index.html#get-website">Get a Website</a></li>
+          <li><a href="../packs/">Web Packs</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Packs</h4>
+        <ul>
+          <li><a href="../packs/">Launch Pack</a></li>
+          <li><a href="../packs/">Starter Pack</a></li>
+          <li><a href="../packs/">Growth Pack</a></li>
+          <li><a href="../packs/">Standard Pack</a></li>
+          <li><a href="../packs/">Automation Pack</a></li>
+          <li><a href="../packs/">Premium Pack</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../terms-and-conditions.html" target="_blank">Terms & Conditions</a></li>
+          <li><a href="../privacy-policy.html" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 BlockSizedX · Made by <a href="../index.html#about">Muhammed Nazal Naufal</a></div>
+      <div class="footer-legal">
+        <a href="../terms-and-conditions.html" target="_blank">Terms</a>
+        <a href="../privacy-policy.html" target="_blank">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ PACK LOGIN GATE MODAL ════════════════════ -->
+<div class="pack-login-modal-overlay" id="pack-login-modal-overlay">
+  <div class="pack-login-modal">
+    <button class="pack-login-modal-close" id="pack-login-modal-close">×</button>
+    <h2><span>Sign in</span> to get this pack</h2>
+    <p>You need to be logged in to request a pack. Sign in or create a free account — it only takes a moment.</p>
+    <div class="pack-modal-tabs">
+      <button class="pack-modal-tab active" data-tab="login">Sign In</button>
+      <button class="pack-modal-tab" data-tab="register">Create Account</button>
+    </div>
+    <!-- Login Panel -->
+    <div class="pack-modal-panel" id="pack-panel-login">
+      <div class="pack-modal-error" id="pack-login-error"></div>
+      <div class="pack-modal-success" id="pack-login-success"></div>
+      <form class="pack-modal-form" id="pack-login-form" novalidate>
+        <div class="pack-modal-form-group">
+          <label for="pack-login-username">Username</label>
+          <input type="text" id="pack-login-username" placeholder="Your username" required autocomplete="username">
+        </div>
+        <div class="pack-modal-form-group">
+          <label for="pack-login-password">Password</label>
+          <input type="password" id="pack-login-password" placeholder="Your password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="pack-modal-submit">Sign In →</button>
+      </form>
+    </div>
+    <!-- Register Panel -->
+    <div class="pack-modal-panel" id="pack-panel-register" hidden>
+      <div class="pack-modal-error" id="pack-register-error"></div>
+      <div class="pack-modal-success" id="pack-register-success"></div>
+      <form class="pack-modal-form" id="pack-register-form" novalidate>
+        <div class="pack-modal-form-group">
+          <label for="pack-reg-username">Username</label>
+          <input type="text" id="pack-reg-username" placeholder="Choose a username" required autocomplete="username">
+        </div>
+        <div class="pack-modal-form-group">
+          <label for="pack-reg-email">Email</label>
+          <input type="email" id="pack-reg-email" placeholder="you@email.com" required autocomplete="email">
+        </div>
+        <div class="pack-modal-form-group">
+          <label for="pack-reg-password">Password</label>
+          <input type="password" id="pack-reg-password" placeholder="At least 6 characters" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="pack-modal-submit">Create Account →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Navbar scroll ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── Mobile hamburger ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileNav.classList.remove('open'));
+  });
+
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal, .reveal-right, .reveal-left, .stagger');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.10 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── Session helpers ──
+  const SESSION_KEY = 'bsx_session_user';
+  function getCachedUsername() { return localStorage.getItem(SESSION_KEY) || null; }
+  function cacheUsername(u) { if (u) localStorage.setItem(SESSION_KEY, u); else localStorage.removeItem(SESSION_KEY); }
+
+  // ── Pending pack (store while user logs in) ──
+  let pendingPackData = null;
+
+  // ── Build mailto URL with autofill ──
+  function buildMailto(pack, price, details, username, email) {
+    const name = username || '';
+    const userEmail = email || '';
+    const subject = encodeURIComponent(`${pack} Inquiry — BlockSizedX`);
+    const detailLines = details.split(',').map(d => `- ${d.trim()}`).join('\n');
+    const body = encodeURIComponent(
+`Hi BlockSizedX,
+
+I am interested in the ${pack} (${price}).
+
+Details:
+${detailLines}
+
+Please let me know the next steps.
+
+Name: ${name}
+Email: ${userEmail}
+Phone: 
+Brief about my project: `
+    );
+    return `mailto:blocksizedx@gmail.com?subject=${subject}&body=${body}`;
+  }
+
+  // ── Handle pack button click ──
+  function handlePackBtn(btn) {
+    const pack = btn.dataset.pack;
+    const price = btn.dataset.price;
+    const details = btn.dataset.details;
+
+    const username = getCachedUsername();
+    if (username) {
+      // Get email from Firestore if available, else fallback to username
+      const email = window._bsxUserEmail || '';
+      window.location.href = buildMailto(pack, price, details, username, email);
+    } else {
+      pendingPackData = { pack, price, details };
+      openPackModal('login');
+    }
+  }
+
+  document.querySelectorAll('.pack-get-btn').forEach(btn => {
+    btn.addEventListener('click', () => handlePackBtn(btn));
+  });
+
+  // ── Pack modal ──
+  const packModalOverlay = document.getElementById('pack-login-modal-overlay');
+
+  function openPackModal(tab) {
+    packModalOverlay.classList.add('open');
+    switchPackTab(tab);
+  }
+  function closePackModal() {
+    packModalOverlay.classList.remove('open');
+  }
+  function switchPackTab(tab) {
+    document.querySelectorAll('.pack-modal-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.getElementById('pack-panel-login').hidden = tab !== 'login';
+    document.getElementById('pack-panel-register').hidden = tab !== 'register';
+    clearPackModalMessages();
+  }
+  function clearPackModalMessages() {
+    document.querySelectorAll('.pack-modal-error, .pack-modal-success').forEach(el => el.classList.remove('show'));
+  }
+  function showPackError(id, msg) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+  function showPackSuccess(id, msg) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+
+  document.getElementById('pack-login-modal-close').addEventListener('click', closePackModal);
+  packModalOverlay.addEventListener('click', e => { if (e.target === packModalOverlay) closePackModal(); });
+  document.querySelectorAll('.pack-modal-tab').forEach(btn => {
+    btn.addEventListener('click', () => switchPackTab(btn.dataset.tab));
+  });
+
+  function firebaseErrorMsg(code) {
+    switch (code) {
+      case 'auth/email-already-in-use': return 'That email is already registered.';
+      case 'auth/invalid-email': return 'Please enter a valid email address.';
+      case 'auth/weak-password': return 'Password must be at least 6 characters.';
+      case 'auth/user-not-found':
+      case 'auth/wrong-password':
+      case 'auth/invalid-credential': return 'Incorrect username or password.';
+      case 'auth/too-many-requests': return 'Too many attempts. Please try again later.';
+      default: return 'Something went wrong. Please try again.';
+    }
+  }
+
+  function afterSuccessfulLogin(username, email) {
+    cacheUsername(username);
+    window._bsxUserEmail = email || '';
+    // Update nav pill
+    if (typeof renderAuthButton === 'function') renderAuthButton(username);
+    showPackSuccess('pack-login-success', `Welcome, ${username}! Opening pack request…`);
+    setTimeout(() => {
+      closePackModal();
+      if (pendingPackData) {
+        const { pack, price, details } = pendingPackData;
+        pendingPackData = null;
+        window.location.href = buildMailto(pack, price, details, username, email || '');
+      }
+    }, 900);
+  }
+
+  // ── Pack sign-in form ──
+  document.getElementById('pack-login-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    clearPackModalMessages();
+    const usernameInput = document.getElementById('pack-login-username').value.trim();
+    const password = document.getElementById('pack-login-password').value;
+    if (!usernameInput || !password) { showPackError('pack-login-error', 'Please fill in all fields.'); return; }
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Please wait…';
+
+    try {
+      // Wait for Firebase
+      let tries = 0;
+      while ((!window.firebaseDb || !window.firebaseFns) && tries++ < 50) await new Promise(r => setTimeout(r, 100));
+      const { firebaseDb, firebaseAuth, firebaseFns } = window;
+      const { query, collection, where, getDocs, signInWithEmailAndPassword } = firebaseFns;
+      const q = query(collection(firebaseDb, 'users'), where('username', '==', usernameInput));
+      const snap = await getDocs(q);
+      if (snap.empty) { showPackError('pack-login-error', 'No account found with that username.'); btn.disabled=false; btn.textContent='Sign In →'; return; }
+      const userDoc = snap.docs[0].data();
+      const email = userDoc.email;
+      await signInWithEmailAndPassword(firebaseAuth, email, password);
+      afterSuccessfulLogin(usernameInput, email);
+    } catch (err) {
+      showPackError('pack-login-error', firebaseErrorMsg(err.code));
+      btn.disabled = false; btn.textContent = 'Sign In →';
+    }
+  });
+
+  // ── Pack register form ──
+  document.getElementById('pack-register-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    clearPackModalMessages();
+    const username = document.getElementById('pack-reg-username').value.trim();
+    const email = document.getElementById('pack-reg-email').value.trim();
+    const password = document.getElementById('pack-reg-password').value;
+    if (!username || !email || !password) { showPackError('pack-register-error', 'Please fill in all fields.'); return; }
+    if (username.length < 3) { showPackError('pack-register-error', 'Username must be at least 3 characters.'); return; }
+    if (password.length < 6) { showPackError('pack-register-error', 'Password must be at least 6 characters.'); return; }
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Please wait…';
+
+    try {
+      let tries = 0;
+      while ((!window.firebaseDb || !window.firebaseFns) && tries++ < 50) await new Promise(r => setTimeout(r, 100));
+      const { firebaseDb, firebaseAuth, firebaseFns } = window;
+      const { query, collection, where, getDocs, createUserWithEmailAndPassword, setDoc, doc } = firebaseFns;
+
+      const q = query(collection(firebaseDb, 'users'), where('username', '==', username));
+      const snap = await getDocs(q);
+      if (!snap.empty) { showPackError('pack-register-error', 'Username already taken. Choose another.'); btn.disabled=false; btn.textContent='Create Account →'; return; }
+
+      const credential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      const uid = credential.user.uid;
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const d = new Date();
+      const joined = `${String(d.getDate()).padStart(2,'0')}-${months[d.getMonth()]}-${d.getFullYear()}`;
+      await setDoc(doc(firebaseDb, 'users', uid), { username, email, joined, createdAt: Date.now() });
+      afterSuccessfulLogin(username, email);
+    } catch (err) {
+      showPackError('pack-register-error', firebaseErrorMsg(err.code));
+      btn.disabled = false; btn.textContent = 'Create Account →';
+    }
+  });
+
+  // ── Render nav account pill (for packs page) ──
+  function renderAuthButton(username) {
+    const btn = document.getElementById('nav-auth-btn');
+    const existingPill = document.getElementById('nav-account-pill');
+    if (username) {
+      const target = btn || existingPill;
+      if (!target) return;
+      const initials = (username || '?').slice(0,2).toUpperCase();
+      target.outerHTML = `<div class="nav-account-pill" id="nav-account-pill" title="Signed in as ${username}" style="cursor:pointer;"><div class="nav-avatar">${initials}</div><span class="nav-account-name">${username}</span></div>`;
+      setTimeout(() => {
+        document.getElementById('nav-account-pill')?.addEventListener('click', () => { window.location.href = '/account/'; });
+      }, 0);
+    } else {
+      if (existingPill) {
+        existingPill.outerHTML = `<button id="nav-auth-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Sign In</button>`;
+        setTimeout(() => { document.getElementById('nav-auth-btn')?.addEventListener('click', () => openPackModal('login')); }, 0);
+      } else {
+        btn?.addEventListener('click', () => openPackModal('login'));
+      }
+    }
+  }
+</script>
+
+<script type="module">
+  import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics }     from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+  import {
+    getAuth, createUserWithEmailAndPassword,
+    signInWithEmailAndPassword, signOut, onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getFirestore, setDoc, getDoc, getDocs, deleteDoc,
+    doc, collection, query, where, increment, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDlQD-hlNH9wuSDys7Tz4a1avzYs56WGLY",
+    authDomain: "blocksizedx-sign-up.firebaseapp.com",
+    projectId: "blocksizedx-sign-up",
+    storageBucket: "blocksizedx-sign-up.firebasestorage.app",
+    messagingSenderId: "39068339463",
+    appId: "1:39068339463:web:d4424d30ee96d48252c9a2",
+    measurementId: "G-00WSDSY7JS"
+  };
+
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+  getAnalytics(app);
+
+  window.firebaseAuth = auth;
+  window.firebaseDb   = db;
+  window.firebaseFns  = {
+    createUserWithEmailAndPassword, signInWithEmailAndPassword,
+    signOut, onAuthStateChanged,
+    setDoc, getDoc, getDocs, deleteDoc,
+    doc, collection, query, where, increment, serverTimestamp
+  };
+
+  // Auth state — update nav + cache user email
+  onAuthStateChanged(auth, async (fbUser) => {
+    if (fbUser) {
+      const cached = localStorage.getItem('bsx_session_user');
+      let username = cached;
+      let email = fbUser.email || '';
+      if (!username) {
+        try {
+          const snap = await getDoc(doc(db, 'users', fbUser.uid));
+          if (snap.exists()) { username = snap.data().username; email = snap.data().email || email; }
+        } catch {}
+        if (username) localStorage.setItem('bsx_session_user', username);
+      }
+      window._bsxUserEmail = email;
+      if (typeof renderAuthButton === 'function') renderAuthButton(username || fbUser.email);
+    } else {
+      localStorage.removeItem('bsx_session_user');
+      window._bsxUserEmail = '';
+      if (typeof renderAuthButton === 'function') renderAuthButton(null);
+    }
+  });
+</script>
+
+</body>
+</html>
