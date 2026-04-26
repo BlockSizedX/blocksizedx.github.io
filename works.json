@@ -1,19 +1,6 @@
 [
   {
     "id": "bsx-001",
-    "name": "Stylo Footwear",
-    "description": "A modern E-commerce website for footwear shop. Frentend only website. including form, contact, product listing etc.",
-    "tags": ["E-Commerce", "UI/UX", "Frontend"],
-    "date": "2025-9-15",
-    "liveDemo": "https://blocksizedx.github.io/stylofootwear.github.io",
-    "code": null,
-    "icon": "assets/work-images/work-stylo.png",
-    "images": [
-      "assets/work-images/work-stylo.png"
-    ]
-  },
-  {
-    "id": "bsx-002",
     "name": "Fruzo Cafe",
     "description": "Frontend only website for a cafe with included menu, sorting, filtering and branch selection. Modern light themed, responsive and included form.",
     "tags": ["Frontend", "Cafe", "HTML/CSS/JS"],
@@ -26,15 +13,28 @@
     ]
   },
   {
-    "id": "bsx-003",
+    "id": "bsx-002",
     "name": "Machines Brochures showcase",
     "description": "Frontend only website for showcasing brochures, applications, etc. for a company.",
     "tags": ["Frontend", "Showcase", "Authentication"],
     "date": "2026-04-18",
-    "liveDemo": "https://shimadzumea.pages.dev",
+    "liveDemo": "https://smeatestingmachine.com",
     "icon": "assets/work-images/work-shim.png",
     "images": [
       "assets/work-images/work-shim.png"
+    ]
+  },
+  {
+    "id": "bsx-003",
+    "name": "Stylo Footwear",
+    "description": "A modern E-commerce website for footwear shop. Frentend only website. including form, contact, product listing etc.",
+    "tags": ["E-Commerce", "UI/UX", "Frontend"],
+    "date": "2025-9-15",
+    "liveDemo": "https://blocksizedx.github.io/stylofootwear.github.io",
+    "code": null,
+    "icon": "assets/work-images/work-stylo.png",
+    "images": [
+      "assets/work-images/work-stylo.png"
     ]
   },
   {
