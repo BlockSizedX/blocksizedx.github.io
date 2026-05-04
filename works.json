@@ -1,19 +1,30 @@
 [
   {
     "id": "bsx-001",
+    "name": "Future Of Lab",
+    "description": "Full stack learning website with classes, career, opportunities etc. used next.js for frontend and supabase for backend",
+    "tags": ["Next.js", "full stack", "Learning"],
+    "date": "2026-05-04",
+    "liveDemo": "https://futureoflab.com",
+    "icon": "assets/work-images/work-fol.png",
+    "images": [
+      "assets/work-images/work-fol.png"
+    ]
+  },
+  {
+    "id": "bsx-002",
     "name": "Fruzo Cafe",
     "description": "Frontend only website for a cafe with included menu, sorting, filtering and branch selection. Modern light themed, responsive and included form.",
     "tags": ["Frontend", "Cafe", "HTML/CSS/JS"],
-    "date": "2024-09-02",
-    "liveDemo": "https://blocksizedx.github.io/FruzoCafeOfficial.github.io",
-    "code": "https://github.com/BlockSizedX/FruzoCafeOfficial.github.io",
+    "date": "2025-09-02",
+    "liveDemo": "https://fruzocafe.com",
     "icon": "assets/work-images/work-fruzo.png",
     "images": [
       "assets/work-images/work-fruzo.png"
     ]
   },
   {
-    "id": "bsx-002",
+    "id": "bsx-003",
     "name": "Machines Brochures showcase",
     "description": "Frontend only website for showcasing brochures, applications, etc. for a company.",
     "tags": ["Frontend", "Showcase", "Authentication"],
@@ -25,7 +36,7 @@
     ]
   },
   {
-    "id": "bsx-003",
+    "id": "bsx-004",
     "name": "Stylo Footwear",
     "description": "A modern E-commerce website for footwear shop. Frentend only website. including form, contact, product listing etc.",
     "tags": ["E-Commerce", "UI/UX", "Frontend"],
@@ -38,7 +49,7 @@
     ]
   },
   {
-    "id": "bsx-004",
+    "id": "bsx-005",
     "name": "Escape With Excuse",
     "description": "Dataset based AI powered smart Excuse generator webapp with custom modes",
     "tags": ["Frontend", "Generator", "AI/Dataset"],
@@ -50,7 +61,7 @@
     ]
   },
   {
-    "id": "bsx-005",
+    "id": "bsx-006",
     "name": "Who Are You? Entertainment Web",
     "description": "Who Are You, Really?",
     "tags": ["Frontend", "Entertainment", "HTML/CSS/JS"],
