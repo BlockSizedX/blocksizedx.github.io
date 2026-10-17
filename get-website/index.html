@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get a Website — BlockSizedX</title>
+  <meta name="description" content="Start your website project with BlockSizedX. Choose a ready starting point or describe custom requirements, then send the details on WhatsApp.">
+  <meta name="author" content="BlockSizedX">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#146321">
+  <link rel="canonical" href="https://blocksizedx.github.io/get-website/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BlockSizedX">
+  <meta property="og:title" content="Get a Website — BlockSizedX">
+  <meta property="og:description" content="Choose a pack or describe custom requirements, then send the details on WhatsApp.">
+  <meta property="og:url" content="https://blocksizedx.github.io/get-website/">
+  <meta property="og:image" content="https://blocksizedx.github.io/assets/work-images/logo-with-bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../assets/work-images/logo-with-bg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&amp;family=Hanken+Grotesk:wght@400..700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="get-website" data-root="../">
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container start-grid">
+        <div>
+          <h1 class="display h1">Get a <em>website.</em></h1>
+          <p class="lead">Start with a ready pack, or describe exactly what you need. You will finish on WhatsApp, where the details are confirmed directly.</p>
+          <div class="start-cta">
+            <button type="button" class="btn btn--primary btn--lg" id="start-flow" aria-controls="flow" aria-expanded="false">Get Your Website Now <span class="arrow" aria-hidden="true">→</span></button>
+            <small>No account needed.</small>
+          </div>
+        </div>
+        <aside class="how" aria-labelledby="how-title">
+          <h2 id="how-title">How it works</h2>
+          <ol>
+            <li>Choose a pack, or go custom.</li>
+            <li>Share your name, number, budget and requirements.</li>
+            <li>Review the message and send it on WhatsApp.</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--tint flow" id="flow" aria-label="Website request" hidden>
+      <div class="container">
+        <ol class="stepper" aria-label="Progress">
+          <li>Choose a path</li>
+          <li>Your details</li>
+          <li>Send on WhatsApp</li>
+        </ol>
+
+        <div data-panel="path" hidden>
+          <h2 class="step-title">How would you like to start?</h2>
+          <p class="step-sub">Pick the option that fits. You can change your mind at any point.</p>
+          <div class="path-grid">
+            <button type="button" class="path-card" data-path="pack" aria-pressed="false">
+              <span class="path-card__top">
+                <span>
+                  <span class="path-card__label">Option A</span>
+                  <span class="path-card__title">Select a Pack</span>
+                  <span class="path-card__text">A straightforward starting point, chosen by budget.</span>
+                </span>
+                <span class="path-card__radio" aria-hidden="true"></span>
+              </span>
+              <span class="preview" aria-hidden="true">
+                <span class="preview__row"><span>Under ₹3,000</span><span>Launch</span></span>
+                <span class="preview__row"><span>₹3,000–₹5,000</span><span>Essential</span></span>
+                <span class="preview__row"><span>₹5,000–₹10,000</span><span>Growth</span></span>
+                <span class="preview__row"><span>Above ₹10,000</span><span>Premium</span></span>
+              </span>
+            </button>
+
+            <button type="button" class="path-card path-card--custom" data-path="custom" aria-pressed="false">
+              <span class="path-card__top">
+                <span>
+                  <span class="path-card__label">Option B</span>
+                  <span class="path-card__title">Custom Requirements</span>
+                  <span class="path-card__text">A website tailored to what you need.</span>
+                </span>
+                <span class="path-card__radio" aria-hidden="true"></span>
+              </span>
+              <span class="preview" aria-hidden="true">
+                <span class="preview__field"><span>Full name</span><i></i></span>
+                <span class="preview__field"><span>Budget range</span><i></i></span>
+                <span class="preview__field"><span>Website requirements</span><i class="tall"></i></span>
+              </span>
+            </button>
+          </div>
+          <p class="step-nav"><button type="button" class="btn btn--primary" data-path-continue disabled>Continue <span class="arrow" aria-hidden="true">→</span></button></p>
+        </div>
+
+        <div data-panel="packs" hidden>
+          <h2 class="step-title">Select a pack</h2>
+          <p class="step-sub">Four starting points by budget. Final scope and price are confirmed after we discuss your requirements.</p>
+          <div class="pack-grid" id="pack-grid"></div>
+          <p class="step-nav"><button type="button" class="text-btn" data-go-back>← Back</button></p>
+        </div>
+
+        <div data-panel="details" hidden>
+          <h2 class="step-title">Tell me about your website</h2>
+          <p class="step-sub">Four quick details. Final scope and price are confirmed after we discuss your requirements.</p>
+
+          <form class="form" id="request-form" novalidate>
+            <div class="selected-pack" id="selected-pack" hidden>
+              <span>Selected pack: <strong id="selected-pack-name"></strong></span>
+              <button type="button" class="text-btn" id="change-pack" data-change-pack>Change pack</button>
+            </div>
+
+            <div class="field">
+              <label for="f-name">Full name <span aria-hidden="true">*</span></label>
+              <input type="text" id="f-name" name="name" autocomplete="name" required aria-describedby="e-name">
+              <p class="field__error" id="e-name" role="alert" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="f-phone">WhatsApp / mobile number <span aria-hidden="true">*</span></label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required aria-describedby="e-phone">
+              <p class="field__error" id="e-phone" role="alert" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="f-budget">Budget range <span aria-hidden="true">*</span></label>
+              <select id="f-budget" name="budget" required aria-describedby="e-budget">
+                <option value="" selected disabled>Select a range</option>
+              </select>
+              <p class="field__error" id="e-budget" role="alert" hidden></p>
+            </div>
+
+            <div class="field">
+              <label for="f-requirements">Website requirements <span aria-hidden="true">*</span></label>
+              <textarea id="f-requirements" name="requirements" maxlength="1000" required aria-describedby="h-requirements e-requirements"></textarea>
+              <ul class="hints" id="h-requirements">
+                <li>Business or website type</li>
+                <li>Pages or features needed</li>
+                <li>Existing website, if any</li>
+                <li>Preferred deadline, if relevant</li>
+              </ul>
+              <p class="field__error" id="e-requirements" role="alert" hidden></p>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary btn--lg">Continue to WhatsApp <span class="arrow" aria-hidden="true">→</span></button>
+              <button type="button" class="text-btn" data-go-back>← Back</button>
+            </div>
+            <p class="form__fine">Your details stay in your browser. They are only used to write the WhatsApp message.</p>
+          </form>
+        </div>
+
+        <div data-panel="result" hidden>
+          <div class="result">
+            <h2 class="step-title">Your message is ready</h2>
+            <p class="step-sub">WhatsApp opens with this message prefilled. Review it and press send yourself. Nothing has been sent yet.</p>
+            <pre class="message-preview" id="message-preview"></pre>
+            <div class="result__actions">
+              <a class="btn btn--primary" id="wa-link" href="https://wa.me/916238402221" target="_blank" rel="noopener noreferrer">Open WhatsApp <span class="arrow" aria-hidden="true">↗</span></a>
+              <button type="button" class="btn btn--ghost" id="copy-message">Copy message</button>
+              <button type="button" class="text-btn" data-edit-details>Edit details</button>
+            </div>
+            <p class="status" id="result-status" role="status"></p>
+            <p class="status" id="copy-status" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/analytics.js" defer></script>
+  <script src="../assets/js/get-website.js" defer></script>
+</body>
+</html>
