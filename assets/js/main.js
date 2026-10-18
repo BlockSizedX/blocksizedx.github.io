@@ -16,10 +16,13 @@
     { id: 'contact', label: 'Contact', href: root + 'contact/' }
   ];
 
-  function linksHtml() {
-    return NAV.map(function (item) {
+  function linksHtml(skipId) {
+    return NAV.filter(function (item) {
+      return item.id !== skipId;
+    }).map(function (item) {
       var current = item.id === page ? ' aria-current="page"' : '';
-      return '<a class="nav-link" href="' + item.href + '"' + current + '>' + item.label + '</a>';
+      var cta = item.id === 'get-website' ? ' nav-link--cta' : '';
+      return '<a class="nav-link' + cta + '" href="' + item.href + '"' + current + '>' + item.label + '</a>';
     }).join('');
   }
 
@@ -32,11 +35,14 @@
         '<a class="brand" href="' + home + '" aria-label="BlockSizedX home">Block<span>Sized</span>X</a>' +
         '<nav class="nav-links" aria-label="Primary">' + linksHtml() + '</nav>' +
         '<div class="nav-actions">' +
-          '<button type="button" class="btn btn--primary btn--sm">Sign Up</button>' +
+          '<button type="button" class="btn btn--primary btn--sm nav-signup">Sign Up</button>' +
+          '<a class="btn btn--primary btn--sm nav-get" href="' + root + 'get-website/">Get a Website</a>' +
           '<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span><span></span></button>' +
         '</div>' +
       '</div>' +
-      '<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>' + linksHtml() + '</nav>';
+      '<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>' + linksHtml('get-website') +
+        '<button type="button" class="btn btn--ghost menu-signup">Sign Up</button>' +
+      '</nav>';
 
     var toggle = header.querySelector('.nav-toggle');
     var menu = header.querySelector('#mobile-menu');
