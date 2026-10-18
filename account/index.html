@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Account — BlockSizedX</title>
+  <meta name="description" content="Manage your BlockSizedX account.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#146321">
+  <link rel="icon" href="../assets/work-images/logo-with-bg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&amp;family=Hanken+Grotesk:wght@400..700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="account" data-root="../" data-auth-page>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" class="contact-main">
+    <section class="contact-card auth-card" aria-labelledby="acc-title">
+      <p class="auth-loading" id="acc-loading" role="status">Loading your account…</p>
+
+      <div id="acc-ui" hidden>
+        <h1 class="display" id="acc-title">Your <em>account.</em></h1>
+
+        <p class="auth-msg" id="acc-msg" role="status" hidden></p>
+
+        <dl class="account-list">
+          <div class="account-row"><dt>Full name</dt><dd id="acc-name"></dd></div>
+          <div class="account-row"><dt>Email</dt><dd><span id="acc-email"></span><span class="account-badge" id="acc-verified" hidden></span></dd></div>
+          <div class="account-row"><dt>Joined since</dt><dd id="acc-joined"></dd></div>
+        </dl>
+
+        <div class="account-actions">
+          <button type="button" class="btn btn--ghost" id="btn-change-name" aria-controls="panel-name" aria-expanded="false">Change Name</button>
+          <button type="button" class="btn btn--ghost" id="btn-delete" aria-controls="panel-delete" aria-expanded="false">Request Account Deletion</button>
+          <button type="button" class="btn btn--primary" id="btn-signout">Sign Out</button>
+        </div>
+
+        <div class="account-panel" id="panel-name" hidden>
+          <h2 id="name-title" tabindex="-1">Change your name</h2>
+          <form class="form" id="form-name" novalidate>
+            <div class="field">
+              <label for="n-name">Full name <span aria-hidden="true">*</span></label>
+              <input type="text" id="n-name" name="name" autocomplete="name" maxlength="80" required aria-describedby="e-n-name">
+              <p class="field__error" id="e-n-name" role="alert" hidden></p>
+            </div>
+            <div class="account-actions">
+              <button type="submit" class="btn btn--primary">Save name</button>
+              <button type="button" class="text-btn" id="cancel-name">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="account-panel" id="panel-delete" hidden>
+          <h2 id="delete-title" tabindex="-1">Request account deletion</h2>
+          <p>Account deletion is handled manually. WhatsApp will open with the message below ready to go. Review it and press send yourself. Nothing is sent automatically.</p>
+          <p>Your account stays active, and you can keep signing in, until the request has been processed.</p>
+          <pre class="message-preview" id="delete-preview"></pre>
+          <p class="auth-msg auth-msg--error" id="delete-unavailable" role="alert" hidden>WhatsApp is not configured on this site. Email blocksizedx@gmail.com to request deletion instead.</p>
+          <div class="account-actions">
+            <a class="btn btn--primary" id="wa-delete" href="#" target="_blank" rel="noopener noreferrer">Open WhatsApp <span class="arrow" aria-hidden="true">↗</span></a>
+            <button type="button" class="text-btn" id="cancel-delete">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../assets/js/config.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/auth.js" defer></script>
+  <script src="../assets/js/account.js" defer></script>
+</body>
+</html>

@@ -115,7 +115,7 @@
 
             <div class="field">
               <label for="f-name">Full name <span aria-hidden="true">*</span></label>
-              <input type="text" id="f-name" name="name" autocomplete="name" required aria-describedby="e-name">
+              <input type="text" id="f-name" name="name" autocomplete="name" data-prefill="name" required aria-describedby="e-name">
               <p class="field__error" id="e-name" role="alert" hidden></p>
             </div>
 
@@ -173,7 +173,9 @@
 
   <footer class="site-footer" id="site-footer"></footer>
 
+  <script src="../assets/js/config.js" defer></script>
   <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/auth.js" defer></script>
   <script src="../assets/js/analytics.js" defer></script>
   <script src="../assets/js/get-website.js" defer></script>
 </body>

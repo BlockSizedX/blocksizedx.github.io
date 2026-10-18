@@ -22,7 +22,7 @@
     <section class="page-head">
       <div class="container">
         <h1 class="display h1">Privacy <em>Policy</em></h1>
-        <p class="legal-date">Last updated: October 17, 2026</p>
+        <p class="legal-date">Last updated: October 18, 2026</p>
       </div>
     </section>
 
@@ -39,7 +39,8 @@
       <h2>3. Information We Collect</h2>
       <p>We collect only limited and relevant information necessary to operate and improve the website:</p>
       <ul>
-        <li><strong>Browser Preference:</strong> A small preference (whether you dismissed the privacy notice) may be stored locally in your browser.</li>
+        <li><strong>Browser Preference:</strong> Small preferences (whether you dismissed the privacy notice, and whether this browser has been used to register an account) may be stored locally in your browser. No password or sign-in token is stored in these preferences.</li>
+        <li><strong>Account Data:</strong> If you create an account, we process your full name, email address and the date the account was created, along with your password in hashed form and the session information needed to keep you signed in. This is handled by our authentication provider, Supabase.</li>
         <li><strong>Analytics Data:</strong> We may collect aggregated and anonymized information such as page visits, time spent on pages, browser type, device information, and general geographic region.</li>
         <li><strong>Communication Data:</strong> When you contact us via email, WhatsApp, or other platforms, we may receive and retain the information you provide. The website request form on the Get a Website page does not send your details to us or to any server: it only prepares a WhatsApp message that you review and send yourself.</li>
       </ul>
@@ -57,7 +58,7 @@
       <p>Where applicable under international laws such as GDPR, we process your data based on legitimate interests (improving services), consent (analytics tracking), and user-initiated actions (contacting us).</p>
 
       <h2>6. Data Storage and Security</h2>
-      <p>This website is a static website and does not operate user accounts or a database. We implement reasonable safeguards to protect data; however, no system is completely secure and absolute security cannot be guaranteed.</p>
+      <p>This website is a static website. Optional accounts are provided through Supabase Auth, and account data is stored by Supabase rather than on this website's own server. Passwords are never stored by this website in readable form. Signed-in sessions are kept in your browser's local storage until you sign out. We implement reasonable safeguards to protect data; however, no system is completely secure and absolute security cannot be guaranteed.</p>
 
       <h2>7. Cookies and Tracking Technologies</h2>
       <p>This website uses browser storage (localStorage) and third-party analytics tools that may utilize cookies or similar technologies to enhance user experience and analyze usage patterns.</p>
@@ -67,6 +68,8 @@
       <ul>
         <li>Google Analytics (traffic and usage analysis)</li>
         <li>Google Fonts (typography)</li>
+        <li>Supabase (account sign-in and storage of account data)</li>
+        <li>jsDelivr (delivers the Supabase code library when you sign in or use an account)</li>
         <li>WhatsApp (when you choose to send a message)</li>
       </ul>
       <p>These services operate under their own privacy policies, and we recommend reviewing them for further details.</p>
@@ -75,7 +78,7 @@
       <p>This website may include links to platforms such as WhatsApp, Instagram, GitHub, and email services. Once you leave this website, we are not responsible for how those platforms handle your data.</p>
 
       <h2>10. Data Retention</h2>
-      <p>Browser preference data may remain until cleared by you. Messages you send to us may be retained as long as necessary to respond to your inquiry or deliver a project, unless deletion is requested.</p>
+      <p>Browser preference data may remain until cleared by you. Account data is kept until your account is deleted. You can ask for deletion from your account page, which prepares a WhatsApp message to us, or by email; the account stays active until the request is processed. Messages you send to us may be retained as long as necessary to respond to your inquiry or deliver a project, unless deletion is requested.</p>
 
       <h2>11. Your Rights</h2>
       <p>Depending on your jurisdiction, you may have rights under applicable laws such as the Indian Digital Personal Data Protection Act (DPDP) or GDPR, including:</p>
@@ -108,7 +111,9 @@
 
   <footer class="site-footer" id="site-footer"></footer>
 
+  <script src="assets/js/config.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/analytics.js" defer></script>
 </body>
 </html>

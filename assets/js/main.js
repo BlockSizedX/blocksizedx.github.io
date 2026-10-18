@@ -35,13 +35,13 @@
         '<a class="brand" href="' + home + '" aria-label="BlockSizedX home">Block<span>Sized</span>X</a>' +
         '<nav class="nav-links" aria-label="Primary">' + linksHtml() + '</nav>' +
         '<div class="nav-actions">' +
-          '<button type="button" class="btn btn--primary btn--sm nav-signup">Sign Up</button>' +
+          '<a class="btn btn--primary btn--sm nav-signup" href="' + root + 'sign-in/">Sign In</a>' +
           '<a class="btn btn--primary btn--sm nav-get" href="' + root + 'get-website/">Get a Website</a>' +
           '<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span><span></span></button>' +
         '</div>' +
       '</div>' +
       '<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>' + linksHtml('get-website') +
-        '<button type="button" class="btn btn--ghost menu-signup">Sign Up</button>' +
+        '<a class="btn btn--ghost menu-signup" href="' + root + 'sign-in/">Sign In</a>' +
       '</nav>';
 
     var toggle = header.querySelector('.nav-toggle');
@@ -79,6 +79,7 @@
   function renderFooter() {
     var footer = document.getElementById('site-footer');
     if (!footer) return;
+    var waNumber = String((window.BSX_CONFIG || {}).whatsappNumber || '').replace(/\D/g, '');
     footer.innerHTML =
       '<div class="container">' +
         '<div class="footer-grid">' +
@@ -90,7 +91,7 @@
             NAV.map(function (item) { return '<li><a href="' + item.href + '">' + item.label + '</a></li>'; }).join('') +
           '</ul></div>' +
           '<div class="footer-col"><h2>Get in touch</h2><ul>' +
-            '<li><a href="https://wa.me/916238402221" target="_blank" rel="noopener">WhatsApp</a></li>' +
+            '<li><a href="https://wa.me/' + waNumber + '" target="_blank" rel="noopener">WhatsApp</a></li>' +
             '<li><a href="mailto:blocksizedx@gmail.com">blocksizedx@gmail.com</a></li>' +
             '<li><a href="https://instagram.com/blocksizedx" target="_blank" rel="noopener">Instagram</a></li>' +
             '<li><a href="https://github.com/BlockSizedX" target="_blank" rel="noopener">GitHub</a></li>' +

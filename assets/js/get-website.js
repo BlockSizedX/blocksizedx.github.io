@@ -6,7 +6,7 @@
   var startButton = document.getElementById('start-flow');
   if (!flow || !startButton) return;
 
-  var WA_NUMBER = '916238402221';
+  var WA_NUMBER = (window.BSX_CONFIG && window.BSX_CONFIG.whatsappNumber) || '';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var BUDGETS = ['Under ₹3,000', '₹3,000–₹5,000', '₹5,000–₹10,000', 'Above ₹10,000', 'Not sure yet'];

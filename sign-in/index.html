@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign In — BlockSizedX</title>
+  <meta name="description" content="Create a BlockSizedX account or sign in.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#146321">
+  <link rel="icon" href="../assets/work-images/logo-with-bg.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&amp;family=Hanken+Grotesk:wght@400..700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="sign-in" data-root="../" data-auth-page data-auth-eager>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main" class="contact-main">
+    <section class="contact-card auth-card" aria-labelledby="auth-title">
+      <p class="auth-loading" id="auth-loading" role="status">Loading…</p>
+
+      <div id="auth-ui" hidden>
+        <h1 class="display" id="auth-title">Your <em>account.</em></h1>
+        <p class="auth-sub" id="auth-sub">Create an account or sign in to continue.</p>
+
+        <p class="auth-msg auth-msg--error" id="auth-banner" role="alert" hidden></p>
+
+        <div class="auth-tabs" id="auth-tabs" role="tablist" aria-label="Account options">
+          <button type="button" class="auth-tab" role="tab" id="tab-create" aria-controls="panel-create" aria-selected="false" tabindex="-1">Create Account</button>
+          <button type="button" class="auth-tab" role="tab" id="tab-signin" aria-controls="panel-signin" aria-selected="false" tabindex="-1">Sign In</button>
+        </div>
+
+        <div role="tabpanel" id="panel-create" aria-labelledby="tab-create" hidden>
+          <form class="auth-form" id="form-create" novalidate>
+            <div class="field">
+              <label for="c-name">Full name <span aria-hidden="true">*</span></label>
+              <input type="text" id="c-name" name="name" autocomplete="name" maxlength="80" required aria-describedby="e-c-name">
+              <p class="field__error" id="e-c-name" role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label for="c-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="c-email" name="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="e-c-email">
+              <p class="field__error" id="e-c-email" role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label for="c-password">New password <span aria-hidden="true">*</span></label>
+              <input type="password" id="c-password" name="new-password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="h-c-password e-c-password">
+              <p class="field__hint" id="h-c-password">At least 8 characters.</p>
+              <p class="field__error" id="e-c-password" role="alert" hidden></p>
+            </div>
+            <p class="auth-msg" id="m-create" role="status" hidden></p>
+            <button type="submit" class="btn btn--primary btn--lg">Create Account</button>
+          </form>
+        </div>
+
+        <div role="tabpanel" id="panel-signin" aria-labelledby="tab-signin" hidden>
+          <form class="auth-form" id="form-signin" novalidate>
+            <div class="field">
+              <label for="s-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="s-email" name="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="e-s-email">
+              <p class="field__error" id="e-s-email" role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label for="s-password">Password <span aria-hidden="true">*</span></label>
+              <input type="password" id="s-password" name="password" autocomplete="current-password" maxlength="72" required aria-describedby="e-s-password">
+              <p class="field__error" id="e-s-password" role="alert" hidden></p>
+            </div>
+            <p class="auth-links"><button type="button" class="text-btn" id="open-forgot">Forgot password?</button></p>
+            <p class="auth-msg" id="m-signin" role="status" hidden></p>
+            <button type="submit" class="btn btn--primary btn--lg">Sign In</button>
+          </form>
+        </div>
+
+        <div id="panel-forgot" hidden>
+          <form class="auth-form" id="form-forgot" novalidate>
+            <div>
+              <h2 class="step-title" id="forgot-title" tabindex="-1">Reset your password</h2>
+              <p class="auth-sub">Enter your email and we will send a reset link if an account exists for it.</p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="e-f-email">
+              <p class="field__error" id="e-f-email" role="alert" hidden></p>
+            </div>
+            <p class="auth-msg" id="m-forgot" role="status" hidden></p>
+            <button type="submit" class="btn btn--primary btn--lg">Send reset link</button>
+            <p class="auth-links"><button type="button" class="text-btn" id="back-signin">← Back to sign in</button></p>
+          </form>
+        </div>
+
+        <div id="panel-reset" hidden>
+          <form class="auth-form" id="form-reset" novalidate>
+            <div>
+              <h2 class="step-title" id="reset-title" tabindex="-1">Choose a new password</h2>
+              <p class="auth-sub">Your reset link worked. Set a new password to finish.</p>
+            </div>
+            <div class="field">
+              <label for="r-password">New password <span aria-hidden="true">*</span></label>
+              <input type="password" id="r-password" name="new-password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="e-r-password">
+              <p class="field__error" id="e-r-password" role="alert" hidden></p>
+            </div>
+            <div class="field">
+              <label for="r-confirm">Confirm new password <span aria-hidden="true">*</span></label>
+              <input type="password" id="r-confirm" name="confirm-password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="e-r-confirm">
+              <p class="field__error" id="e-r-confirm" role="alert" hidden></p>
+            </div>
+            <p class="auth-msg" id="m-reset" role="status" hidden></p>
+            <button type="submit" class="btn btn--primary btn--lg">Update password</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../assets/js/config.js" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/auth.js" defer></script>
+  <script src="../assets/js/auth-page.js" defer></script>
+</body>
+</html>
