@@ -63,8 +63,8 @@
     var year = new Date(work.date).getFullYear();
     if (!isNaN(year)) body.appendChild(el('span', 'work-card__meta', String(year)));
 
+    media.appendChild(body);
     card.appendChild(media);
-    card.appendChild(body);
     return card;
   }
 

@@ -21,7 +21,7 @@ window.BSX_WORKS = [
   },
   {
     id: "bsx-003",
-    name: "Machines Brochures showcase",
+    name: "Machines showcase",
     description: "Frontend only website for showcasing brochures, applications, etc. for a company.",
     tags: ["Frontend", "Showcase", "Authentication"],
     date: "2026-010-18",
